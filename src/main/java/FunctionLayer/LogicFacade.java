@@ -21,7 +21,7 @@ public class LogicFacade
 
     public static OrderBOM createOrder(int id, int length, int width, int height, boolean sent) throws OrderBuilderException
     {
-        OrderBOM orderBOM = new OrderBOM(id, length, width, height, sent);
+        OrderBOM orderBOM = new OrderBOM();
         OrderMapper.OrderToDB(orderBOM);
 
         return orderBOM;

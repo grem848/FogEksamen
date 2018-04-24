@@ -3,48 +3,48 @@ package FunctionLayer;
 public class OrderBOM
 {
 
-    private int orderid;
     private int id;
+    private int tlf;
+    private String email;
     private int length;
-    private int width;
     private int height;
-    private boolean sent;
+    private int width;
+    private int shedLength;
+    private int shedWidth;
+    private int slopedRoof;
 
-    public OrderBOM(int orderid, int id, int length, int width, int height, boolean sent) // get order
-    {
-        this.orderid = orderid;
-        this.id = id;
-        this.length = length;
-        this.width = width;
-        this.height = height;
-        this.sent = sent;
-    }
-
-    public OrderBOM(int id, int length, int width, int height, boolean sent) // create order
+    public OrderBOM(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // get order?
     {
         this.id = id;
+        this.tlf = tlf;
+        this.email = email;
         this.length = length;
-        this.width = width;
         this.height = height;
-        this.sent = sent;
-    }
-    
-    public OrderBOM(int length, int width, int height, boolean sent)
-    {
-        this.length = length;
         this.width = width;
-        this.height = height;
-        this.sent = sent;
-    }
-    
-    public int getOrderid()
-    {
-        return orderid;
+        this.shedLength = shedLength;
+        this.shedWidth = shedWidth;
+        this.slopedRoof = slopedRoof;
     }
 
-    public void setOrderid(int orderid)
+    public OrderBOM(int id, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // create order
     {
-        this.orderid = orderid;
+        this.id = id;
+        this.length = length;
+        this.height = height;
+        this.width = width;
+        this.shedLength = shedLength;
+        this.shedWidth = shedWidth;
+        this.slopedRoof = slopedRoof;
+    }
+
+    public OrderBOM(int length, int height, int width, int shedLength, int shedWidth, int slopedRoof)
+    {
+        this.length = length;
+        this.height = height;
+        this.width = width;
+        this.shedLength = shedLength;
+        this.shedWidth = shedWidth;
+        this.slopedRoof = slopedRoof;
     }
     
     public int getId()
@@ -56,17 +56,6 @@ public class OrderBOM
     {
         this.id = id;
     }
-
-    public boolean isSent()
-    {
-        return sent;
-    }
-
-    public void setSent(boolean sent)
-    {
-        this.sent = sent;
-    }
-
    
     public int getLength()
     {
@@ -98,19 +87,72 @@ public class OrderBOM
         this.height = height;
     }
 
+    public int getTlf()
+    {
+        return tlf;
+    }
+
+    public void setTlf(int tlf)
+    {
+        this.tlf = tlf;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public int getShedLength()
+    {
+        return shedLength;
+    }
+
+    public void setShedLength(int shedLength)
+    {
+        this.shedLength = shedLength;
+    }
+
+    public int getShedWidth()
+    {
+        return shedWidth;
+    }
+
+    public void setShedWidth(int shedWidth)
+    {
+        this.shedWidth = shedWidth;
+    }
+
+    public int getSlopedRoof()
+    {
+        return slopedRoof;
+    }
+
+    public void setSlopedRoof(int slopedRoof)
+    {
+        this.slopedRoof = slopedRoof;
+    }
+
+    
+    
     @Override
     public String toString()
     {
         String status;
-        if(sent == true)
-        {
-            status = "Sent";
-        }
-        else
-        {
-            status = "Pending";
-        }
-        return "[ Order ID: " + orderid + " | Bill of Materials: Length:" + length + ", Width: " + width + ", Height: " + height + " | Status: " + status + " ]";
+        status = "Pending"; // DELETE THIS PLS
+//        if(sent == true)
+//        {
+//            status = "Sent";
+//        }
+//        else
+//        {
+//            status = "Pending";
+//        }
+        return "[ Order ID: " + id + " | Bill of Materials: Length:" + length + ", Width: " + width + ", Height: " + height + " | Status: " + status + " ]";
     }
 
     
