@@ -1,6 +1,6 @@
 package FunctionLayer;
 
-public class OrderBOM
+public class Order
 {
 
     private int id;
@@ -13,7 +13,7 @@ public class OrderBOM
     private int shedWidth;
     private int slopedRoof;
 
-    public OrderBOM(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // get order?
+    public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // get order?
     {
         this.id = id;
         this.tlf = tlf;
@@ -26,9 +26,10 @@ public class OrderBOM
         this.slopedRoof = slopedRoof;
     }
 
-    public OrderBOM(int id, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // create order
+    public Order(int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // create order
     {
-        this.id = id;
+        this.tlf = tlf;
+        this.email = email;
         this.length = length;
         this.height = height;
         this.width = width;
@@ -36,8 +37,20 @@ public class OrderBOM
         this.shedWidth = shedWidth;
         this.slopedRoof = slopedRoof;
     }
+    
 
-    public OrderBOM(int length, int height, int width, int shedLength, int shedWidth, int slopedRoof)
+//    public Order(int id, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) 
+//    {
+//        this.id = id;
+//        this.length = length;
+//        this.height = height;
+//        this.width = width;
+//        this.shedLength = shedLength;
+//        this.shedWidth = shedWidth;
+//        this.slopedRoof = slopedRoof;
+//    }
+
+    public Order(int length, int height, int width, int shedLength, int shedWidth, int slopedRoof)
     {
         this.length = length;
         this.height = height;

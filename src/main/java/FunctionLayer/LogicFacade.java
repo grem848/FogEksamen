@@ -19,23 +19,23 @@ public class LogicFacade
         return user;
     }
 
-    public static OrderBOM createOrder(int id, int length, int width, int height, boolean sent) throws OrderBuilderException
+    public static Order createOrder(int tlf, String email, int length, int width, int height, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException
     {
-        OrderBOM orderBOM = new OrderBOM();
-        OrderMapper.OrderToDB(orderBOM);
+        Order order = new Order(tlf, email, length, height, width, shedLength, shedWidth, slopedRoof);
+        OrderMapper.OrderToDB(order);
 
-        return orderBOM;
+        return order;
     }
 
-    public static List<OrderBOM> getUserOrders(User user) throws OrderBuilderException
-    {
-        List<OrderBOM> orderList = OrderMapper.getAllUserOrders(user);
-        return orderList;
-    }
+//    public static List<Order> getUserOrders(User user) throws OrderBuilderException
+//    {
+//        List<Order> orderList = OrderMapper.getAllUserOrders(user);
+//        return orderList;
+//    }
 
-    public static List<OrderBOM> getOrderList() throws OrderBuilderException
+    public static List<Order> getOrderList() throws OrderBuilderException
     {
-        List<OrderBOM> allOrders = OrderMapper.getAllOrders();
+        List<Order> allOrders = OrderMapper.getAllOrders();
 
         return allOrders;
 

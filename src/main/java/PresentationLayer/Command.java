@@ -21,11 +21,12 @@ abstract class Command
         commands.put("bom", new BOM());
         commands.put("order", new Order());
         commands.put("orderlist", new Orderlist());
-        commands.put("employeeOrderList", new EmployeeOrderList());
+        commands.put("employeeorderlist", new EmployeeOrderList());
         commands.put("orderSent", new OrderSent());
         commands.put("employee", new Forwarder());
         commands.put("logout", new Logout());
-        
+        commands.put("orderconfirmed", new OrderConfirmed());
+        commands.put("createorderpage", new CreateOrder());
 
     }
 

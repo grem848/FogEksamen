@@ -2,7 +2,7 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.OrderBOM;
+import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
 import FunctionLayer.User;
 import java.util.List;
@@ -19,9 +19,9 @@ public class Orderlist extends Command
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         
-        List<OrderBOM> orders = LogicFacade.getUserOrders(user);
-        request.getSession().setAttribute("orders", orders);
-        request.setAttribute("orders", orders);
+//        List<Order> orders = LogicFacade.getUserOrders(user);
+//        request.getSession().setAttribute("orders", orders);
+//        request.setAttribute("orders", orders);
 
         return "orderlistpage";
     }
