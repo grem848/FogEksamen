@@ -23,7 +23,6 @@ abstract class Command
         commands.put("orderlist", new Orderlist());
         commands.put("employeeOrderList", new EmployeeOrderList());
         commands.put("orderSent", new OrderSent());
-        commands.put("customer", new Forwarder());
         commands.put("employee", new Forwarder());
         commands.put("logout", new Logout());
         
