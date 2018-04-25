@@ -18,16 +18,18 @@ public class Order extends Command
 //        int length = ((int) request.getSession().getAttribute("lengthS"));
 //        int width = ((int) request.getSession().getAttribute("widthS"));
 //        int height = ((int) request.getSession().getAttribute("heightS"));
-
+        
+        
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         int height = Integer.parseInt(request.getParameter("height"));
+        
 
         
         boolean sent = false;
         
 
-        LogicFacade.createOrder(id, length, width, height, sent);
+//        LogicFacade.createOrder(id, tlf, email, length, width, height, shedLength, shedWidth, slopedRoof);
 //        OrderBOM orderBOM = LogicFacade.createOrder(id, length, width, height, sent);
       
 //        request.setAttribute("orderBOM", orderBOM);

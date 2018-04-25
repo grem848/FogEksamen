@@ -7,7 +7,7 @@
         <title>Welcome page</title>
     </head>
     <body>
-        <h1>Lego House Builders A/S</h1>
+        <h1>Johannes Fog A/S</h1>
         
         <table>
             <tr><td>Login</td>
@@ -15,10 +15,10 @@
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
                         Email:<br>
-                        <input type="text" name="email" placeholder="Type an email">
+                        <input type="text" name="email" placeholder="Type an email" value="admin">
                         <br>
                         Password:<br>
-                        <input type="password" name="password" placeholder="Type password">
+                        <input type="password" name="password" placeholder="Type password" value="admin">
                         <br>
                         <input type="submit" value="Submit">
                     </form>

@@ -1,6 +1,6 @@
 package DBAccess;
 
-import FunctionLayer.OrderBOM;
+import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
 import FunctionLayer.User;
 
@@ -15,19 +15,23 @@ import java.util.List;
 public class OrderMapper
 {
 
-    public static boolean OrderToDB(OrderBOM orderBOM) throws OrderBuilderException
+    public static boolean OrderToDB(Order order) throws OrderBuilderException
     {
         try
         {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO orders (id, length, width, height, sent) VALUES (?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO orders (tlf, email, length, width, height, shedLength, shedWidth, slopedRoof) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, orderBOM.getId());
-            ps.setInt(2, orderBOM.getLength());
-            ps.setInt(3, orderBOM.getWidth());
-            ps.setInt(4, orderBOM.getHeight());
-            ps.setBoolean(5, orderBOM.isSent());
+            ps.setInt(1, order.getTlf());
+            ps.setString(2, order.getEmail());
+            ps.setInt(3, order.getLength());
+            ps.setInt(4, order.getWidth());
+            ps.setInt(5, order.getHeight());
+            ps.setInt(6, order.getShedLength());
+            ps.setInt(7, order.getShedWidth());
+            ps.setInt(8, order.getSlopedRoof());
             ps.executeUpdate();
+            
         } catch (SQLException | ClassNotFoundException ex)
         {
             throw new OrderBuilderException(ex.getMessage());
@@ -36,42 +40,42 @@ public class OrderMapper
         return false;
     }
 
-    public static List<OrderBOM> getAllUserOrders(User user) throws OrderBuilderException
-    {
-        List<OrderBOM> orderList;
-        try
-        {
-            Connection connection = Connector.connection();
-            String SQL = "SELECT * FROM useradmin.orders WHERE id = ?";
-            PreparedStatement statement = connection.prepareStatement(SQL);
-
-            statement.setInt(1, user.getId());
-            ResultSet rs = statement.executeQuery();
-
-            orderList = new ArrayList<>();
-
-            while (rs.next())
-            {
-                int orderid = rs.getInt("orderid");
-                int id = rs.getInt("id");
-                int length = rs.getInt("length");
-                int width = rs.getInt("width");
-                int height = rs.getInt("height");
-                boolean sent = rs.getBoolean("sent");
-
-                orderList.add(new OrderBOM(orderid, id, length, width, height, sent));
-            }
-
-            return orderList;
-        } catch (ClassNotFoundException | SQLException ex)
-        {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
+//    public static List<OrderBOM> getAllUserOrders(User user) throws OrderBuilderException
+//    {
+//        List<OrderBOM> orderList;
+//        try
+//        {
+//            Connection connection = Connector.connection();
+//            String SQL = "SELECT * FROM useradmin.orders WHERE id = ?";
+//            PreparedStatement statement = connection.prepareStatement(SQL);
+//
+//            statement.setInt(1, user.getId());
+//            ResultSet rs = statement.executeQuery();
+//
+//            orderList = new ArrayList<>();
+//
+//            while (rs.next())
+//            {
+//                int orderid = rs.getInt("orderid");
+//                int id = rs.getInt("id");
+//                int length = rs.getInt("length");
+//                int width = rs.getInt("width");
+//                int height = rs.getInt("height");
+//                boolean sent = rs.getBoolean("sent");
+//
+//                orderList.add(new OrderBOM(orderid, id, length, width, height, sent));
+//            }
+//
+//            return orderList;
+//        } catch (ClassNotFoundException | SQLException ex)
+//        {
+//            throw new OrderBuilderException(ex.getMessage());
+//        }
+//    }
     
-     public static List<OrderBOM> getAllOrders() throws OrderBuilderException
+     public static List<Order> getAllOrders() throws OrderBuilderException
     {
-        List<OrderBOM> orderList;
+        List<Order> orderList;
         try
         {
             Connection connection = Connector.connection();
@@ -84,14 +88,17 @@ public class OrderMapper
 
             while (rs.next())
             {
-                int orderid = rs.getInt("orderid");
-                int id = rs.getInt("id");
-                int length = rs.getInt("length");
-                int width = rs.getInt("width");
-                int height = rs.getInt("height");
-                boolean sent = rs.getBoolean("sent");
-
-                orderList.add(new OrderBOM(orderid, id, length, width, height, sent));
+                int id = rs.getInt( "id" );
+                int tlf = rs.getInt( "tlf" );
+                String email = rs.getString( "email" );
+                int height = rs.getInt( "height" );
+                int length = rs.getInt( "length" );
+                int width = rs.getInt( "width" );
+                int shedLength = rs.getInt( "shedLength" );
+                int shedWidth = rs.getInt( "shedWidth" );
+                int slopedRoof = rs.getInt( "slopedRoof" );
+                
+                orderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof));
             }
 
             return orderList;
