@@ -1,7 +1,6 @@
 
-<%@page import="PresentationLayer.Order"%>
+<%@page import="FunctionLayer.Order"%>
 <%@page import="java.util.List"%>
-<%@page import="FunctionLayer.OrderBOM"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,50 +30,44 @@
         <h1>Customer Orders</h1>
 
         <table class="table table-striped">
-            <tr>
+            <tr 
+            
                 <th>OrderID</th>
-                <th>UserID</th>
-                <th>Length</th> 
-                <th>Width</th>
+                <th>TLF</th>
+                <th>Email</th> 
+                <th>Length</th>
                 <th>Height</th>
-                <th>Status</th>
-                <th>Order details</th>
+                <th>width</th>
+                <th>shedlength</th>
+                <th>shedwidth</th>  
+                <th>slopedroof</th>
             </tr>
             <%
-
-                if (request.getAttribute("allOrders") != null)
-                {
-                    String status;
-                    List<OrderBOM> orderlist = (List<OrderBOM>) request.getAttribute("allOrders");
-
-                    for (OrderBOM orderBOM : orderlist)
-                    {
-                        if (orderBOM.isSent() == true)
-                        {
-                            status = "Sent";
-                        } else
-                        {
-                            status = "Pending";
-                        }
-            %>
+ 
+    List<Order> userOrders = (List<Order>) request.getAttribute("allOrders");
+for (Order order : userOrders) {
+%>
             <tr>
-                <td><%= orderBOM.getOrderid()%></td>
-                <td><%= orderBOM.getId()%></td>
-                <td><%= orderBOM.getLength()%></td>
-                <td><%= orderBOM.getWidth()%></td>
-                <td><%= orderBOM.getHeight()%></td>
-                <td><%=status%></td>
+                <td><%= order.getId()%></td>
+                <td><%= order.getTlf()%></td>
+                <td><%= order.getEmail()%></td>
+                <td><%= order.getLength()%></td>
+                <td><%= order.getHeight()%></td>
+                <td><%= order.getWidth()%></td>
+                 <td><%= order.getShedLength()%></td>
+                <td><%= order.getShedWidth()%></td>
+                <td><%= order.getSlopedRoof()%></td>
                 <td>
                     <div class="form-group">
                         <form name="orderdetails" action="FrontController" method="Post">
                             <input type="hidden" name="command" value="orderSent">
-                            <input type="hidden" name="id" value="<%= orderBOM.getOrderid()%>">
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
                             <input class="btn btn-primary" type="submit" name="order" value="Ship Order">
                         </form>
                     </div>
                 </td>
             </tr>
-            <% }
+            <% 
                 }%>
         </table>
     </body>
