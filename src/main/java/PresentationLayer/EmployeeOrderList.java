@@ -6,7 +6,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
-import FunctionLayer.OrderBOM;
+import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +23,7 @@ public class EmployeeOrderList extends Command
     String execute(HttpServletRequest request, HttpServletResponse response) throws OrderBuilderException
     {
 
-        List<OrderBOM> orders = LogicFacade.getOrderList();
+        List<Order> orders = LogicFacade.getOrderList();
 
         request.setAttribute("allOrders", orders);
 

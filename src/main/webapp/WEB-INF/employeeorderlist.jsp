@@ -1,8 +1,3 @@
-<%-- 
-    Document   : employeeOrderList
-    Created on : 24-03-2018, 17:31:05
-    Author     : Andreas Heick Laptop
---%>
 
 <%@page import="PresentationLayer.Order"%>
 <%@page import="java.util.List"%>
