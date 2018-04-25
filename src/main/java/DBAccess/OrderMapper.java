@@ -97,8 +97,8 @@ public class OrderMapper
                 int shedLength = rs.getInt( "shedLength" );
                 int shedWidth = rs.getInt( "shedWidth" );
                 int slopedRoof = rs.getInt( "slopedRoof" );
-                
-                orderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof));
+                String status = rs.getString( "status" );
+                orderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status));
             }
 
             return orderList;

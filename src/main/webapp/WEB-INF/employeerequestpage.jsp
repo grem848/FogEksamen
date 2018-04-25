@@ -27,7 +27,7 @@
 
     </style>
     <body>
-        <h1>Customer Orders</h1>
+        <h1>Customer Request</h1>
 
         <table class="table table-striped">
             <tr 
@@ -60,7 +60,6 @@ for (Order order : userOrders) {
                 <td><%= order.getShedWidth()%></td>
                 <td><%= order.getSlopedRoof()%></td>
                 <td><%= order.getStatus()%></td>
-                
                 <td>
                     <div class="form-group">
                         <form name="orderdetails" action="FrontController" method="Post">
