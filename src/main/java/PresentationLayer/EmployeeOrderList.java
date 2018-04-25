@@ -27,7 +27,7 @@ public class EmployeeOrderList extends Command
 
         request.setAttribute("allOrders", orders);
 
-        return "employeeOrderList";
+        return "employeeorderlist";
     }
 
 }
