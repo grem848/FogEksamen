@@ -19,7 +19,6 @@ abstract class Command
         commands.put("help", new Help());
         commands.put("products", new Products());
         commands.put("bom", new BOM());
-        commands.put("order", new Order());
         commands.put("orderlist", new Orderlist());
         commands.put("employeeorderlist", new EmployeeOrderList());
         commands.put("orderSent", new OrderSent());
