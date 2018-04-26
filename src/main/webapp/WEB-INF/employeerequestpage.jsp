@@ -30,19 +30,19 @@
         <h1>Customer Request</h1>
 
         <table class="table table-striped">
-            <tr 
+            <tr> 
             
                 <th>OrderID</th>
-                <th>OrderID</th>
-                <th>TLF</th>
+                <th>Tel.</th>
                 <th>Email</th> 
                 <th>Length</th>
                 <th>Height</th>
-                <th>width</th>
-                <th>shedlength</th>
-                <th>shedwidth</th>  
-                <th>slopedroof</th>
+                <th>Width</th>
+                <th>Shed Length</th>
+                <th>Shed Width</th>  
+                <th>Sloped Roof</th>
                 <th>Status</th>
+                <th>Options</th>
             </tr>
             <%
  
