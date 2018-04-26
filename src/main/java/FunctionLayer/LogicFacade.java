@@ -39,17 +39,17 @@ public class LogicFacade
         return allOrders;
     }
     
-    public static List<Order> getOrderSentList() throws OrderBuilderException
+    public static List<Order> getStatusOrderList() throws OrderBuilderException
     {
-        List<Order> allSentOrders = OrderMapper.getAllOrdersWhereStatusISSent();
-        return allSentOrders;
+        List<Order> allStatusOrders = OrderMapper.getAllOrdersWhereStatusIsOrder();
+        return allStatusOrders;
     }
     
     
 
     public static void deliverOrder(int id) throws OrderBuilderException
     {
-        OrderMapper.sentOrder(id);
+        OrderMapper.makeOrder(id);
     }
 
 }
