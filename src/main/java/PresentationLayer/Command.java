@@ -19,7 +19,6 @@ abstract class Command
         commands.put("help", new Help());
         commands.put("products", new Products());
         commands.put("bom", new BOM());
-        commands.put("order", new Order());
         commands.put("orderlist", new Orderlist());
         commands.put("employeeorderlist", new EmployeeOrderList());
         commands.put("orderSent", new OrderSent());
@@ -27,6 +26,7 @@ abstract class Command
         commands.put("logout", new Logout());
         commands.put("orderconfirmed", new OrderConfirmed());
         commands.put("createorderpage", new CreateOrder());
+        commands.put("employeerequestpage", new RequestList());
 
     }
 
