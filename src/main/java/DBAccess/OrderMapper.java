@@ -111,12 +111,12 @@ public class OrderMapper
          public static void sentOrder(int id) throws OrderBuilderException {
         try {
             Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE orderid="+ id + ";";
+            String SQL = " SELECT * FROM orders WHERE id="+ id + ";";
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 
-                String nextSQL = "UPDATE orders SET sent='1' WHERE orderid =" + id + ";";
+                String nextSQL = "UPDATE orders SET status='sent' WHERE id =" + id + ";";
                 ps.execute(nextSQL);
                 
             } else {
