@@ -23,9 +23,9 @@ public class EmployeeOrderList extends Command
     String execute(HttpServletRequest request, HttpServletResponse response) throws OrderBuilderException
     {
 
-        List<Order> orders = LogicFacade.getOrderSentList();
+        List<Order> orders = LogicFacade.getStatusOrderList();
 
-        request.setAttribute("allSentOrders", orders);
+        request.setAttribute("allStatusOrders", orders);
 
         return "employeeorderlist";
     }
