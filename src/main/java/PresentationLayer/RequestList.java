@@ -16,18 +16,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Andreas Heick Laptop
  */
-public class EmployeeOrderList extends Command
+public class RequestList extends Command
 {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws OrderBuilderException
     {
 
-        List<Order> orders = LogicFacade.getOrderSentList();
+        List<Order> orders = LogicFacade.getOrderList();
 
-        request.setAttribute("allSentOrders", orders);
+        request.setAttribute("allOrders", orders);
 
-        return "employeeorderlist";
+        return "employeerequestpage";
     }
 
 }

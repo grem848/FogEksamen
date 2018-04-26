@@ -27,11 +27,11 @@
 
     </style>
     <body>
-        <h1>Customer Orders</h1>
+        <h1>Customer Request</h1>
 
         <table class="table table-striped">
             <tr> 
-                           
+            
                 <th>OrderID</th>
                 <th>Tel.</th>
                 <th>Email</th> 
@@ -46,8 +46,8 @@
             </tr>
             <%
  
-    List<Order> userOrders = (List<Order>) request.getAttribute("allSentOrders");
-    for (Order order : userOrders) {
+    List<Order> userOrders = (List<Order>) request.getAttribute("allOrders");
+for (Order order : userOrders) {
 %>
             <tr>
                 <td><%= order.getId()%></td>
@@ -56,11 +56,10 @@
                 <td><%= order.getLength()%></td>
                 <td><%= order.getHeight()%></td>
                 <td><%= order.getWidth()%></td>
-                <td><%= order.getShedLength()%></td>
+                 <td><%= order.getShedLength()%></td>
                 <td><%= order.getShedWidth()%></td>
                 <td><%= order.getSlopedRoof()%></td>
                 <td><%= order.getStatus()%></td>
-                
                 <td>
                     <div class="form-group">
                         <form name="orderdetails" action="FrontController" method="Post">
