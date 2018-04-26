@@ -33,7 +33,7 @@
         <h2>Hello
             <% out.println(user.getEmail());%>
         </h2>
-                <table class="table table-striped">
+        <table class="table table-striped">
             <tr>
                 <th>OrderID</th>
                 <th>Length</th> 
@@ -43,18 +43,14 @@
             </tr>
             <%
 
-                if (request.getAttribute("orders") != null)
-                {
+                if (request.getAttribute("orders") != null) {
                     String status;
                     List<OrderBOM> orderlist = (List<OrderBOM>) request.getAttribute("orders");
 
-                    for (OrderBOM orderBOM : orderlist)
-                    {
-                        if (orderBOM.isSent() == true)
-                        {
+                    for (OrderBOM orderBOM : orderlist) {
+                        if (orderBOM.isSent() == true) {
                             status = "Sent";
-                        } else
-                        {
+                        } else {
                             status = "Pending";
                         }
             %>
