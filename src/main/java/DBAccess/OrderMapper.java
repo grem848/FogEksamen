@@ -108,7 +108,7 @@ public class OrderMapper
         }
     }
      
-         public static void sentOrder(int id) throws OrderBuilderException {
+         public static void makeOrder(int id) throws OrderBuilderException {
         try {
             Connection con = Connector.connection();
             String SQL = " SELECT * FROM orders WHERE id="+ id + ";";
@@ -116,7 +116,7 @@ public class OrderMapper
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 
-                String nextSQL = "UPDATE orders SET status='sent' WHERE id =" + id + ";";
+                String nextSQL = "UPDATE orders SET status='order' WHERE id =" + id + ";";
                 ps.execute(nextSQL);
                 
             } else {
@@ -127,18 +127,18 @@ public class OrderMapper
         }
     }
          
-         public static List<Order> getAllOrdersWhereStatusISSent() throws OrderBuilderException
+         public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException
     {
-        List<Order> orderSentList;
+        List<Order> statusOrderList;
         try
         {
             Connection connection = Connector.connection();
-            String SQL = "SELECT * FROM orders WHERE status='sent';";
+            String SQL = "SELECT * FROM orders WHERE status='order';";
             PreparedStatement statement = connection.prepareStatement(SQL);
 
             ResultSet rs = statement.executeQuery();
 
-            orderSentList = new ArrayList<>();
+            statusOrderList = new ArrayList<>();
 
             while (rs.next())
             {
@@ -152,10 +152,10 @@ public class OrderMapper
                 int shedWidth = rs.getInt( "shedWidth" );
                 int slopedRoof = rs.getInt( "slopedRoof" );
                 String status = rs.getString( "status" );
-                orderSentList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status));
+                statusOrderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status));
             }
 
-            return orderSentList;
+            return statusOrderList;
         } catch (ClassNotFoundException | SQLException ex)
         {
             throw new OrderBuilderException(ex.getMessage());

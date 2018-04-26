@@ -46,7 +46,7 @@
             </tr>
             <%
  
-    List<Order> userOrders = (List<Order>) request.getAttribute("allSentOrders");
+    List<Order> userOrders = (List<Order>) request.getAttribute("allStatusOrders");
     for (Order order : userOrders) {
 %>
             <tr>

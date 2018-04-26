@@ -31,7 +31,7 @@
 
         <table class="table table-striped">
             <tr> 
-            
+
                 <th>OrderID</th>
                 <th>Tel.</th>
                 <th>Email</th> 
@@ -45,10 +45,10 @@
                 <th>Options</th>
             </tr>
             <%
- 
-    List<Order> userOrders = (List<Order>) request.getAttribute("allOrders");
-for (Order order : userOrders) {
-%>
+
+                List<Order> userOrders = (List<Order>) request.getAttribute("allOrders");
+                for (Order order : userOrders) {
+            %>
             <tr>
                 <td><%= order.getId()%></td>
                 <td><%= order.getTlf()%></td>
@@ -56,7 +56,7 @@ for (Order order : userOrders) {
                 <td><%= order.getLength()%></td>
                 <td><%= order.getHeight()%></td>
                 <td><%= order.getWidth()%></td>
-                 <td><%= order.getShedLength()%></td>
+                <td><%= order.getShedLength()%></td>
                 <td><%= order.getShedWidth()%></td>
                 <td><%= order.getSlopedRoof()%></td>
                 <td><%= order.getStatus()%></td>
@@ -70,7 +70,7 @@ for (Order order : userOrders) {
                     </div>
                 </td>
             </tr>
-            <% 
+            <%
                 }%>
         </table>
     </body>
