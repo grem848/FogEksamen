@@ -79,7 +79,7 @@ public class OrderMapper
         try
         {
             Connection connection = Connector.connection();
-            String SQL = "SELECT * FROM orders";
+            String SQL = "SELECT * FROM orders WHERE status='request';";
             PreparedStatement statement = connection.prepareStatement(SQL);
 
             ResultSet rs = statement.executeQuery();
@@ -97,8 +97,8 @@ public class OrderMapper
                 int shedLength = rs.getInt( "shedLength" );
                 int shedWidth = rs.getInt( "shedWidth" );
                 int slopedRoof = rs.getInt( "slopedRoof" );
-                
-                orderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof));
+                String status = rs.getString( "status" );
+                orderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status));
             }
 
             return orderList;
@@ -126,5 +126,44 @@ public class OrderMapper
             throw new OrderBuilderException(ex.getMessage());
         }
     }
+         
+         public static List<Order> getAllOrdersWhereStatusISSent() throws OrderBuilderException
+    {
+        List<Order> orderSentList;
+        try
+        {
+            Connection connection = Connector.connection();
+            String SQL = "SELECT * FROM orders WHERE status='sent';";
+            PreparedStatement statement = connection.prepareStatement(SQL);
+
+            ResultSet rs = statement.executeQuery();
+
+            orderSentList = new ArrayList<>();
+
+            while (rs.next())
+            {
+                int id = rs.getInt( "id" );
+                int tlf = rs.getInt( "tlf" );
+                String email = rs.getString( "email" );
+                int height = rs.getInt( "height" );
+                int length = rs.getInt( "length" );
+                int width = rs.getInt( "width" );
+                int shedLength = rs.getInt( "shedLength" );
+                int shedWidth = rs.getInt( "shedWidth" );
+                int slopedRoof = rs.getInt( "slopedRoof" );
+                String status = rs.getString( "status" );
+                orderSentList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status));
+            }
+
+            return orderSentList;
+        } catch (ClassNotFoundException | SQLException ex)
+        {
+            throw new OrderBuilderException(ex.getMessage());
+        }
+    }
+         
+         
+         
+         
 
 }

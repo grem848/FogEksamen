@@ -12,6 +12,28 @@ public class Order
     private int shedLength;
     private int shedWidth;
     private int slopedRoof;
+    private String Status;
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        this.Status = status;
+    }
+
+    public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof, String status) {
+        this.id = id;
+        this.tlf = tlf;
+        this.email = email;
+        this.length = length;
+        this.height = height;
+        this.width = width;
+        this.shedLength = shedLength;
+        this.shedWidth = shedWidth;
+        this.slopedRoof = slopedRoof;
+        this.Status = status;
+    }
 
     public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // get order?
     {
@@ -159,11 +181,11 @@ public class Order
         status = "Pending"; // DELETE THIS PLS
 //        if(sent == true)
 //        {
-//            status = "Sent";
+//            Status = "Sent";
 //        }
 //        else
 //        {
-//            status = "Pending";
+//            Status = "Pending";
 //        }
         return "[ Order ID: " + id + " | Bill of Materials: Length:" + length + ", Width: " + width + ", Height: " + height + " | Status: " + status + " ]";
     }
