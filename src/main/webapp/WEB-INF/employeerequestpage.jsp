@@ -63,9 +63,9 @@ for (Order order : userOrders) {
                 <td>
                     <div class="form-group">
                         <form name="orderdetails" action="FrontController" method="Post">
-                            <input type="hidden" name="command" value="orderSent">
+                            <input type="hidden" name="command" value="ordersent">
                             <input type="hidden" name="id" value="<%= order.getId()%>">
-                            <input class="btn btn-primary" type="submit" name="order" value="Ship Order">
+                            <input class="btn btn-primary" type="submit" name="order" value="Change to Order">
                         </form>
                     </div>
                 </td>
