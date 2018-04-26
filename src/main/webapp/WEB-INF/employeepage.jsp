@@ -26,6 +26,10 @@
             <input type="submit" value="Customer Order List" />
         </form>
         <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="employeerequestpage" />
+            <input type="submit" value="Customer request List" />
+        </form>
+        <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="logout" />
             <input type="submit" value="Logout" />
         </form>

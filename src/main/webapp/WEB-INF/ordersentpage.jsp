@@ -18,5 +18,11 @@
             <input type="hidden" name="command" value="employee" />
             <input type="submit" value="Back to Employee Page" />
         </form>
+        
+        <form action="FrontController" method="POST">
+            <input type="hidden" name="command" value="employeeorderlist">
+            <input type="submit" value="Back to OrderLists">
+            
+        </form>
     </body>
 </html>
