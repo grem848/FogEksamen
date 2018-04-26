@@ -14,4 +14,12 @@
     <body>
         <h1>Order Creation have been Confirmed!</h1>
     </body>
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="employee" />
+            <input type="submit" value="Back to Employee Page" />
+        </form>
+        <form action="FrontController" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="createorderpage">
+            <input type="submit" value="Back To Create Order Page">
+        </form>
 </html>

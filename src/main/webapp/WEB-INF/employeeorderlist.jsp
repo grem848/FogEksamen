@@ -46,7 +46,7 @@
             </tr>
             <%
  
-    List<Order> userOrders = (List<Order>) request.getAttribute("allSentOrders");
+    List<Order> userOrders = (List<Order>) request.getAttribute("allStatusOrders");
     for (Order order : userOrders) {
 %>
             <tr>
@@ -64,7 +64,7 @@
                 <td>
                     <div class="form-group">
                         <form name="orderdetails" action="FrontController" method="Post">
-                            <input type="hidden" name="command" value="orderSent">
+                            <input type="hidden" name="command" value="ordersent">
                             <input type="hidden" name="id" value="<%= order.getId()%>">
                             <input class="btn btn-primary" type="submit" name="order" value="Ship Order">
                         </form>
