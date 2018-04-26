@@ -47,6 +47,10 @@
             <input type="submit" name="Submit">
 
         </form>
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="employee" />
+            <input type="submit" value="Back to Employee Page" />
+        </form>
 
     </body>
 </html>

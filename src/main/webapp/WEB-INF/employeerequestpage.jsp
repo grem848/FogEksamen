@@ -31,7 +31,7 @@
 
         <table class="table table-striped">
             <tr> 
-            
+
                 <th>OrderID</th>
                 <th>Tel.</th>
                 <th>Email</th> 
@@ -45,10 +45,10 @@
                 <th>Options</th>
             </tr>
             <%
- 
-    List<Order> userOrders = (List<Order>) request.getAttribute("allOrders");
-for (Order order : userOrders) {
-%>
+
+                List<Order> userOrders = (List<Order>) request.getAttribute("allOrders");
+                for (Order order : userOrders) {
+            %>
             <tr>
                 <td><%= order.getId()%></td>
                 <td><%= order.getTlf()%></td>
@@ -56,21 +56,21 @@ for (Order order : userOrders) {
                 <td><%= order.getLength()%></td>
                 <td><%= order.getHeight()%></td>
                 <td><%= order.getWidth()%></td>
-                 <td><%= order.getShedLength()%></td>
+                <td><%= order.getShedLength()%></td>
                 <td><%= order.getShedWidth()%></td>
                 <td><%= order.getSlopedRoof()%></td>
                 <td><%= order.getStatus()%></td>
                 <td>
                     <div class="form-group">
                         <form name="orderdetails" action="FrontController" method="Post">
-                            <input type="hidden" name="command" value="orderSent">
+                            <input type="hidden" name="command" value="ordersent">
                             <input type="hidden" name="id" value="<%= order.getId()%>">
-                            <input class="btn btn-primary" type="submit" name="order" value="Ship Order">
+                            <input class="btn btn-primary" type="submit" name="order" value="Change to Order">
                         </form>
                     </div>
                 </td>
             </tr>
-            <% 
+            <%
                 }%>
         </table>
     </body>
