@@ -27,6 +27,7 @@ abstract class Command
         commands.put("orderconfirmed", new OrderConfirmed());
         commands.put("createorderpage", new CreateOrder());
         commands.put("employeerequestpage", new RequestList());
+        commands.put("orderfinishedpage", new OrderFinished());
 
     }
 
