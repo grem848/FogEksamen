@@ -28,6 +28,18 @@ abstract class Command
         commands.put("createorderpage", new CreateOrder());
         commands.put("employeerequestpage", new RequestList());
         commands.put("orderfinishedpage", new OrderFinished());
+        commands.put("orderremovedpage", new OrderRemoved());
+        commands.put("employeeeditpage", new EmployeeEditOrder());
+        
+        commands.put("edittlfpage", new EditTlf());
+        commands.put("editemailpage", new EditEmail());
+        commands.put("editheightpage", new EditHeight());
+        commands.put("editwidthpage", new EditWidth());
+        commands.put("editslopedroofpage", new EditSlopedRoof());
+        commands.put("editshedlengthpage", new EditShedLength());
+        commands.put("editshedwidthpage", new EditShedWidth());
+        commands.put("editlengthpage", new EditLenght());
+        
 
     }
 
@@ -44,4 +56,6 @@ abstract class Command
     abstract String execute(HttpServletRequest request, HttpServletResponse response)
             throws LoginSampleException, OrderBuilderException;
 
-}
+    }
+
+
