@@ -1,8 +1,4 @@
-<%-- 
-    Document   : ordersentpage
-    Created on : 24-03-2018, 17:44:57
-    Author     : Andreas Heick Laptop
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

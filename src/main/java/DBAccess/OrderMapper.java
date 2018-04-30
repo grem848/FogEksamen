@@ -68,11 +68,11 @@ public class OrderMapper {
 //            throw new OrderBuilderException(ex.getMessage());
 //        }
 //    }
-    public static List<Order> getAllOrders() throws OrderBuilderException {
+    public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException {
         List<Order> orderList;
         try {
             Connection connection = Connector.connection();
-            String SQL = "SELECT * FROM orders WHERE status='request';";
+            String SQL = "SELECT * FROM orders WHERE status='request'";
             PreparedStatement statement = connection.prepareStatement(SQL);
 
             ResultSet rs = statement.executeQuery();
@@ -99,39 +99,27 @@ public class OrderMapper {
         }
     }
 
-    public static void makeOrder(int id) throws OrderBuilderException {
+    public static void setStatusOrder(int id) throws OrderBuilderException {
         try {
             Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
+            String SQL = "UPDATE orders SET status='order' WHERE id = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET status='order' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            
         } catch (ClassNotFoundException | SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static void makeDone(int id) throws OrderBuilderException {
+    public static void setStatusDone(int id) throws OrderBuilderException {
         try {
             Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
+            String SQL = "UPDATE orders SET status='done' WHERE id = ?";
             PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET status='done' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            
         } catch (ClassNotFoundException | SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
@@ -172,8 +160,9 @@ public class OrderMapper {
 
         try {
             Connection connection = Connector.connection();
-            String SQL = "SELECT * FROM orders WHERE id='" + id + "';";
+            String SQL = "SELECT * FROM orders WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(SQL);
+            statement.setInt(1, id);
 
             ResultSet rs = statement.executeQuery();
 
@@ -199,164 +188,26 @@ public class OrderMapper {
         }
     }
 
-    public static void editTlf(int id, int number) throws OrderBuilderException {
+    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException {
         try {
             Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
+            String SQL = "UPDATE orders SET tlf = ?, email = ?, height = ?, length = ?, width = ?, shedLength = ?, shedWidth = ?, slopedRoof = ? WHERE id = ?;";
             PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET tlf='" + number + "' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
+            ps.setInt(1, tlf);
+            ps.setString(2, email);
+            ps.setInt(3, height);
+            ps.setInt(4, length);
+            ps.setInt(5, width);
+            ps.setInt(6, shedLength);
+            ps.setInt(7, shedWidth);
+            ps.setInt(8, slopedRoof);
+            ps.setInt(9, id);
+            ps.executeUpdate();
+            
         } catch (ClassNotFoundException | SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
 
-    }
-
-    public static void editEmail(int id, String email) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET email='" + email + "' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editLength(int id, int length) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET length='" + length + "' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editWidth(int id, int width) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET width='" + width + "' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editHeight(int id, int height) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET height='" + height + "' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editShedLength(int id, int shedLength) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET shedLength='" + shedLength + "' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editShedWidth(int id, int shedWidth) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET shedWidth='" + shedWidth + "' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editSlope(int id, int slope) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-
-                String nextSQL = "UPDATE orders SET slopedRoof='" + slope + "' WHERE id =" + id + ";";
-                ps.execute(nextSQL);
-
-            } else {
-                throw new OrderBuilderException("Could not validate Order");
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
     }
     
 //        public static void orderFinished(int id) throws OrderBuilderException {

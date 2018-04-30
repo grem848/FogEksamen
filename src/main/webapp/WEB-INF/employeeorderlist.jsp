@@ -66,7 +66,7 @@
                         <form name="orderdetails" action="FrontController" method="Post">
                             <input type="hidden" name="command" value="orderremovedpage">
                             <input type="hidden" name="id" value="<%= order.getId()%>">
-                            <input class="btn btn-primary" type="submit" name="order" value="Delete Order">
+                            <input class="btn btn-primary" type="submit" name="order" value="Delete Order" onclick="return confirm('Are you sure you want to delete this order, this action cant be reversed')" >
                         </form>
                         <form action="FrontController" method="Post">
                             <input type="hidden" name="command" value="employeeeditpage">
@@ -79,9 +79,8 @@
                             <input type="hidden" name="shedLength" value="<%= order.getShedLength()%>">
                             <input type="hidden" name="shedWidth" value="<%= order.getShedWidth()%>">
                             <input type="hidden" name="slope" value="<%= order.getSlopedRoof()%>">
-                            <input class="btn btn-primary" type="submit" value="edit order">
+                            <input class="btn btn-primary" type="submit" value="Edit Order">
                         </form>    
-
                     </div>
                 </td>
             </tr>

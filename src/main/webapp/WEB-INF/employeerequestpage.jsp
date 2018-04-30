@@ -47,7 +47,8 @@
             <%
 
                 List<Order> userOrders = (List<Order>) request.getAttribute("allOrders");
-                for (Order order : userOrders) {
+                for (Order order : userOrders)
+                {
             %>
             <tr>
                 <td><%= order.getId()%></td>
@@ -61,6 +62,11 @@
                 <td><%= order.getSlopedRoof()%></td>
                 <td><%= order.getStatus()%></td>
                 <td>
+                    <form name="orderdetails" action="FrontController" method="Post">
+                        <input type="hidden" name="command" value="orderremovedpage">
+                        <input type="hidden" name="id" value="<%= order.getId()%>">
+                        <input class="btn btn-primary" type="submit" name="order" value="Delete Request" onclick="return confirm('Are you sure you want to delete this order, this action cant be reversed')" >
+                    </form>
                     <div class="form-group">
                         <form name="orderdetails" action="FrontController" method="Post">
                             <input type="hidden" name="command" value="ordersent">
