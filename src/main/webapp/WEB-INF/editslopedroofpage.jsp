@@ -1,18 +1,14 @@
-<%-- 
-    Document   : editslopedroofpage
-    Created on : 29-04-2018, 00:23:17
-    Author     : mohammahomarhariri
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Sloped Roof Change Page</title>
     </head>
     <body>
-        <h1>Sloped Roof have been changed!</h1>
+        <h1>Sloped Roof has been edited!</h1>
         <br>
 
         <form name="Building" action="FrontController" method="POST">

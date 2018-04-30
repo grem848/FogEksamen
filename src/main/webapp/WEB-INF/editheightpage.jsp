@@ -1,18 +1,14 @@
-<%-- 
-    Document   : editheight
-    Created on : 29-04-2018, 00:21:47
-    Author     : mohammahomarhariri
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Height Change Page</title>
     </head>
     <body>
-        <h1>height have been edited!</h1>
+        <h1>Height has been edited!</h1>
 
         <br>
         <form name="Building" action="FrontController" method="POST">

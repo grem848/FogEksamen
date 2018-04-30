@@ -29,7 +29,7 @@ public class LogicFacade {
 //        return orderList;
 //    }
     public static List<Order> getOrderList() throws OrderBuilderException {
-        List<Order> allOrders = OrderMapper.getAllOrders();
+        List<Order> allOrders = OrderMapper.getAllOrdersWhereStatusIsRequest();
         return allOrders;
     }
 
@@ -39,12 +39,12 @@ public class LogicFacade {
     }
 
     public static void deliverOrder(int id) throws OrderBuilderException {
-        OrderMapper.makeOrder(id);
+        OrderMapper.setStatusOrder(id);
     }
 
     public static void removeOrder(int id) throws OrderBuilderException {
 
-        OrderMapper.makeDone(id);
+        OrderMapper.setStatusDone(id);
     }
 
     public static Order getOneOrder(int id) throws OrderBuilderException {

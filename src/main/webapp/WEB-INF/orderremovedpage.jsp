@@ -1,8 +1,4 @@
-<%-- 
-    Document   : orderRemoved
-    Created on : 27-04-2018, 18:10:12
-    Author     : mohammahomarhariri
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -1,18 +1,14 @@
-<%-- 
-    Document   : editshedlengthpage
-    Created on : 29-04-2018, 00:22:46
-    Author     : mohammahomarhariri
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Shed Length Change Page</title>
     </head>
     <body>
-        <h1>shed length have been edited!</h1>
+        <h1>Shed length has been edited!</h1>
         
         
         <br>

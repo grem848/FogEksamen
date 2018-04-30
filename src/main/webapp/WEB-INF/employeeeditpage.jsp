@@ -1,8 +1,4 @@
-<%-- 
-    Document   : employeeeditpage
-    Created on : 27-04-2018, 20:27:40
-    Author     : mohammahomarhariri
---%>
+
 
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -71,11 +67,11 @@
 
             <tr>
                 <td>
-                    <p>can't be changed</p>
+
                 </td>
                 <td>
                     <form action="FrontController">
-                        <input type="number" name="number" value="12345678">
+                        <input type="number" name="number" placeholder="12345678">
                         <input type="hidden" name="command" value="edittlfpage">
                         <input type="hidden" name="id" value="<%= order.getId()%>">
                         <input type="submit" value="Change Number">
@@ -83,7 +79,7 @@
                 </td>
                 <td>
                     <form action="FrontController">
-                        <input type="text" name="email" value="something@something.dk">
+                        <input type="text" name="email" placeholder="something@something.dk">
                         <input type="hidden" name="command" value="editemailpage">
                         <input type="hidden" name="id" value="<%= order.getId()%>">
                         <input type="submit" value="Change Email">
@@ -91,7 +87,7 @@
                 </td>
                 <td>
                     <form action="FrontController">
-                        <input type="number" name="length" value="30">
+                        <input type="number" name="length" placeholder="30">
                         <input type="hidden" name="command" value="editlengthpage">
                         <input type="hidden" name="id" value="<%= order.getId()%>">
                         <input type="submit" value="Change Length">
@@ -99,7 +95,7 @@
                 </td>
                 <td>
                     <form action="FrontController">
-                        <input type="number" name="height" value="10">
+                        <input type="number" name="height" placeholder="10">
                         <input type="hidden" name="command" value="editheightpage">
                         <input type="hidden" name="id" value="<%= order.getId()%>">
                         <input type="submit" value="Change Height">
@@ -107,7 +103,7 @@
                 </td>                
                 <td>
                     <form action="FrontController">
-                        <input type="number" name="width" value="20">
+                        <input type="number" name="width" placeholder="20">
                         <input type="hidden" name="command" value="editwidthpage">
                         <input type="hidden" name="id" value="<%= order.getId()%>">
                         <input type="submit" value="Change Width">
@@ -115,7 +111,7 @@
                 </td>
                 <td>
                     <form action="FrontController">
-                        <input type="number" name="shedLength" value="5">
+                        <input type="number" name="shedLength" placeholder="5">
                         <input type="hidden" name="command" value="editshedlengthpage">
                         <input type="hidden" name="id" value="<%= order.getId()%>">
                         <input type="submit" value="Change Shed Length">
@@ -123,7 +119,7 @@
                 </td>
                 <td>
                     <form action="FrontController">
-                        <input type="number" name="shedWidth" value="10">
+                        <input type="number" name="shedWidth" placeholder="10">
                         <input type="hidden" name="command" value="editshedwidthpage">
                         <input type="hidden" name="id" value="<%= order.getId()%>">
                         <input type="submit" value="Change Shed Width">
@@ -131,11 +127,14 @@
                 </td>
                 <td>
                     <form action="FrontController">
-                        <input type="number" name="slope" value="10">
+                        <input type="number" name="slope" placeholder="10">
                         <input type="hidden" name="command" value="editslopedroofpage">
                         <input type="hidden" name="id" value="<%= order.getId()%>">
-                        <input type="submit" value="Change Slope">
+                        <input type="submit" value="Change Roof Slope">
                     </form>    
+                </td>
+                <td>
+                    
                 </td>
             </tr>
 
@@ -144,10 +143,6 @@
             <form name="Building" action="FrontController" method="POST">
                 <input type="hidden" name="command" value="employeeorderlist" />
                 <input type="submit" value="Go back to Order List" />
-            </form>
-            <form name="Building" action="FrontController" method="POST">
-                <input type="hidden" name="command" value="employeeeditpage" />
-                <input type="submit" value="Go back to Order edit" />
             </form>
 
             <br>
