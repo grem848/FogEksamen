@@ -1,8 +1,4 @@
-<%-- 
-    Document   : ordercreatedpage
-    Created on : 22-03-2018, 15:38:38
-    Author     : Andreas Heick Laptop
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

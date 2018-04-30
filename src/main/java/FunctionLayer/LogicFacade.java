@@ -4,23 +4,19 @@ import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 import java.util.List;
 
-public class LogicFacade
-{
+public class LogicFacade {
 
-    public static User login(String email, String password) throws LoginSampleException
-    {
+    public static User login(String email, String password) throws LoginSampleException {
         return UserMapper.login(email, password);
     }
 
-    public static User createUser(String email, String password) throws LoginSampleException
-    {
+    public static User createUser(String email, String password) throws LoginSampleException {
         User user = new User(email, password, "employee");
         UserMapper.createUser(user);
         return user;
     }
 
-    public static Order createOrder(int tlf, String email, int length, int width, int height, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException
-    {
+    public static Order createOrder(int tlf, String email, int length, int width, int height, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException {
         Order order = new Order(tlf, email, length, height, width, shedLength, shedWidth, slopedRoof);
         OrderMapper.OrderToDB(order);
 
@@ -32,24 +28,33 @@ public class LogicFacade
 //        List<Order> orderList = OrderMapper.getAllUserOrders(user);
 //        return orderList;
 //    }
-
-    public static List<Order> getOrderList() throws OrderBuilderException
-    {
-        List<Order> allOrders = OrderMapper.getAllOrders();
+    public static List<Order> getOrderList() throws OrderBuilderException {
+        List<Order> allOrders = OrderMapper.getAllOrdersWhereStatusIsRequest();
         return allOrders;
     }
-    
-    public static List<Order> getStatusOrderList() throws OrderBuilderException
-    {
+
+    public static List<Order> getStatusOrderList() throws OrderBuilderException {
         List<Order> allStatusOrders = OrderMapper.getAllOrdersWhereStatusIsOrder();
         return allStatusOrders;
     }
-    
-    
 
-    public static void deliverOrder(int id) throws OrderBuilderException
-    {
-        OrderMapper.makeOrder(id);
+    public static void deliverOrder(int id) throws OrderBuilderException {
+        OrderMapper.setStatusOrder(id);
+    }
+
+    public static void removeOrder(int id) throws OrderBuilderException {
+
+        OrderMapper.setStatusDone(id);
+    }
+
+    public static Order getOneOrder(int id) throws OrderBuilderException {
+
+        return OrderMapper.getOrder(id);
+    }
+
+    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException {
+
+        OrderMapper.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof);;
     }
 
 }

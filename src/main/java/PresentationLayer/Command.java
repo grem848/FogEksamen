@@ -28,6 +28,10 @@ abstract class Command
         commands.put("createorderpage", new CreateOrder());
         commands.put("employeerequestpage", new RequestList());
         commands.put("orderfinishedpage", new OrderFinished());
+        commands.put("orderremovedpage", new OrderRemoved());
+        commands.put("employeeeditpage", new EmployeeEditOrder());
+        commands.put("editorderpage", new EditOrder());
+        
 
     }
 
@@ -44,4 +48,6 @@ abstract class Command
     abstract String execute(HttpServletRequest request, HttpServletResponse response)
             throws LoginSampleException, OrderBuilderException;
 
-}
+    }
+
+
