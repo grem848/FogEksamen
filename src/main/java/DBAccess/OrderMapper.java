@@ -188,124 +188,26 @@ public class OrderMapper {
         }
     }
 
-    public static void editTlf(int id, int number) throws OrderBuilderException {
+    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException {
         try {
             Connection con = Connector.connection();
-            String SQL = "UPDATE orders SET tlf = ? WHERE id = ?;";
+            String SQL = "UPDATE orders SET tlf = ?, email = ?, height = ?, length = ?, width = ?, shedLength = ?, shedWidth = ?, slopedRoof = ? WHERE id = ?;";
             PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, number);
-            ps.setInt(2, id);
+            ps.setInt(1, tlf);
+            ps.setString(2, email);
+            ps.setInt(3, height);
+            ps.setInt(4, length);
+            ps.setInt(5, width);
+            ps.setInt(6, shedLength);
+            ps.setInt(7, shedWidth);
+            ps.setInt(8, slopedRoof);
+            ps.setInt(9, id);
             ps.executeUpdate();
             
         } catch (ClassNotFoundException | SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
 
-    }
-
-    public static void editEmail(int id, String email) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE orders SET email= ? WHERE id = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setString(1, email);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editLength(int id, int length) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE orders SET length = ? WHERE id = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, length);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editWidth(int id, int width) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE orders SET width = ? WHERE id = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, width);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editHeight(int id, int height) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE orders SET height = ? WHERE id = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, height);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editShedLength(int id, int shedLength) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE orders SET shedLength = ? WHERE id = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, shedLength);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editShedWidth(int id, int shedWidth) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE orders SET shedWidth = ? WHERE id = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, shedWidth);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
-    }
-
-    public static void editSlope(int id, int slope) throws OrderBuilderException {
-
-        try {
-            Connection con = Connector.connection();
-            String SQL = "UPDATE orders SET slopedRoof = ? WHERE id = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
-            ps.setInt(1, slope);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            
-        } catch (ClassNotFoundException | SQLException ex) {
-            throw new OrderBuilderException(ex.getMessage());
-        }
     }
     
 //        public static void orderFinished(int id) throws OrderBuilderException {

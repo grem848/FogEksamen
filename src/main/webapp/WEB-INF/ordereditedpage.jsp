@@ -5,11 +5,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Height Change Page</title>
+        <title>Order Edited Page</title>
     </head>
     <body>
-        <h1>Height has been edited!</h1>
-
+        <h1>Order has been edited</h1>
         <br>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeeorderlist" />

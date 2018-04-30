@@ -52,45 +52,9 @@ public class LogicFacade {
         return OrderMapper.getOrder(id);
     }
 
-    public static void changeTlf(int id, int tlf) throws OrderBuilderException {
+    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException {
 
-        OrderMapper.editTlf(id, tlf);;
+        OrderMapper.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof);;
     }
-
-    public static void changeEmail(int id, String email) throws OrderBuilderException {
-
-        OrderMapper.editEmail(id, email);;
-    }
-
-    public static void changeLength(int id, int length) throws OrderBuilderException {
-
-        OrderMapper.editLength(id, length);;
-    }
-
-    public static void changeHeight(int id, int height) throws OrderBuilderException {
-
-        OrderMapper.editHeight(id, height);;
-    }
-
-    public static void changeWidth(int id, int width) throws OrderBuilderException {
-
-        OrderMapper.editWidth(id, width);;
-    }
-
-    public static void changeShedLength(int id, int shedLength) throws OrderBuilderException {
-
-        OrderMapper.editShedLength(id, shedLength);;
-    }
-    
-    public static void changeShedWidth(int id, int shedWidth) throws OrderBuilderException{
-        
-        OrderMapper.editShedWidth(id, shedWidth);
-    }
-
-    public static void changeSlopedRoof(int id, int slopedRoof) throws OrderBuilderException {
-
-        OrderMapper.editSlope(id, slopedRoof);;
-    }
-
 
 }

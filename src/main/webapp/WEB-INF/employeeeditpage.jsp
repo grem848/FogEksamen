@@ -48,7 +48,6 @@
                 <th>Shed Length</th>
                 <th>Shed Width</th>  
                 <th>Sloped Roof</th>
-                <th>Status</th>
             </tr>
 
             <tr>
@@ -61,81 +60,50 @@
                 <td><%= order.getShedLength()%></td>
                 <td><%= order.getShedWidth()%></td>
                 <td><%= order.getSlopedRoof()%></td>
-                <td><%= order.getStatus()%></td>
 
             </tr>
 
             <tr>
                 <td>
+                    <form action="FrontController">
+                    <input type="submit" value="Update Order">
+                </td>
+                <td>
+                        <input type="number" name="tlf" placeholder="12345678" value="<%= order.getTlf()%>" required>
+                        <input type="hidden" name="command" value="editorderpage">
+                        <input type="hidden" name="id" value="<%= order.getId()%>">
+                </td>
+                <td>
+                        <input type="text" name="email" placeholder="something@something.dk" value="<%= order.getEmail()%>" required>
+                        <input type="hidden" name="id" value="<%= order.getId()%>">
 
                 </td>
                 <td>
-                    <form action="FrontController">
-                        <input type="number" name="number" placeholder="12345678">
-                        <input type="hidden" name="command" value="edittlfpage">
+                        <input type="number" name="length" placeholder="30" value="<%= order.getLength()%>" required>
                         <input type="hidden" name="id" value="<%= order.getId()%>">
-                        <input type="submit" value="Change Number">
-                    </form>    
                 </td>
                 <td>
-                    <form action="FrontController">
-                        <input type="text" name="email" placeholder="something@something.dk">
-                        <input type="hidden" name="command" value="editemailpage">
+                    <input type="number" name="height" placeholder="10" value="<%= order.getHeight()%>" required>
                         <input type="hidden" name="id" value="<%= order.getId()%>">
-                        <input type="submit" value="Change Email">
-                    </form>    
-                </td>
-                <td>
-                    <form action="FrontController">
-                        <input type="number" name="length" placeholder="30">
-                        <input type="hidden" name="command" value="editlengthpage">
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
-                        <input type="submit" value="Change Length">
-                    </form>    
-                </td>
-                <td>
-                    <form action="FrontController">
-                        <input type="number" name="height" placeholder="10">
-                        <input type="hidden" name="command" value="editheightpage">
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
-                        <input type="submit" value="Change Height">
-                    </form>    
                 </td>                
                 <td>
-                    <form action="FrontController">
-                        <input type="number" name="width" placeholder="20">
-                        <input type="hidden" name="command" value="editwidthpage">
+                        <input type="number" name="width" placeholder="20" value="<%= order.getWidth()%>" required>
                         <input type="hidden" name="id" value="<%= order.getId()%>">
-                        <input type="submit" value="Change Width">
-                    </form>    
                 </td>
                 <td>
-                    <form action="FrontController">
-                        <input type="number" name="shedLength" placeholder="5">
-                        <input type="hidden" name="command" value="editshedlengthpage">
+                        <input type="number" name="shedLength" placeholder="5" value="<%= order.getShedLength()%>" required>
                         <input type="hidden" name="id" value="<%= order.getId()%>">
-                        <input type="submit" value="Change Shed Length">
-                    </form>    
                 </td>
                 <td>
-                    <form action="FrontController">
-                        <input type="number" name="shedWidth" placeholder="10">
-                        <input type="hidden" name="command" value="editshedwidthpage">
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
-                        <input type="submit" value="Change Shed Width">
-                    </form>    
+                        <input type="number" name="shedWidth" placeholder="10" value="<%= order.getShedWidth()%>" required>
+                        <input type="hidden" name="id" value="<%= order.getId()%>"> 
                 </td>
                 <td>
-                    <form action="FrontController">
-                        <input type="number" name="slope" placeholder="10">
-                        <input type="hidden" name="command" value="editslopedroofpage">
+                    <input type="number" name="slope" placeholder="10" value="<%= order.getSlopedRoof()%>" required>
                         <input type="hidden" name="id" value="<%= order.getId()%>">
-                        <input type="submit" value="Change Roof Slope">
+                </td>
                     </form>    
-                </td>
-                <td>
-                    
-                </td>
+
             </tr>
 
             <br>
