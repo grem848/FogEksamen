@@ -79,6 +79,7 @@ public class VirtualCalculator {
             sb.append("<rect  x = " + x + " y = " + 35 + " height = " + 10 + " width = " + 10 +
             " style = stroke:#000000; />");
            
+            
            
            x += ((width / antal));
            
