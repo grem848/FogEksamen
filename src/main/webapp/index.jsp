@@ -9,95 +9,110 @@
     <body>
         <h1>Johannes Fog A/S</h1>
 
-    <table>
-        <tr><td>Login</td>
-            <td>
-                <form name="login" action="FrontController" method="POST">
-                    <input type="hidden" name="command" value="login">
-                    Email:<br>
-                    <input type="text" name="email" placeholder="Type an email" value="admin">
-                    <br>
-                    Password:<br>
-                    <input type="password" name="password" placeholder="Type password" value="admin">
-                    <br>
-                    <input type="submit" value="Submit">
-                </form>
-            </td>
-            <td>Or Register</td>
-            <td>
-                <form name="register" action="FrontController" method="POST">
-                    <input type="hidden" name="command" value="register">
-                    Email:<br>
-                    <input type="text" name="email" placeholder="Type an email">
-                    <br>
-                    Password:<br>
-                    <input type="password" name="password1" placeholder="Type password">
-                    <br>
-                    Retype Password:<br>
-                    <input type="password" name="password2" placeholder="Retype password">
-                    <br>
-                    <input type="submit" value="Submit">
-                </form>
-            </td>
-        </tr>
-    </table>
+        <table>
+            <tr><td>Login</td>
+                <td>
+                    <form name="login" action="FrontController" method="POST">
+                        <input type="hidden" name="command" value="login">
+                        Email:<br>
+                        <input type="text" name="email" placeholder="Type an email" value="admin">
+                        <br>
+                        Password:<br>
+                        <input type="password" name="password" placeholder="Type password" value="admin">
+                        <br>
+                        <input type="submit" value="Submit">
+                    </form>
+                </td>
+                <td>Or Register</td>
+                <td>
+                    <form name="register" action="FrontController" method="POST">
+                        <input type="hidden" name="command" value="register">
+                        Email:<br>
+                        <input type="text" name="email" placeholder="Type an email">
+                        <br>
+                        Password:<br>
+                        <input type="password" name="password1" placeholder="Type password">
+                        <br>
+                        Retype Password:<br>
+                        <input type="password" name="password2" placeholder="Retype password">
+                        <br>
+                        <input type="submit" value="Submit">
+                    </form>
+                </td>
+            </tr>
+        </table>
 
-    For help <a href="FrontController?command=help"> click here </a>
-    <br>
-    <br>
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="visualisering" />
+            <input type="submit" value="Visualisering" />
+        </form>
 
-    <% String error = (String) request.getAttribute("error");
-        if (error != null)
-        {%>
-    <H2>Error!!</h2>
-    <p><%= error%>
-        <% }
-        %>
-        <SVG width="600" height=800 viewBox="0 0 1200 1200" >
-        <rect x="0" y="0" height="600" width="780"
-              style="stroke:#000000; fill: white"/>
-        <%-- Linjer for spær --%>
-        <line x1="55"  y1="0" x2="55"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="110"  y1="0" x2="110"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="165"  y1="0" x2="165"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="220"  y1="0" x2="220"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="275"  y1="0" x2="275"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="330"  y1="0" x2="330"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="385"  y1="0" x2="385"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="440"  y1="0" x2="440"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="495"  y1="0" x2="495"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="550"  y1="0" x2="550"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="605"  y1="0" x2="605"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="660"  y1="0" x2="660"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="715"  y1="0" x2="715"   y2="600" style="stroke:#006600; fill: "/>
-        <%-- Linjer for spær --%>
-        <line x1="55"  y1="0" x2="55"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="110"  y1="0" x2="110"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="165"  y1="0" x2="165"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="220"  y1="0" x2="220"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="275"  y1="0" x2="275"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="330"  y1="0" x2="330"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="385"  y1="0" x2="385"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="440"  y1="0" x2="440"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="495"  y1="0" x2="495"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="550"  y1="0" x2="550"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="605"  y1="0" x2="605"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="660"  y1="0" x2="660"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="715"  y1="0" x2="715"   y2="600" style="stroke:#006600; fill: "/>
-        <%-- Linjer for remme --%>
+        For help <a href="FrontController?command=help"> click here </a>
+        <br>
+        <br>
 
-        <line x1="0"  y1="35" x2="780"   y2="35" style="stroke:#006600; fill: "/>
-        <line x1="0"  y1="565" x2="780"   y2="565" style="stroke:#006600; fill: "/>
+        <% String error = (String) request.getAttribute("error");
+            if (error != null) {%>
+        <H2>Error!!</h2>
+        <p><%= error%>
+            <% }
+            %>
+            <SVG width="600" height=800 viewBox="0 0 1200 1200" >
+            <rect x="0" y="0" height="600" width="780"
+                  style="stroke:#000000; fill: white"/>
+            <%-- Linjer for spær --%>
+            <line x1="55"  y1="0" x2="55"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="110"  y1="0" x2="110"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="165"  y1="0" x2="165"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="220"  y1="0" x2="220"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="275"  y1="0" x2="275"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="330"  y1="0" x2="330"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="385"  y1="0" x2="385"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="440"  y1="0" x2="440"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="495"  y1="0" x2="495"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="550"  y1="0" x2="550"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="605"  y1="0" x2="605"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="660"  y1="0" x2="660"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="715"  y1="0" x2="715"   y2="600" style="stroke:#006600; fill: "/>
+            <%-- Linjer for spær --%>
+            <line x1="55"  y1="0" x2="55"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="110"  y1="0" x2="110"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="165"  y1="0" x2="165"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="220"  y1="0" x2="220"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="275"  y1="0" x2="275"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="330"  y1="0" x2="330"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="385"  y1="0" x2="385"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="440"  y1="0" x2="440"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="495"  y1="0" x2="495"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="550"  y1="0" x2="550"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="605"  y1="0" x2="605"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="660"  y1="0" x2="660"   y2="600" style="stroke:#006600; fill: "/>
+            <line x1="715"  y1="0" x2="715"   y2="600" style="stroke:#006600; fill: "/>
 
-        <%-- Linjer for kryds --%>
+            <%-- Linjer for stolper --%>
 
-        <line x1="55"  y1="35" x2="550"   y2="565" style="stroke:#006600; fill: "/>
-        <line x1="55"  y1="565" x2="550"   y2="35" style="stroke:#006600; fill: "/>
+            <rect x="110" y="35" height="10" width="10"
+                  style="stroke:#000000; fill-opacity: 0.0" stroke-width="2"/>
+            <rect x="390" y="35" height="10" width="10"
+                  style="stroke:#000000; fill-opacity: 0.0" stroke-width="2"/>
+            <rect x="220" y="35" height="10" width="10"
+                  style="stroke:#000000; fill-opacity: 0.0" stroke-width="2"/>
+            <rect x="275" y="35" height="10" width="10"
+                  style="stroke:#000000; fill-opacity: 0.0" stroke-width="2"/>
+            <%-- Linjer for remme --%>
 
-        <%-- skur --%>
-        <rect x="550" y="35" height="530" width="220"
-              style="stroke:#000000; fill-opacity: 0.0" stroke-width="2"/>
-        <%-- Pile vertical--%>
+            <line x1="0"  y1="35" x2="780"   y2="35" style="stroke:#006600; fill: "/>
+            <line x1="0"  y1="565" x2="780"   y2="565" style="stroke:#006600; fill: "/>
+
+            <%-- Linjer for kryds --%>
+
+            <line x1="55"  y1="35" x2="550"   y2="565" style="stroke:#006600; fill: "/>
+            <line x1="55"  y1="565" x2="550"   y2="35" style="stroke:#006600; fill: "/>
+
+            <%-- skur --%>
+            <rect x="550" y="35" height="530" width="220"
+                  style="stroke:#000000; fill-opacity: 0.0" stroke-width="2"/>
+            <%-- Pile vertical--%>
 
     <marker id="beginArrow" 
             markerWidth="9" markerHeight="9" 
@@ -170,5 +185,5 @@
     <line x1="200" y1="-90" x2="200" y2="80" style="stroke:brown;stroke-width:10" />
     </g>
     </svg>
-    </body>
+</body>
 </html>
