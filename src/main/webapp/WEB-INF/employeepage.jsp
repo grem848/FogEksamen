@@ -13,7 +13,7 @@
         <h1>Hello <%=user.getEmail()%> </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
 
-        <form action="FrontController" action="FrontController" method="POST">
+        <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="createorderpage">
             <input type="submit" value="Go to Create Order Page">
         </form>

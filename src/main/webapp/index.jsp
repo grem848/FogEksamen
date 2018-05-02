@@ -1,174 +1,338 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    // get this from a request attribute
+    int inputLength = 435; // length from input
+    int outputLength = 0; // length from right pole to length of roof, shown to customer
+    int inputHeight = 187; // height from input
+    int actualHeight = 0; // height from bottom to bottom of roof, shown to customer
+    int totalHeight = 0; // height from bottom to top of roof, shown to customer
+    switch (inputHeight)
+    {
+        /*
+        200 height of svg path = 200cm
+        195 height of svg path = 210cm
+        ---------
+        200 SVG Height = 2m
+        150 SVG Height = 3m
+        100 SVG Height = 4m
+        ---------
+        500 SVG Height = 10m
+        50 SVG Height = 1m
+        5 SVG Height = 10cm
+        ---------
+        Increased SVG height shrinks the actual height
+        */
+        case 195: actualHeight = 210; totalHeight = actualHeight + 15;
+            break;
+        case 192: actualHeight = 215; totalHeight = actualHeight + 15;
+            break;
+        case 190: actualHeight = 220; totalHeight = actualHeight + 15;
+            break;
+        case 187: actualHeight = 225; totalHeight = actualHeight + 15;
+            break;
+        case 185: actualHeight = 230; totalHeight = actualHeight + 15;
+            break;
+        case 182: actualHeight = 235; totalHeight = actualHeight + 15;
+            break;
+        case 180: actualHeight = 240; totalHeight = actualHeight + 15;
+            break;
+    }
+    switch (inputLength)
+    {
+
+        case 690: outputLength = 240;
+            break;
+        case 675: outputLength = 270;
+            break;
+        case 660: outputLength = 300;
+            break;
+        case 645: outputLength = 330;
+            break;
+        case 630: outputLength = 360;
+            break;
+        case 615: outputLength = 390;
+            break;
+        case 600: outputLength = 450;
+            break;
+        case 585: outputLength = 480;
+            break;
+        case 570: outputLength = 510;
+            break;
+        case 555: outputLength = 540;
+            break;
+        case 540: outputLength = 570;
+            break;
+        case 525: outputLength = 600;
+            break;
+        case 510: outputLength = 630;
+            break;
+        case 495: outputLength = 660;
+            break;
+        case 480: outputLength = 690;
+            break;
+        case 465: outputLength = 720;
+            break;
+        case 450: outputLength = 750;
+            break;
+        case 435: outputLength = 780;
+            break;
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome page</title>
+        <title>Customer home page</title>
     </head>
     <body>
         <h1>Johannes Fog A/S</h1>
-
-    <table>
-        <tr><td>Login</td>
-            <td>
-                <form name="login" action="FrontController" method="POST">
-                    <input type="hidden" name="command" value="login">
-                    Email:<br>
-                    <input type="text" name="email" placeholder="Type an email" value="admin">
-                    <br>
-                    Password:<br>
-                    <input type="password" name="password" placeholder="Type password" value="admin">
-                    <br>
-                    <input type="submit" value="Submit">
-                </form>
-            </td>
-            <td>Or Register</td>
-            <td>
-                <form name="register" action="FrontController" method="POST">
-                    <input type="hidden" name="command" value="register">
-                    Email:<br>
-                    <input type="text" name="email" placeholder="Type an email">
-                    <br>
-                    Password:<br>
-                    <input type="password" name="password1" placeholder="Type password">
-                    <br>
-                    Retype Password:<br>
-                    <input type="password" name="password2" placeholder="Retype password">
-                    <br>
-                    <input type="submit" value="Submit">
-                </form>
-            </td>
-        </tr>
-    </table>
-
-    For help <a href="FrontController?command=help"> click here </a>
-    <br>
-    <br>
-
-    <% String error = (String) request.getAttribute("error");
-        if (error != null)
-        {%>
-    <H2>Error!!</h2>
-    <p><%= error%>
-        <% }
-        %>
-        <SVG width="600" height=800 viewBox="0 0 1200 1200" >
-        <rect x="0" y="0" height="600" width="780"
-              style="stroke:#000000; fill: white"/>
-        <%-- Linjer for spær --%>
-        <line x1="55"  y1="0" x2="55"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="110"  y1="0" x2="110"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="165"  y1="0" x2="165"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="220"  y1="0" x2="220"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="275"  y1="0" x2="275"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="330"  y1="0" x2="330"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="385"  y1="0" x2="385"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="440"  y1="0" x2="440"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="495"  y1="0" x2="495"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="550"  y1="0" x2="550"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="605"  y1="0" x2="605"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="660"  y1="0" x2="660"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="715"  y1="0" x2="715"   y2="600" style="stroke:#006600; fill: "/>
-        <%-- Linjer for spær --%>
-        <line x1="55"  y1="0" x2="55"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="110"  y1="0" x2="110"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="165"  y1="0" x2="165"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="220"  y1="0" x2="220"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="275"  y1="0" x2="275"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="330"  y1="0" x2="330"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="385"  y1="0" x2="385"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="440"  y1="0" x2="440"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="495"  y1="0" x2="495"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="550"  y1="0" x2="550"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="605"  y1="0" x2="605"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="660"  y1="0" x2="660"   y2="600" style="stroke:#006600; fill: "/>
-        <line x1="715"  y1="0" x2="715"   y2="600" style="stroke:#006600; fill: "/>
-        <%-- Linjer for remme --%>
-
-        <line x1="0"  y1="35" x2="780"   y2="35" style="stroke:#006600; fill: "/>
-        <line x1="0"  y1="565" x2="780"   y2="565" style="stroke:#006600; fill: "/>
-
-        <%-- Linjer for kryds --%>
-
-        <line x1="55"  y1="35" x2="550"   y2="565" style="stroke:#006600; fill: "/>
-        <line x1="55"  y1="565" x2="550"   y2="35" style="stroke:#006600; fill: "/>
-
-        <%-- skur --%>
-        <rect x="550" y="35" height="530" width="220"
-              style="stroke:#000000; fill-opacity: 0.0" stroke-width="2"/>
-        <%-- Pile vertical--%>
-
-    <marker id="beginArrow" 
-            markerWidth="9" markerHeight="9" 
-            refX="0" refY="4" 
-            orient="auto">
-        <path d="M0,4 L8,0 L8,8 L0,4" style="fill: red;" />
-    </marker>
-    <marker id="endArrow" 
-            markerWidth="9" markerHeight="9" 
-            refX="15" refY="4" 
-            orient="auto">
-        <path d="M0,0 L8,4 L0,8 L0,0" style="fill: red;" />
-    </marker>
-
-    <line x1="0"  y1="650" x2="780"   y2="650" 
-          style="stroke:#006600;
-          marker-start: url(#beginArrow);
-          marker-end: url(#endArrow);"/>
-    <text x="350" y="700"
-          font-size="40px"
-          text-anchor="middle">Width: 7.8 </text>
-
-    <%-- Pile vertical --%>
-
-    <marker id="beginArrow" 
-            markerWidth="9" markerHeight="9" 
-            refX="0" refY="4" 
-            orient="auto">
-        <path d="M0,4 L8,0 L8,8 L0,4" style="fill: red;" />
-    </marker>
-    <marker id="endArrow" 
-            markerWidth="9" markerHeight="9" 
-            refX="15" refY="4" 
-            orient="auto">
-        <path d="M0,0 L8,4 L0,8 L0,0" style="fill: red;" />
-    </marker>
-
-    <line x1="800"  y1="600" x2="800"   y2="0" 
-          style="stroke:#006600;
-          marker-start: url(#beginArrow);
-          marker-end: url(#endArrow);"/>
-
-
-    <text x="875" y="350"
-          font-size="40px"
-          text-anchor="middle"
-          style="writing-mode: tb;">Height: 6 M</text>
+        <br>
+        <br>
+        <form action="Control" method="post">
+            Carport Width
+            <select name="Carport_width" title="Carport Width"><option selected="selected" value="">Pick a width</option>
+                <option value="240 cm">240 cm</option>
+                <option value="270 cm">270 cm</option>
+                <option value="300 cm">300 cm</option>
+                <option value="330 cm">330 cm</option>
+                <option value="360 cm">360 cm</option>
+                <option value="390 cm">390 cm</option>
+                <option value="420 cm">420 cm</option>
+                <option value="450 cm">450 cm</option>
+                <option value="480 cm">480 cm</option>
+                <option value="510 cm">510 cm</option>
+                <option value="540 cm">540 cm</option>
+                <option value="570 cm">570 cm</option>
+                <option value="600 cm">600 cm</option>
+                <option value="630 cm">630 cm</option>
+                <option value="660 cm">660 cm</option>
+                <option value="690 cm">690 cm</option>
+                <option value="720 cm">720 cm</option>
+                <option value="750 cm">750 cm</option>
+            </select>
+            <br>
+            <br>
+            Carport Length
+            <select name="Carport_length" title="Carport Length"><option selected="selected" value="">Pick a length</option>
+                <option value="240 cm">240 cm</option>
+                <option value="270 cm">270 cm</option>
+                <option value="300 cm">300 cm</option>
+                <option value="330 cm">330 cm</option>
+                <option value="360 cm">360 cm</option>
+                <option value="390 cm">390 cm</option>
+                <option value="420 cm">420 cm</option>
+                <option value="450 cm">450 cm</option>
+                <option value="480 cm">480 cm</option>
+                <option value="510 cm">510 cm</option>
+                <option value="540 cm">540 cm</option>
+                <option value="570 cm">570 cm</option>
+                <option value="600 cm">600 cm</option>
+                <option value="630 cm">630 cm</option>
+                <option value="660 cm">660 cm</option>
+                <option value="690 cm">690 cm</option>
+                <option value="720 cm">720 cm</option>
+                <option value="750 cm">750 cm</option>
+                <option value="780 cm">780 cm</option>
+            </select>
+            <br>
+            <br>
+            Carport Actual Height
+            <select name="Carport_height" title="Carport Height"><option selected="selected" value="">Pick a height</option>
+                <option value="210 cm">210 cm</option>
+                <option value="215 cm">215 cm</option>
+                <option value="220 cm">220 cm</option>
+                <option value="225 cm">225 cm</option>
+                <option value="230 cm">230 cm</option>
+                <option value="235 cm">235 cm</option>
+                <option value="240 cm">240 cm</option>
+            </select>
+            <br>
+            Carport Total Height: ???
+            <br>
+            <br>
+            Carport Shed Width
+            <select name="Shed_width" title="Shed Width"><option selected="selected" value="Don't want a shed">Don't want a shed</option>
+                <option value="210 cm">210 cm</option>
+                <option value="240 cm">240 cm</option>
+                <option value="270 cm">270 cm</option>
+                <option value="300 cm">300 cm</option>
+                <option value="330 cm">330 cm</option>
+                <option value="360 cm">360 cm</option>
+                <option value="390 cm">390 cm</option>
+                <option value="420 cm">420 cm</option>
+                <option value="450 cm">450 cm</option>
+                <option value="480 cm">480 cm</option>
+                <option value="510 cm">510 cm</option>
+                <option value="540 cm">540 cm</option>
+                <option value="570 cm">570 cm</option>
+                <option value="600 cm">600 cm</option>
+                <option value="630 cm">630 cm</option>
+                <option value="660 cm">660 cm</option>
+                <option value="690 cm">690 cm</option>
+                <option value="720 cm">720 cm</option>
+            </select>
+            <br>
+            <br>
+            Carport Shed Length
+            <select name="Shed_length" title="Shed Length"><option selected="selected" value="Don't want a shed">Don't want a shed</option>
+                <option value="150 cm">150 cm</option>
+                <option value="180 cm">180 cm</option>
+                <option value="210 cm">210 cm</option>
+                <option value="240 cm">240 cm</option>
+                <option value="270 cm">270 cm</option>
+                <option value="300 cm">300 cm</option>
+                <option value="330 cm">330 cm</option>
+                <option value="360 cm">360 cm</option>
+                <option value="390 cm">390 cm</option>
+                <option value="420 cm">420 cm</option>
+                <option value="450 cm">450 cm</option>
+                <option value="480 cm">480 cm</option>
+                <option value="510 cm">510 cm</option>
+                <option value="540 cm">540 cm</option>
+                <option value="570 cm">570 cm</option>
+                <option value="600 cm">600 cm</option>
+                <option value="630 cm">630 cm</option>
+                <option value="660 cm">660 cm</option>
+                <option value="690 cm">690 cm</option>
+            </select>
+            <br>
+            <br>
+            <p>Click below to verify and send a request to a Johannes Fog Expert!</p>
+            <input type="hidden" name="command" value="customerrequest" />
+            <input type="submit" value="Send request" />
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="employeelogin" />
+            <input type="submit" value="Employee Login" />
+        </form>
 
 
 
+        <svg width="1000" height="300" viewBox="0 0 1000 300">
+
+        <!-- Created with Vector Paint - http://www.vectorpaint.yaks.com/ https://chrome.google.com/webstore/detail/hnbpdiengicdefcjecjbnjnoifekhgdo -->
+
+        <rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="#3887ff" stroke="#000000" style="" class="" fill-opacity="1" stroke-opacity="1"/>
+        <g class="currentLayer" style="">
+
+        <!-- Tree trunk -->
+        <path fill="#9e6924" fill-opacity="1" stroke="#9e6924" stroke-opacity="1" stroke-width="10" stroke-dasharray="none"
+              stroke-linejoin="round" stroke-linecap="butt"
+              stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end="" 
+              d="M930,299 L930,200 " id="svg_2" class=""/>
+        <!-- Tree leaves -->
+        <path fill="#04b804" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-dasharray="none"
+              stroke-linejoin="round" stroke-linecap="butt"
+              stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end=""
+              d="M930,178 C930,166 940,155 952,155 C965,155 975,166 975,178 C975,190 975,200 952,200 C940,200 930,190
+              930,178 z" id="svg_36" class=""/>
+
+        <path fill="#04b804" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-dasharray="none"
+              stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1"
+              marker-start="" marker-mid="" marker-end="" 
+              d="M890,178 C890,166 900,155 912,155 C925,155 935,166 935,178 C935,190 925,200 912,200 C900,200 890,190
+              890,178 z" id="svg_40" class=""/>
+
+        <path fill="#04b804" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-dasharray="none"
+              stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start=""
+              marker-mid="" marker-end="" 
+              d="M910,158 C910,146 920,135 932,135 C945,135 955,146 955,158 C955,170 945,180 932,180 C920,180 910,170
+              910,158 z" id="svg_39" class=""/>
+
+        <path fill="#04b804" fill-opacity="1" stroke="#000000" stroke-opacity="1"
+              stroke-width="1" stroke-dasharray="none" stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" 
+              fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end="" 
+              d="M910,198 C910,186 920,175 932,175 C945,175 955,186 955,198 C955,210 945,220 932,220 C920,220 910,210
+              910,198 z" id="svg_38" class=""/>
+
+        <!-- Carport & Stickman & measurements -->
+        <foreignObject fill="black" stroke="black"
+                       stroke-linejoin="round" stroke-dashoffset="" fill-rule="nonzero" font-size="20" font-family="Georgia, serif" 
+                       letter-spacing="0" word-spacing="0" marker-start="" marker-mid="" marker-end="" id="svg_4" x="103" 
+                       y="232" width="133" height="120" style="color: rgb(255, 255, 255);" class="">
+        <p style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;">
+        <p style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;">
+
+        </p>
+        <p style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;">
+
+        </p>
+        <p style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;">
+            <!-- Carport height text -->
+            200 cm
+        </p>
+        <p style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;">
+
+        </p>
+        <p style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;">
+
+        </p>
+
+    </p>
+    </foreignObject>
+
+    <!-- Carport Poles -->
+    <!-- MOVE MEEE -->
+    <%--
+    M650 (Pole location must be same as below) (Length of roof plus 30 (30cm)), 200 is height of roof (DO TOUCH)
+    L650 (Pole location must be same as above) (Length of roof plus 30 (30cm)), 200 is height of roof (DO TOUCH)
+    --%>
+    <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
+          marker-mid="" marker-end="" d="M<%=inputLength+30%>,<%=inputHeight%> L<%=inputLength+30%>,300 " 
+          id="svg_6" class=""/>
+    <!-- Dont touch me I am the pole that doesnt move! -->
+    <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
+          marker-mid="" marker-end="" d="M800,<%=inputHeight%> L800,300 " 
+          id="svg_6" class=""/>
+
+    <!-- Carport Roof -->
+    <%--
+    800 is roof start, roof length = (800 - 620) * 2 = 360 = 3.6m
+    M620 (Roof length), 200 is height of roof (DO TOUCH)!
+    L810 (DONT TOUCH), 200 is height of roof (DO TOUCH)!
+    --%>
+    <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
+          marker-mid="" marker-end="" d="M<%=inputLength%>,<%=inputHeight%> L810,<%=inputHeight%> "
+          id="svg_6" class=""/>
 
 
-    </SVG>
-    <svg viewBox="0 0 700 700" width="400" height="400">
-    <g transform="translate(350 620)">
 
-    <!--body-->
-    <path d="M0 -80 L0 0 L-30 75 M0 0 L30 75" fill="none" stroke="black" stroke-width="3" />
-    <!--arms-->
-    <path d="M40 -25 L0 -50 L-40 -25" fill="none" stroke="black" stroke-width="3" />
-    <!--head-->
-    <circle cx="0" cy="-110" r="30" stroke="black" stroke-width="3" fill="none" />
-    <!--football-->
-    <circle cx="50" cy="60" r="15" stroke="black" stroke-width="3" fill="red" />
-    <!--tree-->
-    <circle cx="200" cy="-130" r="40" stroke="black" stroke-width="2" fill="green" />
-    <circle cx="160" cy="-165" r="40" stroke="black" stroke-width="2" fill="green" />
-    <circle cx="240" cy="-165" r="40" stroke="black" stroke-width="2" fill="green" />
-    <circle cx="200" cy="-205" r="40" stroke="black" stroke-width="2" fill="green" />
-    <line x1="200" y1="-90" x2="200" y2="80" style="stroke:brown;stroke-width:10" />
+    <!-- Carport height -->
+    <path fill="white" fill-opacity="1" stroke="white" stroke-opacity="1" stroke-width="2" stroke-dasharray="none" 
+          stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start=""
+          marker-mid="" marker-end="" d="M839, 300 L839, <%=inputHeight%>"
+          id="svg_6" class=""/>
+    <text x='845' y='200' fill='white'>Actual Height</text>
+    <text x='845' y='220' fill='white'><%=actualHeight%> cm</text>
+    <text x='845' y='260' fill='white'>Total Height</text>
+    <text x='845' y='280' fill='white'><%=totalHeight%> cm</text>
+    
+    <text x='<%=inputLength%>' y='160' fill='white'>Total Length: <%=outputLength%> cm</text>
+
+
+    <!-- Stickman height -->
+    <path fill="white" stroke="white"stroke-width="2" d="M97,300 L97,200 " id="svg_11"
+          class=""/>
+    <!-- Stickman -->
+    <path fill="black" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-dashoffset="" fill-rule="nonzero"
+          marker-start="" marker-mid="" marker-end="" id="svg_13" d="M5,235 L87,235 
+          M46,260 L60,300 M46,260 L30,300 M46,220 L46,260 M59,210 C59,217 53,222 46,222 C39,222 33,217 33,210 C33,203 39,197 46,197
+          C53,197 59,203 59,210 z" style="color: rgb(0, 0, 0);" class=""/>
     </g>
     </svg>
-    </body>
+
+</body>
 </html>

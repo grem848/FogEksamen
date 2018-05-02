@@ -31,6 +31,7 @@ abstract class Command
         commands.put("orderremovedpage", new OrderRemoved());
         commands.put("employeeeditpage", new EmployeeEditOrder());
         commands.put("editorderpage", new EditOrder());
+        commands.put("employeelogin", new EmployeeLogin());
         
 
     }
