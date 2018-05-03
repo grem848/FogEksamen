@@ -22,7 +22,7 @@ public class Visualisering extends Command {
 
         VirtualCalculator vc = new VirtualCalculator();
         
-        String s = vc.sketch(500, 780);
+        String s = vc.sketch(700, 1200,600,500);
         
         
         request.setAttribute("virtual", s);
