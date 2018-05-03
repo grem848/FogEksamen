@@ -1,7 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +10,7 @@ public class OrderConfirmed extends Command
 {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderBuilderException
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
     {
         int height = Integer.parseInt(request.getParameter("height"));
         int width = Integer.parseInt(request.getParameter("width"));

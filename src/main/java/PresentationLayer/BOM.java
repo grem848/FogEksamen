@@ -1,6 +1,6 @@
 package PresentationLayer;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,7 @@ public class BOM extends Command
 {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException
     {
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));

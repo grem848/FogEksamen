@@ -1,6 +1,6 @@
 package PresentationLayer;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,7 +12,7 @@ public class Logout extends Command
 {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderBuilderException
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
     {
         HttpSession session = request.getSession(false);
         if (session != null)
@@ -24,7 +24,7 @@ public class Logout extends Command
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         } catch (ServletException | IOException ex)
         {
-            throw new LoginSampleException(ex.getMessage());
+            throw new FogException(ex.getMessage());
         }
         return null;
     }

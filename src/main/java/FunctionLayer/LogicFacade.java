@@ -6,11 +6,11 @@ import java.util.List;
 
 public class LogicFacade {
 
-    public static User login(String email, String password) throws LoginSampleException {
+    public static User login(String email, String password) throws FogException {
         return UserMapper.login(email, password);
     }
 
-    public static User createUser(String email, String password) throws LoginSampleException {
+    public static User createUser(String email, String password) throws FogException {
         User user = new User(email, password, "employee");
         UserMapper.createUser(user);
         return user;
