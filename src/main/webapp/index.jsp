@@ -4,11 +4,14 @@
 <%
     // get this from a request attribute
     int inputLength = (request.getAttribute("carportLength") == null ? 690 : (int) request.getAttribute("carportLength")); // length from input
-    int outputLength = 0; // length from right pole to length of roof, shown to customer
+    int outputLength = 240; // length from right pole to length of roof, shown to customer
     int inputHeight = (request.getAttribute("carportHeight") == null ? 195 : (int) request.getAttribute("carportHeight")); // height from input
-    int actualHeight = 0; // height from bottom to bottom of roof, shown to customer
-    int totalHeight = 0; // height from bottom to top of roof, shown to customer
-
+    int actualHeight = 210; // height from bottom to bottom of roof, shown to customer
+    int totalHeight = 225; // height from bottom to top of roof, shown to customer
+    int width = (request.getAttribute("carportWidth") == null ? 0 : (int) request.getAttribute("carportWidth"));
+    int shedWidth = (request.getAttribute("shedWidth") == null ? 0 : (int) request.getAttribute("shedWidth"));
+    int shedLength = (request.getAttribute("shedLength") == null ? 0 : (int) request.getAttribute("shedLength"));
+    boolean noShed = (request.getAttribute("noShed") == null ? false : (boolean) request.getAttribute("noShed"));
 
     switch (inputHeight)
     {
@@ -119,6 +122,12 @@
 %>
 <html>
     <head>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer home page</title>
     </head>
@@ -129,31 +138,31 @@
         <form name="Request" action="FrontController" method="POST">
             Carport Width
             <select name="carportWidth" title="Carport Width">
-                <option selected="selected" value="240">Pick a width</option>
-                <option value="240 cm">240 cm</option>
-                <option value="270 cm">270 cm</option>
-                <option value="300 cm">300 cm</option>
-                <option value="330 cm">330 cm</option>
-                <option value="360 cm">360 cm</option>
-                <option value="390 cm">390 cm</option>
-                <option value="420 cm">420 cm</option>
-                <option value="450 cm">450 cm</option>
-                <option value="480 cm">480 cm</option>
-                <option value="510 cm">510 cm</option>
-                <option value="540 cm">540 cm</option>
-                <option value="570 cm">570 cm</option>
-                <option value="600 cm">600 cm</option>
-                <option value="630 cm">630 cm</option>
-                <option value="660 cm">660 cm</option>
-                <option value="690 cm">690 cm</option>
-                <option value="720 cm">720 cm</option>
-                <option value="750 cm">750 cm</option>
+                <option selected="selected" value="<%=width%>">Pick a width</option>
+                <option value="240">240 cm</option>
+                <option value="270">270 cm</option>
+                <option value="300">300 cm</option>
+                <option value="330">330 cm</option>
+                <option value="360">360 cm</option>
+                <option value="390">390 cm</option>
+                <option value="420">420 cm</option>
+                <option value="450">450 cm</option>
+                <option value="480">480 cm</option>
+                <option value="510">510 cm</option>
+                <option value="540">540 cm</option>
+                <option value="570">570 cm</option>
+                <option value="600">600 cm</option>
+                <option value="630">630 cm</option>
+                <option value="660">660 cm</option>
+                <option value="690">690 cm</option>
+                <option value="720">720 cm</option>
+                <option value="750">750 cm</option>
             </select>
             <br>
             <br>
             Carport Length
             <select name="carportLength" title="Carport Length">
-                <option selected="selected" value="690">Pick a length</option>
+                <option selected="selected" value="<%=inputLength%>">Pick a length</option>
                 <option value="690">240 cm</option>
                 <option value="675">270 cm</option>
                 <option value="660">300 cm</option>
@@ -178,7 +187,7 @@
             <br>
             Carport Actual Height
             <select name="carportHeight" title="Carport Height">
-                <option selected="selected" value="195">Pick a height</option>
+                <option selected="selected" value="<%=inputHeight%>">Pick a height</option>
                 <option value="195">210 cm</option>
                 <option value="192">215 cm</option>
                 <option value="190">220 cm</option>
@@ -188,90 +197,133 @@
                 <option value="180">240 cm</option>
             </select>
             <br>
-            Carport Total Height: <%=totalHeight%>
             <br>
-            Update Drawing for correct total height!
+            <input type="checkbox" name="noShed" value="true"
+                   <%
+                       if (noShed == true)
+                       {
+                           out.println("checked");
+                       } else
+                       {
+
+                           out.println("<input type='hidden' name='noShed' value='false'");
+                       }
+                   %>
+                   />
+            I don't want a shed, uncheck to see shed options again
+            <% if (noShed == false)
+                {%>
             <br>
             <br>
             Carport Shed Width
-            <select name="Shed_width" title="Shed Width">
-                <option selected="selected" value="210">Don't want a shed</option>
-                <option value="210 cm">210 cm</option>
-                <option value="240 cm">240 cm</option>
-                <option value="270 cm">270 cm</option>
-                <option value="300 cm">300 cm</option>
-                <option value="330 cm">330 cm</option>
-                <option value="360 cm">360 cm</option>
-                <option value="390 cm">390 cm</option>
-                <option value="420 cm">420 cm</option>
-                <option value="450 cm">450 cm</option>
-                <option value="480 cm">480 cm</option>
-                <option value="510 cm">510 cm</option>
-                <option value="540 cm">540 cm</option>
-                <option value="570 cm">570 cm</option>
-                <option value="600 cm">600 cm</option>
-                <option value="630 cm">630 cm</option>
-                <option value="660 cm">660 cm</option>
-                <option value="690 cm">690 cm</option>
-                <option value="720 cm">720 cm</option>
+            <select name="shedWidth" title="Shed Width">
+                <option selected="selected" value="<%=shedWidth%>">Pick a shed width</option>
+                <option value="210">210 cm</option>
+                <option value="240">240 cm</option>
+                <option value="270">270 cm</option>
+                <option value="300">300 cm</option>
+                <option value="330">330 cm</option>
+                <option value="360">360 cm</option>
+                <option value="390">390 cm</option>
+                <option value="420">420 cm</option>
+                <option value="450">450 cm</option>
+                <option value="480">480 cm</option>
+                <option value="510">510 cm</option>
+                <option value="540">540 cm</option>
+                <option value="570">570 cm</option>
+                <option value="600">600 cm</option>
+                <option value="630">630 cm</option>
+                <option value="660">660 cm</option>
+                <option value="690">690 cm</option>
+                <option value="720">720 cm</option>
             </select>
             <br>
             <br>
             Carport Shed Length
-            <select name="Shed_length" title="Shed Length">
-                <option selected="selected" value="Don't want a shed">Don't want a shed</option>
-                <option value="150 cm">150 cm</option>
-                <option value="180 cm">180 cm</option>
-                <option value="210 cm">210 cm</option>
-                <option value="240 cm">240 cm</option>
-                <option value="270 cm">270 cm</option>
-                <option value="300 cm">300 cm</option>
-                <option value="330 cm">330 cm</option>
-                <option value="360 cm">360 cm</option>
-                <option value="390 cm">390 cm</option>
-                <option value="420 cm">420 cm</option>
-                <option value="450 cm">450 cm</option>
-                <option value="480 cm">480 cm</option>
-                <option value="510 cm">510 cm</option>
-                <option value="540 cm">540 cm</option>
-                <option value="570 cm">570 cm</option>
-                <option value="600 cm">600 cm</option>
-                <option value="630 cm">630 cm</option>
-                <option value="660 cm">660 cm</option>
-                <option value="690 cm">690 cm</option>
+            <select name="shedLength" title="Shed Length">
+                <option selected="selected" value="<%=shedLength%>">Pick a shed length</option>
+                <option value="150">150 cm</option>
+                <option value="180">180 cm</option>
+                <option value="210">210 cm</option>
+                <option value="240">240 cm</option>
+                <option value="270">270 cm</option>
+                <option value="300">300 cm</option>
+                <option value="330">330 cm</option>
+                <option value="360">360 cm</option>
+                <option value="390">390 cm</option>
+                <option value="420">420 cm</option>
+                <option value="450">450 cm</option>
+                <option value="480">480 cm</option>
+                <option value="510">510 cm</option>
+                <option value="540">540 cm</option>
+                <option value="570">570 cm</option>
+                <option value="600">600 cm</option>
+                <option value="630">630 cm</option>
+                <option value="660">660 cm</option>
+                <option value="690">690 cm</option>
             </select>
+            <% }%>
             <br>
+            <br>
+            <br>
+            Your Current Carport!
+            <br>
+            <table>
+                <tr>
+                    <th>Dimension</th>
+                    <th>Measurement</th>
+                </tr>
+                <tr>
+                    <td>Carport Width</td>
+                    <td><%=width%> cm</td>
+                </tr>
+                <tr>
+                    <td>Carport Length</td>
+                    <td><%=outputLength%> cm</td>
+                </tr>
+                <tr>
+                    <td>Carport Actual Height</td>
+                    <td><%=actualHeight%> cm</td>
+                </tr>
+                <tr>
+                    <td>Carport Total Height</td>
+                    <td><%=totalHeight%> cm</td>
+                </tr>
+                <tr>
+                    <td>Current Shed Width</td>
+                    <td><%=shedWidth%> cm</td>
+                </tr>
+                <tr>
+                    <td>Current Shed Length</td>
+                    <td><%=shedLength%> cm</td>
+                </tr>
+            </table>
             <br>
             <input type="hidden" name="command" value="index" />
-            <input type="submit" value="Show/update Drawing" />
-
+            <input type="hidden" name="shedWidth" value="<%=shedWidth%>" />
+            <input type="hidden" name="shedLength" value="<%=shedLength%>" />
+            <input type="submit" value="Update Drawing" />
         </form>
 
         <%--
         use selected and update when drawing is updated
         if values are null dont show button, show button after update drawing is clicked
         --%>
-        <%-- 
-            out.println("Length " + outputLength);
-            out.println("Height " + actualHeight);
+
+        <%--
+            if ()
         --%>
+        <br>
         <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="?????">
-            <input type="hidden" name="length" value="<%=inputLength%>">
-            <input type="hidden" name="width" value="<%=request.getParameter("width")%>">
-            <input type="hidden" name="height" value="<%=inputHeight%>">
+            <input type="hidden" name="command" value="visualisering">
+            <input type="hidden" name="carportWidth" value="<%=request.getParameter("carportWidth")%>">
+            <input type="hidden" name="carportLength" value="<%=request.getParameter("carportLength")%>">
+            <input type="hidden" name="ShedWidth" value="<%=request.getParameter("shedWidth")%>">
+            <input type="hidden" name="shedLength" value="<%=request.getParameter("shedLength")%>">
             <input type="submit" value="Send Request">
         </form>
-
         <br>
         <br>
-        <br>
-        <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="employeelogin" />
-            <input type="submit" value="Employee Login" />
-        </form>
-
-
 
         <svg width="1000" height="300" viewBox="0 0 1000 300">
 
@@ -386,6 +438,11 @@
     </g>
     </svg>
     <br>
+    <br>
+    <form name="Building" action="FrontController" method="POST">
+        <input type="hidden" name="command" value="employeelogin" />
+        <input type="submit" value="Employee Login" />
+    </form>
     <br>
     <p>Johannes Fog A/S</p>
 
