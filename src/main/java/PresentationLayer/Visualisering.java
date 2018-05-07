@@ -15,10 +15,12 @@ public class Visualisering extends Command
 
         VirtualCalculator vc = new VirtualCalculator();
 
-        String s = vc.sketch(Double.parseDouble(request.getParameter("carportWidth")),
-                Double.parseDouble(request.getParameter("carportLength")),
-                Double.parseDouble(request.getParameter("shedWidth")),
-                Double.parseDouble(request.getParameter("shedLength")));
+        double carportWidth = Double.parseDouble(request.getParameter("carportWidth"));
+        double carportLength = Double.parseDouble(request.getParameter("carportLength"));
+        double shedWidth = Double.parseDouble(request.getParameter("shedWidth"));
+        double shedLength = Double.parseDouble(request.getParameter("shedLength"));
+        
+        String s = vc.sketch(carportWidth, carportLength, shedWidth, shedLength);
 
         request.setAttribute("virtual", s);
 

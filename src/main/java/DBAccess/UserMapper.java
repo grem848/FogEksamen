@@ -8,22 +8,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 public class UserMapper
 {
+    private static DBConnector dbc = new DBConnector();
 
     public static void createUser(User user) throws FogException
     {
         try
         {
-            Connection con = Connector.connection();
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getRole());
             ps.executeUpdate();
-        } catch (SQLException | ClassNotFoundException ex)
+        } catch (SQLException ex)
         {
             throw new FogException(ex.getMessage());
         }
@@ -33,10 +34,11 @@ public class UserMapper
     {
         try
         {
-            Connection con = Connector.connection();
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "SELECT id, role FROM users "
                     + "WHERE email=? AND password=?";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
@@ -51,13 +53,13 @@ public class UserMapper
             {
                 throw new FogException("Could not validate user");
             }
-        } catch (ClassNotFoundException | SQLException ex)
+        } catch (SQLException ex)
         {
             throw new FogException(ex.getMessage());
         }
     }
-    
-            //PreparedStatement
+
+    //PreparedStatement
 //            String sql = "select * from user where username = ? and password = ?";
 //            PreparedStatement preparedStatement = dbc.preparedStatement(sql);
 //            preparedStatement.setString(1, username);

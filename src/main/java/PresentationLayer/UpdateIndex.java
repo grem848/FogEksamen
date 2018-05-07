@@ -27,6 +27,7 @@ public class UpdateIndex extends Command
             request.setAttribute("carportLength", inputLength);
             request.setAttribute("carportHeight", inputHeight);
             request.setAttribute("carportWidth", width);
+            
             if (noShed == true)
             {
                 request.setAttribute("shedLength", 0);
