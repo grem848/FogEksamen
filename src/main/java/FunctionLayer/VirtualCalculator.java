@@ -50,7 +50,7 @@ public class VirtualCalculator {
     //arealet
     private String arealet(double length, double width) {
 
-        String res = "<SVG width=" + (width + 200) + " height=" + (length + 200) + " viewBox=\"0 0 1200 1200\" >\n"
+        String res = "<SVG width=" + (1200) + " height=" + (1200) + " viewBox=\"0 0 1200 1200\" >\n"
                 + "            <rect x=\"0\" y=\"0\" height=" + length + " width=" + width + "\n"
                 + "                  style=\"stroke:#000000; fill: white\"/>";
 
