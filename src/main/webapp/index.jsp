@@ -8,7 +8,7 @@
     int inputHeight = (request.getAttribute("carportHeight") == null ? 195 : (int) request.getAttribute("carportHeight")); // height from input
     int actualHeight = 210; // height from bottom to bottom of roof, shown to customer
     int totalHeight = 225; // height from bottom to top of roof, shown to customer
-    int width = (request.getAttribute("carportWidth") == null ? 0 : (int) request.getAttribute("carportWidth"));
+    int width = (request.getAttribute("carportWidth") == null ? 240 : (int) request.getAttribute("carportWidth"));
     int shedWidth = (request.getAttribute("shedWidth") == null ? 0 : (int) request.getAttribute("shedWidth"));
     int shedLength = (request.getAttribute("shedLength") == null ? 0 : (int) request.getAttribute("shedLength"));
     boolean noShed = (request.getAttribute("noShed") == null ? false : (boolean) request.getAttribute("noShed"));
@@ -302,7 +302,7 @@
             <input type="hidden" name="command" value="update" />
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>" />
             <input type="hidden" name="shedLength" value="<%=shedLength%>" />
-            <input type="submit" value="Update Drawing" />
+            <input type="submit" value="Update Carport & Visualization" />
         </form>
 
         <%--
