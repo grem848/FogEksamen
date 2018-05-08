@@ -2,14 +2,13 @@ package DBAccess;
 
 import FunctionLayer.FogException;
 import FunctionLayer.User;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class UserMapper
 {
+
     private static DBConnector dbc = new DBConnector();
 
     public static void createUser(User user) throws FogException
@@ -24,6 +23,7 @@ public class UserMapper
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getRole());
             ps.executeUpdate();
+            dbc.close();
         } catch (SQLException ex)
         {
             throw new FogException(ex.getMessage());
@@ -48,9 +48,11 @@ public class UserMapper
                 int id = rs.getInt("id");
                 User user = new User(email, password, role);
                 user.setId(id);
+                dbc.close();
                 return user;
             } else
             {
+                dbc.close();
                 throw new FogException("Could not validate user");
             }
         } catch (SQLException ex)
@@ -59,10 +61,4 @@ public class UserMapper
         }
     }
 
-    //PreparedStatement
-//            String sql = "select * from user where username = ? and password = ?";
-//            PreparedStatement preparedStatement = dbc.preparedStatement(sql);
-//            preparedStatement.setString(1, username);
-//            preparedStatement.setString(2, password);
-//            ResultSet resultSet = preparedStatement.executeQuery();
 }

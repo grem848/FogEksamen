@@ -2,13 +2,9 @@ package DBAccess;
 
 import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
-import FunctionLayer.User;
-
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +13,7 @@ public class OrderMapper
 
     private static DBConnector dbc = new DBConnector();
 
-    public static boolean OrderToDB(Order order) throws OrderBuilderException
+    public static boolean OrderToDB(Order order) throws OrderBuilderException, SQLException
     {
         try
         {
@@ -34,12 +30,12 @@ public class OrderMapper
             ps.setInt(7, order.getShedWidth());
             ps.setInt(8, order.getSlopedRoof());
             ps.executeUpdate();
+            dbc.close();
 
         } catch (SQLException ex)
         {
             throw new OrderBuilderException(ex.getMessage());
         }
-
         return false;
     }
 
@@ -103,7 +99,7 @@ public class OrderMapper
                 String status = rs.getString("status");
                 orderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status));
             }
-
+            dbc.close();
             return orderList;
         } catch (SQLException ex)
         {
@@ -121,6 +117,7 @@ public class OrderMapper
             PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setInt(1, id);
             ps.executeUpdate();
+            dbc.close();
 
         } catch (SQLException ex)
         {
@@ -138,6 +135,7 @@ public class OrderMapper
             PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setInt(1, id);
             ps.executeUpdate();
+            dbc.close();
 
         } catch (SQLException ex)
         {
@@ -173,6 +171,7 @@ public class OrderMapper
                 String status = rs.getString("status");
                 statusOrderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status));
             }
+            dbc.close();
 
             return statusOrderList;
         } catch (SQLException ex)
@@ -210,7 +209,7 @@ public class OrderMapper
                 String status = rs.getString("status");
                 o = new Order(id2, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status);
             }
-
+            dbc.close();
             return o;
         } catch (SQLException ex)
         {
@@ -236,6 +235,7 @@ public class OrderMapper
             ps.setInt(8, slopedRoof);
             ps.setInt(9, id);
             ps.executeUpdate();
+            dbc.close();
 
         } catch (SQLException ex)
         {
@@ -243,23 +243,4 @@ public class OrderMapper
         }
 
     }
-
-//        public static void orderFinished(int id) throws OrderBuilderException {
-//
-//        try {
-//            Connection con = Connector.connection();
-//            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
-//            PreparedStatement ps = con.prepareStatement(SQL);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//
-//                String nextSQL = "UPDATE orders SET status='done' WHERE id =" + id + ";";
-//                ps.execute(nextSQL);
-//
-//            } else {
-//                throw new OrderBuilderException("Could not validate Order");
-//            }
-//        } catch (ClassNotFoundException | SQLException ex) {
-//            throw new OrderBuilderException(ex.getMessage());
-//        }
 }

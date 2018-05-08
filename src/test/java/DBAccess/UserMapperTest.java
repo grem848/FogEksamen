@@ -1,15 +1,11 @@
-//
 //package DBAccess;
 //
-//import FunctionLayer.FogException;
-//import FunctionLayer.OrderBuilderException;
-//import FunctionLayer.User;
-//import java.sql.Connection;
 //import java.sql.DriverManager;
+//import java.sql.PreparedStatement;
 //import java.sql.SQLException;
 //import java.sql.Statement;
-//import org.junit.Test;
-//import static org.junit.Assert.*;
+//import static javafx.css.StyleOrigin.USER;
+//import static javax.ws.rs.core.HttpHeaders.HOST;
 //import org.junit.Before;
 //
 //public class UserMapperTest
@@ -20,12 +16,13 @@
 ////    (2,'ken@somewhere.com','kensen','customer'),
 ////    (3,'robin@somewhere.com','batman','employee'),
 ////    (4,'someone@nowhere.com','sesam','customer');
-//
-//    private static Connection testConnection;
+//    
+//    private static DBConnector testConnection;
 //    private static String USERNAME = "doorkeeper";
 //    private static String USERPW = "bank3*andyouarein";
 //    private static String DBNAME = "useradmin";
 //    private static String HOST = "localhost";
+//    
 //
 //    @Before
 //    public void setUp()
@@ -35,7 +32,7 @@
 //            // awoid making a new connection for each test
 //            if (testConnection == null)
 //            {
-//                String url = String.format("jdbc:mysql://%s:3306/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", HOST, DBNAME);
+//                String url = String.format("jdbc:mysql://%s:3306/%suseradmin?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", HOST, DBNAME);
 //                Class.forName("com.mysql.jdbc.Driver");
 //
 //                testConnection = DriverManager.getConnection(url, USERNAME, USERPW);
@@ -43,11 +40,11 @@
 //                Connector.setConnection(testConnection);
 //            }
 //            // reset test database
-//            try (Statement stmt = testConnection.createStatement())
+//            try (Statement stmt = testConnection.preparedStatement(HOST))
 //            {
-//                stmt.execute("drop table if exists usersTest");
-//                stmt.execute("create table usersTest like users");
-//                stmt.execute("insert into usersTest select * from users");
+//                stmt.execute("drop table if exists Users");
+//                stmt.execute("create table Users like UsersTest");
+//                stmt.execute("insert into Users select * from UsersTest");
 //            }
 //
 //        } catch (ClassNotFoundException | SQLException ex)
@@ -55,6 +52,30 @@
 //            testConnection = null;
 //            System.out.println("Could not open connection to database: " + ex.getMessage());
 //        }
+//            
+//        
+////        
+////        testConnection.setDataSource(new DataSource().getTestDataSource());
+////            testConnection.open();
+////            // awoid making a new connection for each test
+////
+////            // reset test database
+////            String SQL = "drop table if exists Users";
+////            String SQL2 = "create table Users like UsersTest";
+////            String SQL3 = "insert into Users select * from UsersTest";
+////            
+////            PreparedStatement ps = testConnection.preparedStatement(SQL);       
+////            PreparedStatement ps2 = testConnection.preparedStatement(SQL2); 
+////            PreparedStatement ps3 = testConnection.preparedStatement(SQL3);
+////            
+////            ps.executeUpdate();
+////            ps2.executeUpdate();
+////            ps3.executeUpdate();
+////
+////        } catch (SQLException ex)
+////        {
+////            System.out.println("Could not open connection to database: " + ex.getMessage());
+////        }
 //    }
 //
 //    @Test
@@ -88,7 +109,7 @@
 //    }
 //
 //    @Test
-//    public void testCreateUser() throws FogException
+//    public void testCreateUser() throws FogException, SQLException
 //    {
 //        // Can we create a new user - Notice, if login fails, this will fail
 //        // but so would login01, so this is OK
@@ -97,5 +118,6 @@
 //        UserMapper.createUser(original);
 //        User retrieved = UserMapper.login("king@kong.com", "uhahvorhemmeligt");
 //        assertEquals("konge", retrieved.getRole());
+//        testConnection.close();
 //    }
 //}
