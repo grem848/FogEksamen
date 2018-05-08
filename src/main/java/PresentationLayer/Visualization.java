@@ -6,7 +6,7 @@ import FunctionLayer.VirtualCalculator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Visualisering extends Command
+public class Visualization extends Command
 {
 
     @Override
@@ -24,7 +24,7 @@ public class Visualisering extends Command
 
         request.setAttribute("virtual", s);
 
-        return "visualisering";
+        return "visualization";
     }
 
 }

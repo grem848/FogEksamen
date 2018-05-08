@@ -1,8 +1,7 @@
-
 package FunctionLayer;
 
-
-public class VirtualCalculator {
+public class VirtualCalculator
+{
 
 //    private double length;
 //    private double width;
@@ -14,31 +13,34 @@ public class VirtualCalculator {
 //    }
     private boolean isShed;
 
-    public String sketch(double width, double length, double shedWidth, double shedLength) {
+    public String sketch(double width, double length, double shedWidth, double shedLength)
+    {
 
-        //beregnet gennem den orginale tegning. (( 7.80 - stolpersAfstandRatio ) * 7.80 )
-        double førsteStolpeAfstadRatio = 0.1410;
-        //beregnet gennem den orginale tegning. (længde/(11.5*55)) 
-        double stolpersAfstandRatio = 0.8096;
+//        //beregnet gennem den orginale tegning. (( 7.80 - stolpersAfstandRatio ) * 7.80 )
+//        double firstPostDistanceRatio = 0.1410;
+//        //beregnet gennem den orginale tegning. (længde/(11.5*55)) 
+//        double postDistanceRatio = 0.8096;
 
         isShed = false;
 
-        sb.append(arealet(width, length));
+        sb.append(area(width, length));
 
-        rafter(length, width, stolpersAfstandRatio, førsteStolpeAfstadRatio);
+        rafter(length, width);
 
-        if ((shedWidth > 0) && (shedLength > 0)) {
+        if ((shedWidth > 0) && (shedLength > 0))
+        {
             shed(width, length, shedWidth, shedLength);
             isShed = true;
-        } else {
+        } else
+        {
             isShed = false;
         }
 
-        post(length, width , stolpersAfstandRatio, førsteStolpeAfstadRatio, shedLength);
+        post(length, width, shedLength);
 
         strap(width, length);
 
-        band(width, length, shedLength , førsteStolpeAfstadRatio);
+        band(width, length, shedLength);
 
         verticalArrow(length, width);
 
@@ -48,9 +50,10 @@ public class VirtualCalculator {
     }
 
     //arealet
-    private String arealet(double length, double width) {
+    private String area(double length, double width)
+    {
 
-        String res = "<SVG width=" + (1200) + " height=" + (1200) + " viewBox=\"0 0 1200 1200\" >\n"
+        String res = "<SVG width='800' height='645' viewBox=\"0 0 1000 800\" >\n"
                 + "            <rect x=\"0\" y=\"0\" height=" + length + " width=" + width + "\n"
                 + "                  style=\"stroke:#000000; fill: white\"/>";
 
@@ -58,74 +61,83 @@ public class VirtualCalculator {
     }
 
     //spær
-    private String rafter(double length, double width, double stolpeAfstandRatio, double førsteStolpeAfstandRatio) {
+    private String rafter(double length, double width)
+    {
 
-        double n = length / 55 ;
+        double n = length / 55;
 
-        double stolpeafstand = 55;
+        double postDistance = 55;
 
         sb.append("\n<%-- Linjer for spær --%>\n\n");
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
 
-            sb.append("<line x1=" + stolpeafstand + "  y1=0  x2=" + stolpeafstand + " y2=" + width + " style='stroke:#006600;' fill='black' />\n");
+            sb.append("<line x1=" + postDistance + "  y1=0  x2=" + postDistance + " y2=" + width + " style='stroke:#006600;' fill='black' />\n");
 
-            stolpeafstand += 55;
+            postDistance += 55;
         }
 
         return sb.toString();
     }
 
     //stolper
- private String post(double length, double width, double stolpeafstand, double førsteStolpeAfstandRatio, double shedLength) {
-        int antal = 0;
+    private String post(double length, double width, double shedLength)
+    {
+
         double x = 55;
-        if (isShed == false) {
+        if (isShed == false)
+        {
             sb.append("\n<%-- Linjer for stolper --%>\n\n");
 
-        //øverst
-        for (int i = 0; i < 2; i++) {
+            //øverst
+            for (int i = 0; i < 2; i++)
+            {
 
-            sb.append("<rect  x = " + (x) + " y = " + 35 + " height = " + 10 + " width = " + 10
+                sb.append("<rect  x = " + (x) + " y = " + 35 + " height = " + 10 + " width = " + 10
+                        + " style = stroke:#000000; />\n");
+
+                x += ((length - 55) / 2);
+
+            }
+            sb.append("<rect  x = " + (length - 10) + " y = " + 35 + " height = " + 10 + " width = " + 10
                     + " style = stroke:#000000; />\n");
-
-            x += ((length-55) / 2);
-
-        }
-        sb.append("<rect  x = " + (length - 10) + " y = " + 35 + " height = " + 10 + " width = " + 10
+            sb.append("<rect  x = " + (length - 10) + " y = " + (width - 45) + " height = " + 10 + " width = " + 10
                     + " style = stroke:#000000; />\n");
-        sb.append("<rect  x = " + (length - 10) + " y = " + (width - 45) + " height = " + 10 + " width = " + 10
-                    + " style = stroke:#000000; />\n");
-         x = 55;
-        //nederst
-        for (int i = 0; i < 2; i++) {
+            x = 55;
+            //nederst
+            for (int i = 0; i < 2; i++)
+            {
 
-            sb.append("<rect  x = " + (x ) + " y = " + (width - 45) + " height = " + 10 + " width = " + 10
-                    + " style = stroke:#000000; />\n");
+                sb.append("<rect  x = " + (x) + " y = " + (width - 45) + " height = " + 10 + " width = " + 10
+                        + " style = stroke:#000000; />\n");
 
-            x += ((length-55) / 2);
+                x += ((length - 55) / 2);
 
-        }
-        } else {
-             for (int i = 0; i < 2; i++) {
+            }
+        } else
+        {
+            for (int i = 0; i < 2; i++)
+            {
 
-            sb.append("<rect  x = " + (x) + " y = " + 35 + " height = " + 10 + " width = " + 10
-                    + " style = stroke:#000000; />\n");
+                sb.append("<rect  x = " + (x) + " y = " + 35 + " height = " + 10 + " width = " + 10
+                        + " style = stroke:#000000; />\n");
 
-            x += (((length-55)-shedLength) / 2);
+                x += (((length - 55) - shedLength) / 2);
 
-        }
-         x = 55;
-        //nederst
-        for (int i = 0; i < 2; i++) {
+            }
+            x = 55;
+            //nederst
+            for (int i = 0; i < 2; i++)
+            {
 
-            sb.append("<rect  x = " + (x ) + " y = " + (width - 45) + " height = " + 10 + " width = " + 10
-                    + " style = stroke:#000000; />\n");
+                sb.append("<rect  x = " + (x) + " y = " + (width - 45) + " height = " + 10 + " width = " + 10
+                        + " style = stroke:#000000; />\n");
 
-            x += (((length-55)-shedLength) / 2);
+                x += (((length - 55) - shedLength) / 2);
 
-        }
-            
+            }
+
         }
 
         return sb.toString();
@@ -133,13 +145,15 @@ public class VirtualCalculator {
     }
 
     //rem
-    private String strap(double width, double length) {
+    private String strap(double width, double length)
+    {
 
         int y = 35;
 
         sb.append("\n<%-- Linjer for remme --%>\n\n");
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++)
+        {
 
             sb.append("<line x1 = 0  y1 = " + y + " x2 = " + length + " y2 = " + y + " style='stroke:#006600;' />\n");
 
@@ -151,14 +165,15 @@ public class VirtualCalculator {
     }
 
     //skur
-    private String shed(double length, double width, double shedLength, double shedWidth) {
-       
+    private String shed(double length, double width, double shedLength, double shedWidth)
+    {
+
         //shedlength is shedwidth and vice versa
-        
 //        if (shedLength == length) {
 //            shedLength = - 70;
 //        }
-        if (shedLength > (length-55)) {
+        if (shedLength > (length - 55))
+        {
             shedLength = length - 70;
         }
 
@@ -167,14 +182,15 @@ public class VirtualCalculator {
         sb.append("<rect  x = " + (width - shedWidth) + " y = " + 35 + " height = " + shedLength + " width = " + shedWidth
                 + " style=' fill: brown; fill-opacity:0.4;' />\n");
 
-        shedPost(length, width, shedLength, shedWidth);
+        shedPost(width, shedLength, shedWidth);
 
         return sb.toString();
 
     }
 
     //hulbånd
-    private String band(double width, double length, double shedWidth, double førsteStolpeAfstandRatio) {
+    private String band(double width, double length, double shedWidth)
+    {
 
         double x = 55;
         double y = 35;
@@ -184,7 +200,8 @@ public class VirtualCalculator {
 
         sb.append("\n<%-- Linjer for kryds --%>\n\n");
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++)
+        {
 
             sb.append("<line stroke-dasharray=5,5 x1=" + x + " y1=" + y + " x2=" + x2 + " y2=" + y2 + " style=' stroke:black;' />\n");
 
@@ -196,7 +213,8 @@ public class VirtualCalculator {
         return sb.toString();
     }
 
-    private String shedPost(double length, double width, double shedLength, double shedWidth) {
+    private String shedPost(double width, double shedLength, double shedWidth)
+    {
 
         double x = width - shedWidth;
         double y = 35;
@@ -204,7 +222,8 @@ public class VirtualCalculator {
         sb.append("\n<%-- stolper til skur --%>\n\n");
 
         //left side (downward)
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++)
+        {
 
             sb.append("<rect  x = " + x + " y = " + y + " height = " + 10 + " width = " + 10
                     + " style = stroke:#000000; />\n");
@@ -216,19 +235,18 @@ public class VirtualCalculator {
         y = 35;
 
         //right side (downward)
-        
-        
-            for (int i = 0; i < 3; i++) {
-                sb.append("<rect  x = " + x + " y = " + y + " height = " + 10 + " width = " + 10
-                        + " style = stroke:#000000; />\n");
-                y += (shedLength / 2) - 5;
-            }
-        
+        for (int i = 0; i < 3; i++)
+        {
+            sb.append("<rect  x = " + x + " y = " + y + " height = " + 10 + " width = " + 10
+                    + " style = stroke:#000000; />\n");
+            y += (shedLength / 2) - 5;
+        }
 
         return sb.toString();
     }
 
-    private void verticalArrow(double length, double width) {
+    private void verticalArrow(double length, double width)
+    {
 
         sb.append("\n<%-- Pile vertical--%>\n\n");
 
@@ -249,7 +267,8 @@ public class VirtualCalculator {
 
     }
 
-    private void horizontalArrow(double length, double width) {
+    private void horizontalArrow(double length, double width)
+    {
 
         sb.append("\n<%-- Pile horizontal--%>\n\n");
 
@@ -270,11 +289,13 @@ public class VirtualCalculator {
 
     }
 
-    public StringBuilder getSb() {
+    public StringBuilder getSb()
+    {
         return sb;
     }
 
-    public void setSb(StringBuilder sb) {
+    public void setSb(StringBuilder sb)
+    {
         this.sb = sb;
     }
 

@@ -1,11 +1,8 @@
 package PresentationLayer;
 
-import FunctionLayer.LogicFacade;
 import FunctionLayer.FogException;
-import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
 import FunctionLayer.User;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
