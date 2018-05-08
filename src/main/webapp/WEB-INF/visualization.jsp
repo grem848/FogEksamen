@@ -9,14 +9,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Visualisering!</h1>
+        <h1>Visualization of your carport!</h1>
 
         <%= request.getAttribute("virtual")%>
 
         </SVG>
-        <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="logout" />
-            <input type="submit" value="Back to Customer Page" />
-        </form>
+    <form>
+        <input type="button" value="Back to Customer Page" onclick="history.back()">
+    </form>
     </body>
 </html>

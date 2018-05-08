@@ -315,7 +315,7 @@
         --%>
         <br>
         <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="visualisering">
+            <input type="hidden" name="command" value="visualization">
             <input type="hidden" name="carportWidth" value="<%=width%>">
             <input type="hidden" name="carportLength" value="<%=outputLength%>">
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
