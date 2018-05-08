@@ -1,34 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PresentationLayer;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import FunctionLayer.VirtualCalculator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author mohammahomarhariri
- */
-public class Visualisering extends Command {
+public class Visualisering extends Command
+{
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderBuilderException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
+    {
 
         VirtualCalculator vc = new VirtualCalculator();
+
+        double carportWidth = Double.parseDouble(request.getParameter("carportWidth"));
+        double carportLength = Double.parseDouble(request.getParameter("carportLength"));
+        double shedWidth = Double.parseDouble(request.getParameter("shedWidth"));
+        double shedLength = Double.parseDouble(request.getParameter("shedLength"));
         
-        String s = vc.sketch(700, 1200,600,500);
-        
-        
+        String s = vc.sketch(carportWidth, carportLength, shedWidth, shedLength);
+
         request.setAttribute("virtual", s);
-        
-                
+
         return "visualisering";
     }
-    
+
 }

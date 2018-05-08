@@ -1,6 +1,6 @@
 package PresentationLayer;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,7 @@ public class Forwarder extends Command
 {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderBuilderException
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
     {
         
        

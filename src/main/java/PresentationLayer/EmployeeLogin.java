@@ -7,14 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class OrderFinished extends Command {
+public class EmployeeLogin extends Command
+{
+
+
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException 
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
     {
-        return "orderfinishedpage";
+        return "employeelogin";
     }
-
-
     
 }

@@ -1,8 +1,4 @@
-<%-- 
-    Document   : visualisering
-    Created on : 01-05-2018, 13:27:12
-    Author     : mohammahomarhariri
---%>
+
 
 <%@page import="FunctionLayer.VirtualCalculator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

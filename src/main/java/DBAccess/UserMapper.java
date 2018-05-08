@@ -1,42 +1,44 @@
 package DBAccess;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.User;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 
 public class UserMapper
 {
 
-    public static void createUser(User user) throws LoginSampleException
+    private static DBConnector dbc = new DBConnector();
+
+    public static void createUser(User user) throws FogException
     {
         try
         {
-            Connection con = Connector.connection();
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getRole());
             ps.executeUpdate();
-        } catch (SQLException | ClassNotFoundException ex)
+            dbc.close();
+        } catch (SQLException ex)
         {
-            throw new LoginSampleException(ex.getMessage());
+            throw new FogException(ex.getMessage());
         }
     }
 
-    public static User login(String email, String password) throws LoginSampleException
+    public static User login(String email, String password) throws FogException
     {
         try
         {
-            Connection con = Connector.connection();
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "SELECT id, role FROM users "
                     + "WHERE email=? AND password=?";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
@@ -46,21 +48,17 @@ public class UserMapper
                 int id = rs.getInt("id");
                 User user = new User(email, password, role);
                 user.setId(id);
+                dbc.close();
                 return user;
             } else
             {
-                throw new LoginSampleException("Could not validate user");
+                dbc.close();
+                throw new FogException("Could not validate user");
             }
-        } catch (ClassNotFoundException | SQLException ex)
+        } catch (SQLException ex)
         {
-            throw new LoginSampleException(ex.getMessage());
+            throw new FogException(ex.getMessage());
         }
     }
-    
-            //PreparedStatement
-//            String sql = "select * from user where username = ? and password = ?";
-//            PreparedStatement preparedStatement = dbc.preparedStatement(sql);
-//            preparedStatement.setString(1, username);
-//            preparedStatement.setString(2, password);
-//            ResultSet resultSet = preparedStatement.executeQuery();
+
 }
