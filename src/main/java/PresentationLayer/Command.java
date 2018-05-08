@@ -1,6 +1,6 @@
 package PresentationLayer;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +32,8 @@ abstract class Command
         commands.put("employeeeditpage", new EmployeeEditOrder());
         commands.put("editorderpage", new EditOrder());
         commands.put("employeelogin", new EmployeeLogin());
+        commands.put("index", new UpdateIndex());
+        commands.put("visualisering", new Visualisering());
         
 
     }
@@ -47,7 +49,7 @@ abstract class Command
     }
 
     abstract String execute(HttpServletRequest request, HttpServletResponse response)
-            throws LoginSampleException, OrderBuilderException;
+            throws FogException, OrderBuilderException;
 
     }
 

@@ -2,7 +2,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class EditOrder extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderBuilderException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException {
 
         int id = Integer.parseInt(request.getParameter("id"));
         int tlf = Integer.parseInt(request.getParameter("tlf"));
