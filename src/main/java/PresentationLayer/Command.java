@@ -34,8 +34,9 @@ abstract class Command
         commands.put("employeelogin", new EmployeeLogin());
         commands.put("index", new UpdateIndex());
         commands.put("visualisering", new Visualisering());
+        commands.put("result", new Result());
         
-
+        
     }
 
     static Command from(HttpServletRequest request)

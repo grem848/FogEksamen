@@ -3,6 +3,9 @@ package PresentationLayer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,7 +24,11 @@ public class OrderConfirmed extends Command
         String email = request.getParameter("email");
         int slopedRoof = Integer.parseInt(request.getParameter("slopedRoof"));
 
-        LogicFacade.createOrder(tlf, email, length, width, height, shedLength, shedWidth, slopedRoof);
+        try {
+            LogicFacade.createOrder(tlf, email, length, width, height, shedLength, shedWidth, slopedRoof);
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderConfirmed.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         return "orderconfirmed";
     }

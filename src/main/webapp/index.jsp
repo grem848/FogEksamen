@@ -13,8 +13,7 @@
     int shedLength = (request.getAttribute("shedLength") == null ? 0 : (int) request.getAttribute("shedLength"));
     boolean noShed = (request.getAttribute("noShed") == null ? false : (boolean) request.getAttribute("noShed"));
 
-    switch (inputHeight)
-    {
+    switch (inputHeight) {
         /*
         200 height of SVG path = 200cm
         195 height of SVG path = 210cm
@@ -58,8 +57,7 @@
             totalHeight = actualHeight + 15;
             break;
     }
-    switch (inputLength)
-    {
+    switch (inputLength) {
 
         case 690:
             outputLength = 240;
@@ -200,19 +198,16 @@
             <br>
             <input type="checkbox" name="noShed" value="true"
                    <%
-                       if (noShed == true)
-                       {
+                       if (noShed == true) {
                            out.println("checked");
-                       } else
-                       {
+                       } else {
 
                            out.println("<input type='hidden' name='noShed' value='false'");
                        }
                    %>
                    />
             I don't want a shed, uncheck to see shed options again
-            <% if (noShed == false)
-                {%>
+            <% if (noShed == false) {%>
             <br>
             <br>
             Carport Shed Width
@@ -445,6 +440,11 @@
     </form>
     <br>
     <p>Johannes Fog A/S</p>
+
+    <form name="Building" action="FrontController" method="POST">
+        <input type="hidden" name="command" value="result" />
+        <input type="submit" value="Result" />
+    </form>
 
 </body>
 </html>
