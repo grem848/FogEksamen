@@ -9,10 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Help extends Command
 {
 
-    public Help()
-    {
-    }
-
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws FogException
     {

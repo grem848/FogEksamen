@@ -2,6 +2,7 @@ package FunctionLayer;
 
 import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
+import java.sql.SQLException;
 import java.util.List;
 
 public class LogicFacade {
@@ -16,7 +17,7 @@ public class LogicFacade {
         return user;
     }
 
-    public static Order createOrder(int tlf, String email, int length, int width, int height, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException {
+    public static Order createOrder(int tlf, String email, int length, int width, int height, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException, SQLException {
         Order order = new Order(tlf, email, length, height, width, shedLength, shedWidth, slopedRoof);
         OrderMapper.OrderToDB(order);
 
