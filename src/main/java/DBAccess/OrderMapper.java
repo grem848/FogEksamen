@@ -2,23 +2,25 @@ package DBAccess;
 
 import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
-import FunctionLayer.User;
-
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderMapper {
+public class OrderMapper
+{
 
-    public static boolean OrderToDB(Order order) throws OrderBuilderException {
-        try {
-            Connection con = Connector.connection();
+    private static DBConnector dbc = new DBConnector();
+
+    public static boolean OrderToDB(Order order) throws OrderBuilderException, SQLException
+    {
+        try
+        {
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "INSERT INTO orders (tlf, email, length, width, height, shedLength, shedWidth, slopedRoof) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setInt(1, order.getTlf());
             ps.setString(2, order.getEmail());
             ps.setInt(3, order.getLength());
@@ -28,11 +30,12 @@ public class OrderMapper {
             ps.setInt(7, order.getShedWidth());
             ps.setInt(8, order.getSlopedRoof());
             ps.executeUpdate();
+            dbc.close();
 
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex)
+        {
             throw new OrderBuilderException(ex.getMessage());
         }
-
         return false;
     }
 
@@ -68,18 +71,22 @@ public class OrderMapper {
 //            throw new OrderBuilderException(ex.getMessage());
 //        }
 //    }
-    public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException {
+    public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException
+    {
         List<Order> orderList;
-        try {
-            Connection connection = Connector.connection();
+        try
+        {
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "SELECT * FROM orders WHERE status='request'";
-            PreparedStatement statement = connection.prepareStatement(SQL);
+            PreparedStatement statement = dbc.preparedStatement(SQL);
 
             ResultSet rs = statement.executeQuery();
 
             orderList = new ArrayList<>();
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int id = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -92,51 +99,66 @@ public class OrderMapper {
                 String status = rs.getString("status");
                 orderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status));
             }
-
+            dbc.close();
             return orderList;
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex)
+        {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static void setStatusOrder(int id) throws OrderBuilderException {
-        try {
-            Connection con = Connector.connection();
+    public static void setStatusOrder(int id) throws OrderBuilderException
+    {
+        try
+        {
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "UPDATE orders SET status='order' WHERE id = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setInt(1, id);
             ps.executeUpdate();
-            
-        } catch (ClassNotFoundException | SQLException ex) {
+            dbc.close();
+
+        } catch (SQLException ex)
+        {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static void setStatusDone(int id) throws OrderBuilderException {
-        try {
-            Connection con = Connector.connection();
+    public static void setStatusDone(int id) throws OrderBuilderException
+    {
+        try
+        {
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "UPDATE orders SET status='done' WHERE id = ?";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setInt(1, id);
             ps.executeUpdate();
-            
-        } catch (ClassNotFoundException | SQLException ex) {
+            dbc.close();
+
+        } catch (SQLException ex)
+        {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException {
+    public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException
+    {
         List<Order> statusOrderList;
-        try {
-            Connection connection = Connector.connection();
+        try
+        {
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "SELECT * FROM orders WHERE status='order';";
-            PreparedStatement statement = connection.prepareStatement(SQL);
+            PreparedStatement statement = dbc.preparedStatement(SQL);
 
             ResultSet rs = statement.executeQuery();
 
             statusOrderList = new ArrayList<>();
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int id = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -149,26 +171,32 @@ public class OrderMapper {
                 String status = rs.getString("status");
                 statusOrderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status));
             }
+            dbc.close();
 
             return statusOrderList;
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex)
+        {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static Order getOrder(int id) throws OrderBuilderException {
+    public static Order getOrder(int id) throws OrderBuilderException
+    {
 
-        try {
-            Connection connection = Connector.connection();
+        try
+        {
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "SELECT * FROM orders WHERE id = ?";
-            PreparedStatement statement = connection.prepareStatement(SQL);
+            PreparedStatement statement = dbc.preparedStatement(SQL);
             statement.setInt(1, id);
 
             ResultSet rs = statement.executeQuery();
 
             Order o = null;
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int id2 = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -181,18 +209,22 @@ public class OrderMapper {
                 String status = rs.getString("status");
                 o = new Order(id2, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, status);
             }
-
+            dbc.close();
             return o;
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex)
+        {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException {
-        try {
-            Connection con = Connector.connection();
+    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException
+    {
+        try
+        {
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
             String SQL = "UPDATE orders SET tlf = ?, email = ?, height = ?, length = ?, width = ?, shedLength = ?, shedWidth = ?, slopedRoof = ? WHERE id = ?;";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = dbc.preparedStatement(SQL);
             ps.setInt(1, tlf);
             ps.setString(2, email);
             ps.setInt(3, height);
@@ -203,30 +235,12 @@ public class OrderMapper {
             ps.setInt(8, slopedRoof);
             ps.setInt(9, id);
             ps.executeUpdate();
-            
-        } catch (ClassNotFoundException | SQLException ex) {
+            dbc.close();
+
+        } catch (SQLException ex)
+        {
             throw new OrderBuilderException(ex.getMessage());
         }
 
     }
-    
-//        public static void orderFinished(int id) throws OrderBuilderException {
-//
-//        try {
-//            Connection con = Connector.connection();
-//            String SQL = " SELECT * FROM orders WHERE id=" + id + ";";
-//            PreparedStatement ps = con.prepareStatement(SQL);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//
-//                String nextSQL = "UPDATE orders SET status='done' WHERE id =" + id + ";";
-//                ps.execute(nextSQL);
-//
-//            } else {
-//                throw new OrderBuilderException("Could not validate Order");
-//            }
-//        } catch (ClassNotFoundException | SQLException ex) {
-//            throw new OrderBuilderException(ex.getMessage());
-//        }
-    }
-
+}

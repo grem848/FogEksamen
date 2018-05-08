@@ -1,7 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
 import FunctionLayer.User;
@@ -14,7 +14,7 @@ public class Orderlist extends Command
 {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderBuilderException
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
     {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
