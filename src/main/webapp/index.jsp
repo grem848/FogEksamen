@@ -299,7 +299,7 @@
                 </tr>
             </table>
             <br>
-            <input type="hidden" name="command" value="index" />
+            <input type="hidden" name="command" value="update" />
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>" />
             <input type="hidden" name="shedLength" value="<%=shedLength%>" />
             <input type="submit" value="Update Drawing" />
