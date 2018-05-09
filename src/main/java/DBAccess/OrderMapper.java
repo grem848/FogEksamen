@@ -2,6 +2,7 @@ package DBAccess;
 
 import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
+import FunctionLayer.Product;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -242,5 +243,37 @@ public class OrderMapper
             throw new OrderBuilderException(ex.getMessage());
         }
 
+    }
+        public static List<Product> getAllProducts() throws OrderBuilderException
+    {
+        List<Product> productList;
+        try
+        {
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
+            String SQL = "SELECT * FROM products";
+            PreparedStatement statement = dbc.preparedStatement(SQL);
+
+            ResultSet rs = statement.executeQuery();
+
+            productList = new ArrayList<>();
+
+            while (rs.next())
+            {
+                String ratio = rs.getString("ratio");
+                int priceforeach = rs.getInt("priceforeach");
+                String productname = rs.getString("productname");
+                
+                productList.add(new Product(productname, ratio, priceforeach));
+                
+            }
+            
+            dbc.close();
+
+            return productList;
+        } catch (SQLException ex)
+        {
+            throw new OrderBuilderException(ex.getMessage());
+        }
     }
 }
