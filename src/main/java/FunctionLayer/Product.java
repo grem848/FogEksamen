@@ -21,7 +21,6 @@ public class Product {
     private List<Product> res = new ArrayList();
     private int amount;
     
-
     public Product(String name, String ratio, int price) {
         this.name = name;
         this.ratio = ratio;
@@ -33,7 +32,6 @@ public class Product {
         this.price = price;
         this.amount = amount;
     }
-
     
     public String getName() {
         return name;

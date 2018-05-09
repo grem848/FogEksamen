@@ -81,7 +81,7 @@ public class BOMCalculator {
 
         calculatePrice();
 
-        res.add(new Product("4.5 x 60 mm Screws 200 pcs.", priceAngleBracket, angleBracket));
+        res.add(new Product("Angle Bracket 35", priceAngleBracket, angleBracket));
         res.add(new Product("Bracket Screws 4.0 x 50mm. 250 pcs.", priceBracketScrews50mm, bracketScrews50mm));
         res.add(new Product("Carriage Bolt 10 x 120mm", priceCarriageBolt, carriageBolt));
         res.add(new Product("Farmgate Grip 50 x 75", priceFarmgateGrip, farmgateGrip));
@@ -101,7 +101,7 @@ public class BOMCalculator {
 
     private void calculateBOM() {
 
-        angleBracket = (int) Math.ceil((assignRatio("4.5 x 60 mm Screws 200 pcs.") * area));
+        angleBracket = (int) Math.ceil((assignRatio("Angle Bracket 35") * area));
         bracketScrews50mm = (int) Math.ceil((assignRatio("Bracket Screws 4.0 x 50mm. 250 pcs.") * area));
         carriageBolt = (int) Math.ceil((assignRatio("Carriage Bolt 10 x 120mm") * area));
         farmgateGrip = (int) Math.ceil((assignRatio("Farmgate Grip 50 x 75") * area));
@@ -119,7 +119,7 @@ public class BOMCalculator {
 
     private void calculatePrice() {
 
-        priceAngleBracket = (int) ((assignPrice("4.5 x 60 mm Screws 200 pcs.") * angleBracket));
+        priceAngleBracket = (int) ((assignPrice("Angle Bracket 35") * angleBracket));
         priceBracketScrews50mm = (int) ((assignPrice("Bracket Screws 4.0 x 50mm. 250 pcs.") * bracketScrews50mm));
         priceCarriageBolt = (int) ((assignPrice("Carriage Bolt 10 x 120mm") * carriageBolt));
         priceFarmgateGrip = (int) ((assignPrice("Farmgate Grip 50 x 75") * farmgateGrip));
