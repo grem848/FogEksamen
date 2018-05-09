@@ -17,11 +17,13 @@ public class BOMCalculator {
 
     private int length;
     private int width;
+    
+    private int endPrice;
 
     private List<Product> products;
-    
+
     private List<Product> res = new ArrayList();
-    
+
     private double area;
 
 //    private final double ratioPlastmoBottomScrews;
@@ -78,7 +80,7 @@ public class BOMCalculator {
         calculateBOM();
 
         calculatePrice();
-         
+
         res.add(new Product("4.5 x 60 mm Screws 200 pcs.", priceAngleBracket, angleBracket));
         res.add(new Product("Bracket Screws 4.0 x 50mm. 250 pcs.", priceBracketScrews50mm, bracketScrews50mm));
         res.add(new Product("Carriage Bolt 10 x 120mm", priceCarriageBolt, carriageBolt));
@@ -92,59 +94,75 @@ public class BOMCalculator {
         res.add(new Product("4.5 x 50 mm Screws 300 pcs.", priceScrews50mm, screws50mm));
         res.add(new Product("4.5 x 60 mm Screws 200 pcs.", priceScrews60mm, screws60mm));
         res.add(new Product("4.5 x 70mm Screws 300 pcs. ", priceScrews70mm, screws70mm));
+        res.add(new Product("end Price", endPrice, 0));
         
 
     }
 
     private void calculateBOM() {
 
-        angleBracket = (int) Math.ceil(assignValue("4.5 x 60 mm Screws 200 pcs.") * area);
-        bracketScrews50mm = (int) Math.ceil(assignValue("Bracket Screws 4.0 x 50mm. 250 pcs.") * area);
-        carriageBolt = (int) Math.ceil(assignValue("Carriage Bolt 10 x 120mm") * area);
-        farmgateGrip = (int) Math.ceil(assignValue("Farmgate Grip 50 x 75") * area);
-        perforatedBand = (int) Math.ceil(assignValue("Perforated Band 1 x 20mm 10 mtr.") * area);
-        plastmoBottomScrews = (int) Math.ceil(assignValue("Plastmo Bottom Screws 200 pcs.") * area);
-        screws50mm = (int) Math.ceil(assignValue("4.5 x 50 mm Screws 300 pcs.") * area);
-        screws60mm = (int) Math.ceil(assignValue("4.5 x 60 mm Screws 200 pcs.") * area);
-        screws70mm = (int) Math.ceil(assignValue("4.5 x 70mm Screws 300 pcs. ") * area);
-        squarePost = (int) Math.ceil(assignValue("Square Slices 40x40x11mm") * area);
-        tHinge = (int) Math.ceil(assignValue("T Hinge 390mm") * area);
-        universalLeft = (int) Math.ceil(assignValue("Universal 190 mm Left") * area);
-        universalRight = (int) Math.ceil(assignValue("Universal 190 mm Right") * area);
+        angleBracket = (int) Math.ceil((assignRatio("4.5 x 60 mm Screws 200 pcs.") * area));
+        bracketScrews50mm = (int) Math.ceil((assignRatio("Bracket Screws 4.0 x 50mm. 250 pcs.") * area));
+        carriageBolt = (int) Math.ceil((assignRatio("Carriage Bolt 10 x 120mm") * area));
+        farmgateGrip = (int) Math.ceil((assignRatio("Farmgate Grip 50 x 75") * area));
+        perforatedBand = (int) Math.ceil((assignRatio("Perforated Band 1 x 20mm 10 mtr.") * area));
+        plastmoBottomScrews = (int) Math.ceil((assignRatio("Plastmo Bottom Screws 200 pcs.") * area));
+        screws50mm = (int) Math.ceil((assignRatio("4.5 x 50 mm Screws 300 pcs.") * area));
+        screws60mm = (int) Math.ceil((assignRatio("4.5 x 60 mm Screws 200 pcs.") * area));
+        screws70mm = (int) Math.ceil((assignRatio("4.5 x 70mm Screws 300 pcs. ") * area));
+        squarePost = (int) Math.ceil((assignRatio("Square Slices 40x40x11mm") * area));
+        tHinge = (int) Math.ceil((assignRatio("T Hinge 390mm") * area));
+        universalLeft = (int) Math.ceil((assignRatio("Universal 190 mm Left") * area));
+        universalRight = (int) Math.ceil((assignRatio("Universal 190 mm Right") * area));
 
     }
 
     private void calculatePrice() {
 
-        priceAngleBracket = (int) ((assignValue("4.5 x 60 mm Screws 200 pcs.") * angleBracket));
-        priceBracketScrews50mm = (int) ((assignValue("Bracket Screws 4.0 x 50mm. 250 pcs.") * area));
-        priceCarriageBolt = (int) ((assignValue("Carriage Bolt 10 x 120mm") * area));
-        priceFarmgateGrip = (int) ((assignValue("Farmgate Grip 50 x 75") * area));
-        pricePerforatedBand = (int) ((assignValue("Perforated Band 1 x 20mm 10 mtr.") * area));
-        plastmoBottomScrews = (int) ((assignValue("Plastmo Bottom Screws 200 pcs.") * area));
-        priceSquarePost = (int) ((assignValue("Square Slices 40x40x11mm") * area));
-        priceTHinge = (int) ((assignValue("T Hinge 390mm") * area));
-        priceUniversalLeft = (int) ((assignValue("Universal 190 mm Left") * area));
-        priceUniversalRight = (int) ((assignValue("Universal 190 mm Right") * area));
-        priceScrews50mm = (int) ((assignValue("4.5 x 50 mm Screws 300 pcs.") * area));
-        priceScrews60mm = (int) ((assignValue("4.5 x 60 mm Screws 200 pcs.") * area));
-        priceScrews70mm = (int) ((assignValue("4.5 x 70mm Screws 300 pcs. ") * area));
+        priceAngleBracket = (int) ((assignPrice("4.5 x 60 mm Screws 200 pcs.") * angleBracket));
+        priceBracketScrews50mm = (int) ((assignPrice("Bracket Screws 4.0 x 50mm. 250 pcs.") * bracketScrews50mm));
+        priceCarriageBolt = (int) ((assignPrice("Carriage Bolt 10 x 120mm") * carriageBolt));
+        priceFarmgateGrip = (int) ((assignPrice("Farmgate Grip 50 x 75") * farmgateGrip));
+        pricePerforatedBand = (int) ((assignPrice("Perforated Band 1 x 20mm 10 mtr.") * perforatedBand));
+        pricePlastmoBottomScrews = (int) ((assignPrice("Plastmo Bottom Screws 200 pcs.") * plastmoBottomScrews));
+        priceSquarePost = (int) ((assignPrice("Square Slices 40x40x11mm") * squarePost));
+        priceTHinge = (int) ((assignPrice("T Hinge 390mm") * tHinge));
+        priceUniversalLeft = (int) ((assignPrice("Universal 190 mm Left") * universalLeft));
+        priceUniversalRight = (int) ((assignPrice("Universal 190 mm Right") * universalRight));
+        priceScrews50mm = (int) ((assignPrice("4.5 x 50 mm Screws 300 pcs.") * screws50mm));
+        priceScrews60mm = (int) ((assignPrice("4.5 x 60 mm Screws 200 pcs.") * screws60mm));
+        priceScrews70mm = (int) ((assignPrice("4.5 x 70mm Screws 300 pcs. ") * screws70mm));
+        
+        endPrice = priceAngleBracket + priceBracketScrews50mm + priceCarriageBolt + priceFarmgateGrip + pricePlastmoBottomScrews + pricePerforatedBand + priceScrews50mm + priceScrews60mm + priceScrews70mm + priceSquarePost + priceTHinge + priceUniversalLeft+ priceUniversalRight;
 
     }
-    
 
-    private double assignValue(String name) {
+    private double assignRatio(String name) {
 
         double ratio = 0;
 
         for (Product product : products) {
 
             if (name.equals(product.getName())) {
-                ratio = product.getRatio();
+                ratio = Double.parseDouble(product.getRatio());
             }
         }
 
         return ratio;
+    }
+
+    private double assignPrice(String name) {
+
+        double price = 0;
+
+        for (Product product : products) {
+
+            if (name.equals(product.getName())) {
+                price = product.getPrice();
+            }
+        }
+
+        return price;
     }
 
     public List<Product> getRes() {
@@ -154,7 +172,7 @@ public class BOMCalculator {
     public void setRes(List<Product> res) {
         this.res = res;
     }
-    
+
     public List<Product> getProducts() {
         return products;
     }
@@ -266,7 +284,7 @@ public class BOMCalculator {
     public void setPriceAngleBracket(int priceAngleBracket) {
         this.priceAngleBracket = priceAngleBracket;
     }
-    
+
     public int getLength() {
         return length;
     }

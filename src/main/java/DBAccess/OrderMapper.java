@@ -260,7 +260,7 @@ public class OrderMapper
 
             while (rs.next())
             {
-                double ratio = rs.getInt("ratio");
+                String ratio = rs.getString("ratio");
                 int priceforeach = rs.getInt("priceforeach");
                 String productname = rs.getString("productname");
                 
