@@ -57,5 +57,10 @@ public class LogicFacade {
 
         OrderMapper.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof);;
     }
+    
+    public static List<Product> getProductsFromDB() throws OrderBuilderException{
+        
+        return OrderMapper.getAllProducts();
+    }
 
 }

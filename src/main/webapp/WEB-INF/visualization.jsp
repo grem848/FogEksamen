@@ -14,8 +14,16 @@
         <%= request.getAttribute("virtual")%>
 
         </SVG>
-    <form>
-        <input type="button" value="Back to Customer Page" onclick="history.back()">
-    </form>
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="result"/>
+            <input type="hidden" name="carportWidth" value="<%=request.getParameter("carportWidth")%>">
+            <input type="hidden" name="carportLength" value="<%=request.getParameter("carportLength")%>">
+            <input type="hidden" name="shedWidth" value="<%=request.getParameter("shedWidth")%>">
+            <input type="hidden" name="shedLength" value="<%=request.getParameter("shedLength")%>">
+            <input type="submit" value="Result"/>
+        </form>
+        <form>
+            <input type="button" value="Back to Customer Page" onclick="history.back()">
+        </form>
     </body>
 </html>
