@@ -12,28 +12,37 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+
+        </style>
     </head>
     <body>
-        <h1>view the producs!</h1>
-        
-                <table class="table table-striped">
+        <h1>Bill of Materials!</h1>
+        <table>
             <tr>
                 <th>Product</th>
                 <th>Amount</th> 
                 <th>Price</th>
+                <th></th>
             </tr>
-            <%
 
-                if (request.getAttribute("res") != null) {
+            <%
+                request.getParameter("shedLength");
+                if (request.getAttribute("res") != null)
+                {
 
                     List<Product> res = (List<Product>) request.getAttribute("res");
 
-                    for (Product product : res) {
+                    for (Product product : res)
+                    {
             %>
             <tr>
                 <td><%= product.getName()%></td>
                 <td><%= product.getAmount()%></td>
-                <td><%= product.getPrice()%></td>
+                <td><%= product.getPrice()%> DKK</td>
                 <td>
 
                 </td>
@@ -41,6 +50,6 @@
             <% }
                 }%>
         </table>
-        
+
     </body>
 </html>

@@ -32,8 +32,8 @@ abstract class Command
         commands.put("employeeeditpage", new EmployeeEditOrder());
         commands.put("editorderpage", new EditOrder());
         commands.put("employeelogin", new EmployeeLogin());
-        commands.put("index", new UpdateIndex());
-        commands.put("visualisering", new Visualisering());
+        commands.put("update", new UpdateIndex());
+        commands.put("visualization", new Visualization());
         commands.put("result", new Result());
         
         

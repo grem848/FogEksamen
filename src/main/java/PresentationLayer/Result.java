@@ -8,8 +8,6 @@ package PresentationLayer;
 import FunctionLayer.BOMCalculator;
 import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
-import FunctionLayer.Product;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,20 +15,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mohammahomarhariri
  */
-public class Result extends Command {
-
-    public Result() {
-    }
+public class Result extends Command
+{
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException {
-       
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
+    {
         
-        BOMCalculator b = new BOMCalculator(4, 9);
+        int carportWidth = Integer.parseInt(request.getParameter("carportWidth"));
+        int carportLength = Integer.parseInt(request.getParameter("carportLength"));
+        int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
+        int shedLength = Integer.parseInt(request.getParameter("shedLength"));
+
+        BOMCalculator b = new BOMCalculator(carportLength / 100, carportWidth / 100);
 
         request.setAttribute("res", b.getRes());
-        
+
         return "result";
     }
-    
+
 }
