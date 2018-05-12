@@ -23,6 +23,9 @@
         <h1>Bill of Materials!</h1>
         <table>
             <tr>
+                <th>Beslag & Skruer</
+            </tr>
+            <tr>
                 <th>Product</th>
                 <th>Amount</th> 
                 <th>Price</th>
@@ -37,6 +40,38 @@
                     List<Product> res = (List<Product>) request.getAttribute("res");
 
                     for (Product product : res)
+                    {
+            %>
+            <tr>
+                <td><%= product.getName()%></td>
+                <td><%= product.getAmount()%></td>
+                <td><%= product.getPrice()%> DKK</td>
+                <td>
+
+                </td>
+            </tr>
+            <% }
+                }%>
+        </table>
+        <table>
+            <tr>
+                <th>Træ & Tagplader</
+            </tr>
+            <tr>
+                <th>Product</th>
+                <th>Amount</th> 
+                <th>Price</th>
+                <th></th>
+            </tr>
+
+            <%
+                request.getParameter("shedLength");
+                if (request.getAttribute("res2") != null)
+                {
+
+                    List<Product> res2 = (List<Product>) request.getAttribute("res2");
+
+                    for (Product product : res2)
                     {
             %>
             <tr>

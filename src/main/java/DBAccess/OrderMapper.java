@@ -9,15 +9,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderMapper
-{
+public class OrderMapper {
 
     private static DBConnector dbc = new DBConnector();
 
-    public static boolean OrderToDB(Order order) throws OrderBuilderException, SQLException
-    {
-        try
-        {
+    public static boolean OrderToDB(Order order) throws OrderBuilderException, SQLException {
+        try {
             dbc.setDataSource(new DataSource().getDataSource());
             dbc.open();
             String SQL = "INSERT INTO orders (tlf, email, length, width, height, shedLength, shedWidth, slopedRoof) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -33,8 +30,7 @@ public class OrderMapper
             ps.executeUpdate();
             dbc.close();
 
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
         return false;
@@ -72,11 +68,9 @@ public class OrderMapper
 //            throw new OrderBuilderException(ex.getMessage());
 //        }
 //    }
-    public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException
-    {
+    public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException {
         List<Order> orderList;
-        try
-        {
+        try {
             dbc.setDataSource(new DataSource().getDataSource());
             dbc.open();
             String SQL = "SELECT * FROM orders WHERE status='request'";
@@ -86,8 +80,7 @@ public class OrderMapper
 
             orderList = new ArrayList<>();
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -102,16 +95,13 @@ public class OrderMapper
             }
             dbc.close();
             return orderList;
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static void setStatusOrder(int id) throws OrderBuilderException
-    {
-        try
-        {
+    public static void setStatusOrder(int id) throws OrderBuilderException {
+        try {
             dbc.setDataSource(new DataSource().getDataSource());
             dbc.open();
             String SQL = "UPDATE orders SET status='order' WHERE id = ?";
@@ -120,16 +110,13 @@ public class OrderMapper
             ps.executeUpdate();
             dbc.close();
 
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static void setStatusDone(int id) throws OrderBuilderException
-    {
-        try
-        {
+    public static void setStatusDone(int id) throws OrderBuilderException {
+        try {
             dbc.setDataSource(new DataSource().getDataSource());
             dbc.open();
             String SQL = "UPDATE orders SET status='done' WHERE id = ?";
@@ -138,17 +125,14 @@ public class OrderMapper
             ps.executeUpdate();
             dbc.close();
 
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException
-    {
+    public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException {
         List<Order> statusOrderList;
-        try
-        {
+        try {
             dbc.setDataSource(new DataSource().getDataSource());
             dbc.open();
             String SQL = "SELECT * FROM orders WHERE status='order';";
@@ -158,8 +142,7 @@ public class OrderMapper
 
             statusOrderList = new ArrayList<>();
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -175,17 +158,14 @@ public class OrderMapper
             dbc.close();
 
             return statusOrderList;
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static Order getOrder(int id) throws OrderBuilderException
-    {
+    public static Order getOrder(int id) throws OrderBuilderException {
 
-        try
-        {
+        try {
             dbc.setDataSource(new DataSource().getDataSource());
             dbc.open();
             String SQL = "SELECT * FROM orders WHERE id = ?";
@@ -196,8 +176,7 @@ public class OrderMapper
 
             Order o = null;
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 int id2 = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -212,16 +191,13 @@ public class OrderMapper
             }
             dbc.close();
             return o;
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
     }
 
-    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException
-    {
-        try
-        {
+    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException {
+        try {
             dbc.setDataSource(new DataSource().getDataSource());
             dbc.open();
             String SQL = "UPDATE orders SET tlf = ?, email = ?, height = ?, length = ?, width = ?, shedLength = ?, shedWidth = ?, slopedRoof = ? WHERE id = ?;";
@@ -238,41 +214,65 @@ public class OrderMapper
             ps.executeUpdate();
             dbc.close();
 
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
 
     }
-        public static List<Product> getAllProducts() throws OrderBuilderException
-    {
+
+    public static List<Product> getAllBracketsScrews() throws OrderBuilderException {
         List<Product> productList;
-        try
-        {
+        try {
             dbc.setDataSource(new DataSource().getDataSource());
             dbc.open();
-            String SQL = "SELECT * FROM products";
+            String SQL = "SELECT * FROM bracketsScrews";
             PreparedStatement statement = dbc.preparedStatement(SQL);
 
             ResultSet rs = statement.executeQuery();
 
             productList = new ArrayList<>();
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 String ratio = rs.getString("ratio");
                 int priceforeach = rs.getInt("priceforeach");
                 String productname = rs.getString("productname");
-                
+
                 productList.add(new Product(productname, ratio, priceforeach));
-                
+
             }
-            
+
             dbc.close();
 
             return productList;
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
+            throw new OrderBuilderException(ex.getMessage());
+        }
+    }
+
+    public static List<Product> getAllWoodEaves() throws OrderBuilderException {
+        List<Product> productList;
+        try {
+            dbc.setDataSource(new DataSource().getDataSource());
+            dbc.open();
+            String SQL = "SELECT * FROM woodEaves";
+            PreparedStatement statement = dbc.preparedStatement(SQL);
+
+            ResultSet rs = statement.executeQuery();
+
+            productList = new ArrayList<>();
+
+            while (rs.next()) {
+                int priceforeach = rs.getInt("priceforeach");
+                String productname = rs.getString("product");
+
+                productList.add(new Product(productname, priceforeach));
+
+            }
+
+            dbc.close();
+
+            return productList;
+        } catch (SQLException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
     }

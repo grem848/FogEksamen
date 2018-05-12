@@ -12,7 +12,11 @@ public class VirtualCalculator
 //        this.width = width;
 //    }
     private boolean isShed;
-
+    
+    private int postAmount = 0;
+    private int rafterAmount = 2;
+    
+    
     public String sketch(double width, double length, double shedWidth, double shedLength)
     {
 
@@ -76,6 +80,7 @@ public class VirtualCalculator
             sb.append("<line x1=" + postDistance + "  y1=0  x2=" + postDistance + " y2=" + width + " style='stroke:#006600;' fill='black' />\n");
 
             postDistance += 55;
+            rafterAmount++;
         }
 
         return sb.toString();
@@ -98,12 +103,15 @@ public class VirtualCalculator
                         + " style = stroke:#000000; />\n");
 
                 x += ((length - 55) / 2);
+                postAmount++;
 
             }
             sb.append("<rect  x = " + (length - 10) + " y = " + 35 + " height = " + 10 + " width = " + 10
                     + " style = stroke:#000000; />\n");
+            postAmount++;
             sb.append("<rect  x = " + (length - 10) + " y = " + (width - 45) + " height = " + 10 + " width = " + 10
                     + " style = stroke:#000000; />\n");
+            postAmount++;
             x = 55;
             //nederst
             for (int i = 0; i < 2; i++)
@@ -124,6 +132,7 @@ public class VirtualCalculator
                         + " style = stroke:#000000; />\n");
 
                 x += (((length - 55) - shedLength) / 2);
+                postAmount++;
 
             }
             x = 55;
@@ -135,6 +144,7 @@ public class VirtualCalculator
                         + " style = stroke:#000000; />\n");
 
                 x += (((length - 55) - shedLength) / 2);
+                postAmount++;
 
             }
 
@@ -298,5 +308,23 @@ public class VirtualCalculator
     {
         this.sb = sb;
     }
+
+    public int getPostAmount() {
+        return postAmount;
+    }
+
+    public void setPostAmount(int postAmount) {
+        this.postAmount = postAmount;
+    }
+
+    public int getRafterAmount() {
+        return rafterAmount;
+    }
+
+    public void setRafterAmount(int rafterAmount) {
+        this.rafterAmount = rafterAmount;
+    }
+    
+    
 
 }

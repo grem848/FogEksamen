@@ -57,10 +57,15 @@ public class LogicFacade {
 
         OrderMapper.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof);;
     }
-    
-    public static List<Product> getProductsFromDB() throws OrderBuilderException{
-        
-        return OrderMapper.getAllProducts();
+
+    public static List<Product> getProductsFromDB() throws OrderBuilderException {
+
+        return OrderMapper.getAllBracketsScrews();
+    }
+
+    public static List<Product> getProductsFromDB2() throws OrderBuilderException {
+
+        return OrderMapper.getAllWoodEaves();
     }
 
 }
