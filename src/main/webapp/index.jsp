@@ -257,10 +257,6 @@
                 <option value="660">660 cm</option>
                 <option value="690">690 cm</option>
             </select>
-            <p>tlf:</p>
-            <input type="text" name="tlf" placeholder="12345678" value="1">
-            <p>Email:</p>
-            <input type="text" name="email" placeholder="something@nothing.dk" value="hej">
             <br>
             <br>
             <% }%>
@@ -318,8 +314,29 @@
             <input type="hidden" name="carportLength" value="<%=outputLength%>">
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
-            <input type="submit" value="Send Request">
+            <input type="submit" value="Watch Visulaization">
         </form>
+            
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="requestsenttodb">
+            <input type="hidden" name="carportWidth" value="<%=width%>">
+            <input type="hidden" name="carportheight" value="<%=inputHeight%>">
+            <input type="hidden" name="carportLength" value="<%=outputLength%>">
+            <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
+            <input type="hidden" name="shedLength" value="<%=shedLength%>">
+            <p>Tlf</p>
+            <input type="text"name="tlf" placeholder="12345678" value="1">
+            <p>Email:</p>
+            <input type="text" name="email" placeholder="email@email.dk" value="email@email.dk">
+            <p>slopedRoof</p>
+            <input type="text" name="slopedRoof" placeholder="84" value="85">
+            <input type="submit" value="Send request to db">
+        </form>
+            
+            
+            
+            
+            
         <br>
         <br>
 
