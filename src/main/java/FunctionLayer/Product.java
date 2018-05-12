@@ -16,9 +16,11 @@ public class Product {
     
     private String name;
     private String ratio;
+    
     private int price;
     
     private List<Product> res = new ArrayList();
+    
     private int amount;
     
     public Product(String name, String ratio, int price) {

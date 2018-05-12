@@ -29,7 +29,7 @@ public class Result extends Command
 
         BOMCalculator b = new BOMCalculator(carportLength / 100, carportWidth / 100);
 
-        request.setAttribute("res", b.getRes());
+        request.setAttribute("res", b.getResDemo());
 
         return "result";
     }
