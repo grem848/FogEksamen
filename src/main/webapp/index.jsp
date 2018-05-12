@@ -257,10 +257,13 @@
                 <option value="660">660 cm</option>
                 <option value="690">690 cm</option>
             </select>
+            <p>tlf:</p>
+            <input type="text" name="tlf" placeholder="12345678" value="1">
+            <p>Email:</p>
+            <input type="text" name="email" placeholder="something@nothing.dk" value="hej">
+            <br>
+            <br>
             <% }%>
-            <br>
-            <br>
-            <br>
             Your Current Carport!
             <br>
             <table>

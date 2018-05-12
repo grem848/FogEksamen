@@ -17,6 +17,9 @@ public class BOMCalculator {
 
     private int length;
     private int width;
+    private int shedWidth;
+    private int shedLength;
+    
     
     private int endPrice;
 
@@ -68,10 +71,11 @@ public class BOMCalculator {
     private int priceTHinge = 0;
     private int priceAngleBracket = 0;
 
-    public BOMCalculator(int length, int width) throws OrderBuilderException {
+    public BOMCalculator(int length, int width, int shedWidth) throws OrderBuilderException {
 
         this.length = length;
         this.width = width;
+        this.shedWidth = shedWidth;
 
         this.area = length * width;
 
@@ -81,37 +85,48 @@ public class BOMCalculator {
 
         calculatePrice();
 
-        res.add(new Product("Angle Bracket 35", priceAngleBracket, angleBracket));
         res.add(new Product("Bracket Screws 4.0 x 50mm. 250 pcs.", priceBracketScrews50mm, bracketScrews50mm));
         res.add(new Product("Carriage Bolt 10 x 120mm", priceCarriageBolt, carriageBolt));
-        res.add(new Product("Farmgate Grip 50 x 75", priceFarmgateGrip, farmgateGrip));
         res.add(new Product("Perforated Band 1 x 20mm 10 mtr.", pricePerforatedBand, perforatedBand));
         res.add(new Product("Plastmo Bottom Screws 200 pcs.", pricePlastmoBottomScrews, plastmoBottomScrews));
         res.add(new Product("Square Slices 40x40x11mm", priceSquarePost, squarePost));
-        res.add(new Product("T Hinge 390mm", priceTHinge, tHinge));
         res.add(new Product("Universal 190 mm Left", priceUniversalLeft, universalLeft));
         res.add(new Product("Universal 190 mm Right", priceUniversalRight, universalRight));
         res.add(new Product("4.5 x 50 mm Screws 300 pcs.", priceScrews50mm, screws50mm));
         res.add(new Product("4.5 x 60 mm Screws 200 pcs.", priceScrews60mm, screws60mm));
         res.add(new Product("4.5 x 70mm Screws 300 pcs. ", priceScrews70mm, screws70mm));
+        //things to the shed are lowest in the table.
+        res.add(new Product("Farmgate Grip 50 x 75", priceFarmgateGrip, farmgateGrip));
+        res.add(new Product("T Hinge 390mm", priceTHinge, tHinge));
+        res.add(new Product("Angle Bracket 35", priceAngleBracket, angleBracket));
         res.add(new Product("end Price", endPrice, 0));
         
 
     }
 
     private void calculateBOM() {
-
-        angleBracket = (int) Math.ceil((assignRatio("Angle Bracket 35") * area));
-        bracketScrews50mm = (int) Math.ceil((assignRatio("Bracket Screws 4.0 x 50mm. 250 pcs.") * area));
-        carriageBolt = (int) Math.ceil((assignRatio("Carriage Bolt 10 x 120mm") * area));
+        //all in things that the shed needs.
+        if(shedWidth == 0)
+        {
+            farmgateGrip = 0;
+            tHinge = 0;
+            angleBracket = 0;
+        }else
+        {
         farmgateGrip = (int) Math.ceil((assignRatio("Farmgate Grip 50 x 75") * area));
+        tHinge = (int) Math.ceil((assignRatio("T Hinge 390mm") * area));
+        angleBracket = (int) Math.ceil((assignRatio("Angle Bracket 35") * area));
+       }
+
+        
+        bracketScrews50mm = (int) Math.ceil((assignRatio("Bracket Screws 4.0 x 50mm. 250 pcs.") * area));
+        carriageBolt = (int) Math.ceil((assignRatio("Carriage Bolt 10 x 120mm") * area));        
         perforatedBand = (int) Math.ceil((assignRatio("Perforated Band 1 x 20mm 10 mtr.") * area));
         plastmoBottomScrews = (int) Math.ceil((assignRatio("Plastmo Bottom Screws 200 pcs.") * area));
         screws50mm = (int) Math.ceil((assignRatio("4.5 x 50 mm Screws 300 pcs.") * area));
         screws60mm = (int) Math.ceil((assignRatio("4.5 x 60 mm Screws 200 pcs.") * area));
         screws70mm = (int) Math.ceil((assignRatio("4.5 x 70mm Screws 300 pcs. ") * area));
         squarePost = (int) Math.ceil((assignRatio("Square Slices 40x40x11mm") * area));
-        tHinge = (int) Math.ceil((assignRatio("T Hinge 390mm") * area));
         universalLeft = (int) Math.ceil((assignRatio("Universal 190 mm Left") * area));
         universalRight = (int) Math.ceil((assignRatio("Universal 190 mm Right") * area));
 

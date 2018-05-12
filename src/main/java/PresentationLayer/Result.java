@@ -27,7 +27,7 @@ public class Result extends Command
         int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
         int shedLength = Integer.parseInt(request.getParameter("shedLength"));
 
-        BOMCalculator b = new BOMCalculator(carportLength / 100, carportWidth / 100);
+        BOMCalculator b = new BOMCalculator(carportLength / 100, carportWidth / 100, shedWidth / 100);
 
         request.setAttribute("res", b.getRes());
 
