@@ -2,6 +2,7 @@ package DBAccess;
 
 import FunctionLayer.FogException;
 import FunctionLayer.User;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,22 +10,18 @@ import java.sql.SQLException;
 public class UserMapper
 {
 
-    private static DBConnector dbc = new DBConnector();
-
     public static void createUser(User user) throws FogException
     {
         try
         {
-            dbc.setDataSource(new DataSource().getDataSource());
-            dbc.open();
+            Connection con = Connector.connection();
             String SQL = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
-            PreparedStatement ps = dbc.preparedStatement(SQL);
+            PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getRole());
             ps.executeUpdate();
-            dbc.close();
-        } catch (SQLException ex)
+        } catch (SQLException | ClassNotFoundException ex)
         {
             throw new FogException(ex.getMessage());
         }
@@ -34,11 +31,10 @@ public class UserMapper
     {
         try
         {
-            dbc.setDataSource(new DataSource().getDataSource());
-            dbc.open();
+            Connection con = Connector.connection();
             String SQL = "SELECT id, role FROM users "
                     + "WHERE email=? AND password=?";
-            PreparedStatement ps = dbc.preparedStatement(SQL);
+            PreparedStatement ps = con.prepareStatement(SQL);
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
@@ -48,14 +44,12 @@ public class UserMapper
                 int id = rs.getInt("id");
                 User user = new User(email, password, role);
                 user.setId(id);
-                dbc.close();
                 return user;
             } else
             {
-                dbc.close();
                 throw new FogException("Could not validate user");
             }
-        } catch (SQLException ex)
+        } catch (ClassNotFoundException | SQLException ex)
         {
             throw new FogException(ex.getMessage());
         }

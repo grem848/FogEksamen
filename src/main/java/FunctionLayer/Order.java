@@ -12,17 +12,11 @@ public class Order
     private int shedLength;
     private int shedWidth;
     private int slopedRoof;
+    private int price;
     private String Status;
 
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        this.Status = status;
-    }
-
-    public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof, String status) {
+    public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof, String Status)
+    {
         this.id = id;
         this.tlf = tlf;
         this.email = email;
@@ -32,7 +26,22 @@ public class Order
         this.shedLength = shedLength;
         this.shedWidth = shedWidth;
         this.slopedRoof = slopedRoof;
-        this.Status = status;
+        this.Status = Status;
+    }
+
+    public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof, int price, String Status)
+    {
+        this.id = id;
+        this.tlf = tlf;
+        this.email = email;
+        this.length = length;
+        this.height = height;
+        this.width = width;
+        this.shedLength = shedLength;
+        this.shedWidth = shedWidth;
+        this.slopedRoof = slopedRoof;
+        this.price = price;
+        this.Status = Status;
     }
 
     public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // get order?
@@ -80,6 +89,24 @@ public class Order
         this.shedLength = shedLength;
         this.shedWidth = shedWidth;
         this.slopedRoof = slopedRoof;
+    }
+
+    public int getPrice()
+    {
+        return price;
+    }
+
+    public void setPrice(int price)
+    {
+        this.price = price;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        this.Status = status;
     }
     
     public int getId()

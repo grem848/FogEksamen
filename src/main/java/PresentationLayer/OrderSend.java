@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package PresentationLayer;
 
 import FunctionLayer.BOMCalculator;
@@ -11,17 +7,15 @@ import FunctionLayer.OrderBuilderException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author mohammahomarhariri
- */
-public class Result extends Command
+
+public class OrderSend extends Command
 {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
     {
         
+        int carportHeight = Integer.parseInt(request.getParameter("carportHeight"));
         int carportWidth = Integer.parseInt(request.getParameter("carportWidth"));
         int carportLength = Integer.parseInt(request.getParameter("carportLength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
@@ -31,7 +25,7 @@ public class Result extends Command
 
         request.setAttribute("res", b.getRes());
 
-        return "result";
+        return "sendorderpage";
     }
 
 }

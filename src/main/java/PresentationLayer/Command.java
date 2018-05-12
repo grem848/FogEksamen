@@ -33,8 +33,8 @@ abstract class Command
         commands.put("editorderpage", new EditOrder());
         commands.put("employeelogin", new EmployeeLogin());
         commands.put("update", new UpdateIndex());
-        commands.put("visualization", new Visualization());
-        commands.put("result", new Result());
+        commands.put("sendrequestpage", new Visualization());
+        commands.put("sendorderpage", new OrderSend());
         
         
     }

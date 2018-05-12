@@ -1,6 +1,10 @@
+///*
+// * To change this license header, choose License Headers in Project Properties.
+// * To change this template file, choose Tools | Templates
+// * and open the template in the editor.
+// */
 //package DBAccess;
 //
-//import FunctionLayer.Order;
 //import java.sql.Connection;
 //import java.sql.DriverManager;
 //import java.sql.SQLException;
@@ -9,14 +13,18 @@
 //import static org.junit.Assert.*;
 //import org.junit.Before;
 //
+///**
+// *
+// * @author Andreas Heick Laptop
+// */
 //public class OrderMapperTest
 //{
 //
 //    private static Connection testConnection;
 //    private static String USERNAME = "doorkeeper";
 //    private static String USERPW = "bank3*andyouarein";
-//    private static String DBNAME = "fogdb";
-//    private static String HOST = "159.89.109.181";
+//    private static String DBNAME = "useradmin";
+//    private static String HOST = "localhost";
 //
 //    @Before
 //    public void setUp()
@@ -31,7 +39,7 @@
 //
 //                testConnection = DriverManager.getConnection(url, USERNAME, USERPW);
 //                // Make mappers use test 
-//                DBConnector.setConnection(testConnection);
+//                Connector.setConnection(testConnection);
 //            }
 //            // reset test database
 //            try (Statement stmt = testConnection.createStatement())
@@ -47,23 +55,9 @@
 //            System.out.println("Could not open connection to database: " + ex.getMessage());
 //        }
 //    }
-//
-//    @Test
-//    public void testSetUpOK()
-//    {
-//        // Just check that we have a connection.
-//        assertNotNull(testConnection);
-//    }
-//
-//    /**
-//     * Test of OrderToDB method, of class OrderMapper.
-//     */
 //    @Test
 //    public void testOrderToDB() throws Exception
 //    {
-//        Order original = new Order(1234, "hej@hej.dk", 1, 2, 3, 4, 5, 6);
-//        OrderMapper.OrderToDB(original);
-//        assertEquals("hej@hej.dk", original.getEmail());
 //    }
 //
 //    /**
@@ -72,7 +66,6 @@
 //    @Test
 //    public void testGetAllOrdersWhereStatusIsRequest() throws Exception
 //    {
-//        
 //    }
 //
 //    /**
@@ -81,7 +74,6 @@
 //    @Test
 //    public void testSetStatusOrder() throws Exception
 //    {
-//        
 //    }
 //
 //    /**
@@ -116,4 +108,12 @@
 //    {
 //    }
 //
+//    /**
+//     * Test of getAllProducts method, of class OrderMapper.
+//     */
+//    @Test
+//    public void testGetAllProducts() throws Exception
+//    {
+//    }
+//    
 //}

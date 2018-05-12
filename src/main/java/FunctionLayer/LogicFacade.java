@@ -47,15 +47,19 @@ public class LogicFacade {
 
         OrderMapper.setStatusDone(id);
     }
+    public static void finishOrder(int id) throws OrderBuilderException {
+
+        OrderMapper.setStatusDone(id);
+    }
 
     public static Order getOneOrder(int id) throws OrderBuilderException {
 
         return OrderMapper.getOrder(id);
     }
 
-    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof) throws OrderBuilderException {
+    public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof, int price) throws OrderBuilderException {
 
-        OrderMapper.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof);;
+        OrderMapper.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof, price);
     }
     
     public static List<Product> getProductsFromDB() throws OrderBuilderException{

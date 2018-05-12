@@ -24,7 +24,7 @@ public class Visualization extends Command
 
         request.setAttribute("virtual", s);
 
-        return "visualization";
+        return "sendrequestpage";
     }
 
 }

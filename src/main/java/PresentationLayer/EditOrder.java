@@ -22,9 +22,10 @@ public class EditOrder extends Command {
         int shedLength = Integer.parseInt(request.getParameter("shedLength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
         int slopedRoof = Integer.parseInt(request.getParameter("slope"));
+        int price = Integer.parseInt(request.getParameter("price"));
         
 
-        LogicFacade.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof);
+        LogicFacade.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof, price);
         
         return "ordereditedpage";
     }

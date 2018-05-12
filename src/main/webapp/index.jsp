@@ -300,17 +300,9 @@
             <input type="submit" value="Update Carport & Visualization" />
         </form>
 
-        <%--
-        use selected and update when drawing is updated
-        if values are null dont show button, show button after update drawing is clicked
-        --%>
-
-        <%--
-            if ()
-        --%>
         <br>
         <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="visualization">
+            <input type="hidden" name="command" value="sendrequestpage">
             <input type="hidden" name="carportWidth" value="<%=width%>">
             <input type="hidden" name="carportLength" value="<%=outputLength%>">
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">

@@ -26,7 +26,7 @@
             <input type="submit" value="Customer request List" />
         </form>
         <br>
-    <td>Register Admin</td>
+    <td>Register a new Admin</td>
     <td>
         <form name="register" action="FrontController" method="POST">
             <input type="hidden" name="command" value="register">
