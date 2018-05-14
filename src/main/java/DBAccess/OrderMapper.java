@@ -9,9 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class OrderMapper
-{
+public class OrderMapper {
 
     public static boolean OrderToDB(Order order) throws OrderBuilderException, SQLException
     {
@@ -69,8 +70,7 @@ public class OrderMapper
 //            throw new OrderBuilderException(ex.getMessage());
 //        }
 //    }
-    public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException
-    {
+    public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException {
         List<Order> orderList;
         try
         {
@@ -82,8 +82,7 @@ public class OrderMapper
 
             orderList = new ArrayList<>();
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -136,8 +135,7 @@ public class OrderMapper
         }
     }
 
-    public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException
-    {
+    public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException {
         List<Order> statusOrderList;
         try
         {
@@ -149,8 +147,7 @@ public class OrderMapper
 
             statusOrderList = new ArrayList<>();
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -185,8 +182,7 @@ public class OrderMapper
 
             Order o = null;
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 int id2 = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -234,21 +230,19 @@ public class OrderMapper
 
     }
 
-    public static List<Product> getAllProducts() throws OrderBuilderException
-    {
+    public static List<Product> getAllBracketsScrews() throws OrderBuilderException {
         List<Product> productList;
         try
         {
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM products";
+            String SQL = "SELECT * FROM bracketsScrews";
             PreparedStatement statement = con.prepareStatement(SQL);
 
             ResultSet rs = statement.executeQuery();
 
             productList = new ArrayList<>();
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 String ratio = rs.getString("ratio");
                 int priceforeach = rs.getInt("priceforeach");
                 String productname = rs.getString("productname");
@@ -260,6 +254,33 @@ public class OrderMapper
             return productList;
         } catch (SQLException | ClassNotFoundException ex)
         {
+            throw new OrderBuilderException(ex.getMessage());
+        }
+    }
+
+    public static List<Product> getAllWoodEaves() throws OrderBuilderException {
+        List<Product> productList;
+        try {
+            
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM woodEaves";
+            PreparedStatement statement = con.prepareStatement(SQL);
+
+            ResultSet rs = statement.executeQuery();
+
+            productList = new ArrayList<>();
+
+            while (rs.next()) {
+                int priceforeach = rs.getInt("priceforeach");
+                String productname = rs.getString("product");
+
+                productList.add(new Product(productname, priceforeach));
+
+            }
+
+
+            return productList;
+        } catch (SQLException | ClassNotFoundException ex) {
             throw new OrderBuilderException(ex.getMessage());
         }
     }

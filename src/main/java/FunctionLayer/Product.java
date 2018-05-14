@@ -17,8 +17,6 @@ public class Product {
     private String name;
     private String ratio;
     private int price;
-    
-    private List<Product> res = new ArrayList();
     private int amount;
     
     public Product(String name, String ratio, int price) {
@@ -31,6 +29,12 @@ public class Product {
         this.name = name;
         this.price = price;
         this.amount = amount;
+    }
+
+    public Product(String productname, int priceforeach) {
+        
+        this.name = productname;
+        this.price = priceforeach;
     }
     
     public String getName() {

@@ -20,9 +20,13 @@ public class EmployeeEditOrder extends Command
         int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
         int shedLength = Integer.parseInt(request.getParameter("shedLength"));
 
-        BOMCalculator b = new BOMCalculator(carportLength / 100, carportWidth / 100);
+        //skal ændres 
+        int height = 280;
 
-        request.setAttribute("res", b.getRes());
+        BOMCalculator b = new BOMCalculator(carportLength / 100, carportWidth / 100, height / 100);
+
+        request.setAttribute("res", b.getResDemo());
+        request.setAttribute("res2", b.getResDemo2());
         
         int id = Integer.parseInt(request.getParameter("id"));
 
