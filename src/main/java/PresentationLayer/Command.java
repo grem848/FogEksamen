@@ -34,7 +34,8 @@ abstract class Command
         commands.put("employeelogin", new EmployeeLogin());
         commands.put("update", new UpdateIndex());
         commands.put("sendrequestpage", new Visualization());
-        commands.put("sendorderpage", new OrderSend());
+        
+        commands.put("sendorderpage", new OrderSend()); // bruges til at kunde kan se sin BOM og skitse???
         
         
     }

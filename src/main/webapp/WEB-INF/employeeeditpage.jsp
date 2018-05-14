@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>edit page</title>
+        <title>Edit Order page</title>
 
 
     </head>
@@ -119,7 +119,7 @@
         <h3>Bill of Materials</h3>
         <table>
             <tr>
-                <th>Beslag & Skruer</
+                <th>Brackets and Screws</
             </tr>
             <tr>
                 <th>Product</th>
@@ -149,9 +149,10 @@
             <% }
                 }%>
         </table>
+        <br>
         <table>
             <tr>
-                <th>Træ & Tagplader</
+                <th>Wood & Eaves</
             </tr>
             <tr>
                 <th>Product</th>
