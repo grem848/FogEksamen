@@ -24,6 +24,7 @@ public class LogicFacade {
         return order;
     }
 
+     
 //    public static List<Order> getUserOrders(User user) throws OrderBuilderException
 //    {
 //        List<Order> orderList = OrderMapper.getAllUserOrders(user);

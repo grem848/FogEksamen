@@ -36,6 +36,8 @@ abstract class Command
         commands.put("visualization", new Visualization());
         commands.put("result", new Result());
         
+        commands.put("requestsenttodb", new RequestSentToDb());
+        
         
     }
 
