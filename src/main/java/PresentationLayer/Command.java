@@ -37,7 +37,6 @@ abstract class Command
         
         commands.put("sendorderpage", new OrderSend()); // bruges til at kunde kan se sin BOM og skitse???
         
-        
     }
 
     static Command from(HttpServletRequest request)

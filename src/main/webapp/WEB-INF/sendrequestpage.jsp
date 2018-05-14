@@ -9,7 +9,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Visualization of your carport!</h1>
+        <h1>Request Sent</h1>
+        A FOG employee will contact you soon.
+        <br>
 
         <%= request.getAttribute("virtual")%>
 
