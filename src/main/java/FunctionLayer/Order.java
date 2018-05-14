@@ -1,5 +1,6 @@
 package FunctionLayer;
 
+
 public class Order
 {
 
@@ -15,6 +16,19 @@ public class Order
     private int price;
     private String Status;
 
+    /**
+     *
+     * @param id
+     * @param tlf
+     * @param email
+     * @param length
+     * @param height
+     * @param width
+     * @param shedLength
+     * @param shedWidth
+     * @param slopedRoof
+     * @param Status
+     */
     public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof, String Status)
     {
         this.id = id;
@@ -29,6 +43,20 @@ public class Order
         this.Status = Status;
     }
 
+    /**
+     *
+     * @param id
+     * @param tlf
+     * @param email
+     * @param length
+     * @param height
+     * @param width
+     * @param shedLength
+     * @param shedWidth
+     * @param slopedRoof
+     * @param price
+     * @param Status
+     */
     public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof, int price, String Status)
     {
         this.id = id;
@@ -44,6 +72,18 @@ public class Order
         this.Status = Status;
     }
 
+    /**
+     *
+     * @param id
+     * @param tlf
+     * @param email
+     * @param length
+     * @param height
+     * @param width
+     * @param shedLength
+     * @param shedWidth
+     * @param slopedRoof
+     */
     public Order(int id, int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // get order?
     {
         this.id = id;
@@ -57,6 +97,17 @@ public class Order
         this.slopedRoof = slopedRoof;
     }
 
+    /**
+     *
+     * @param tlf
+     * @param email
+     * @param length
+     * @param height
+     * @param width
+     * @param shedLength
+     * @param shedWidth
+     * @param slopedRoof
+     */
     public Order(int tlf, String email, int length, int height, int width, int shedLength, int shedWidth, int slopedRoof) // create order
     {
         this.tlf = tlf;
@@ -81,6 +132,16 @@ public class Order
 //        this.slopedRoof = slopedRoof;
 //    }
 
+    /**
+     *
+     * @param length
+     * @param height
+     * @param width
+     * @param shedLength
+     * @param shedWidth
+     * @param slopedRoof
+     */
+
     public Order(int length, int height, int width, int shedLength, int shedWidth, int slopedRoof)
     {
         this.length = length;
@@ -91,109 +152,197 @@ public class Order
         this.slopedRoof = slopedRoof;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPrice()
     {
         return price;
     }
 
+    /**
+     *
+     * @param price
+     */
     public void setPrice(int price)
     {
         this.price = price;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStatus() {
         return Status;
     }
 
+    /**
+     *
+     * @param status
+     */
     public void setStatus(String status) {
         this.Status = status;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getId()
     {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id)
     {
         this.id = id;
     }
    
+    /**
+     *
+     * @return
+     */
     public int getLength()
     {
         return length;
     }
 
+    /**
+     *
+     * @param length
+     */
     public void setLength(int length)
     {
         this.length = length;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getWidth()
     {
         return width;
     }
 
+    /**
+     *
+     * @param width
+     */
     public void setWidth(int width)
     {
         this.width = width;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getHeight()
     {
         return height;
     }
 
+    /**
+     *
+     * @param height
+     */
     public void setHeight(int height)
     {
         this.height = height;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTlf()
     {
         return tlf;
     }
 
+    /**
+     *
+     * @param tlf
+     */
     public void setTlf(int tlf)
     {
         this.tlf = tlf;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail()
     {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email)
     {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getShedLength()
     {
         return shedLength;
     }
 
+    /**
+     *
+     * @param shedLength
+     */
     public void setShedLength(int shedLength)
     {
         this.shedLength = shedLength;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getShedWidth()
     {
         return shedWidth;
     }
 
+    /**
+     *
+     * @param shedWidth
+     */
     public void setShedWidth(int shedWidth)
     {
         this.shedWidth = shedWidth;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSlopedRoof()
     {
         return slopedRoof;
     }
 
+    /**
+     *
+     * @param slopedRoof
+     */
     public void setSlopedRoof(int slopedRoof)
     {
         this.slopedRoof = slopedRoof;

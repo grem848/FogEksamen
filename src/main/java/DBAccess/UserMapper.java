@@ -7,9 +7,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class UserMapper
 {
 
+    /**
+     *
+     * @param user
+     * @throws FogException
+     */
     public static void createUser(User user) throws FogException
     {
         try
@@ -27,6 +33,13 @@ public class UserMapper
         }
     }
 
+    /**
+     *
+     * @param email
+     * @param password
+     * @return
+     * @throws FogException
+     */
     public static User login(String email, String password) throws FogException
     {
         try

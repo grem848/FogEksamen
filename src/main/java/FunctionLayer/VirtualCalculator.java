@@ -16,7 +16,14 @@ public class VirtualCalculator
     private int postAmount = 0;
     private int rafterAmount = 2;
     
-    
+    /**
+     *
+     * @param width
+     * @param length
+     * @param shedWidth
+     * @param shedLength
+     * @return
+     */
     public String sketch(double width, double length, double shedWidth, double shedLength)
     {
 
@@ -299,28 +306,52 @@ public class VirtualCalculator
 
     }
 
+    /**
+     *
+     * @return
+     */
     public StringBuilder getSb()
     {
         return sb;
     }
 
+    /**
+     *
+     * @param sb
+     */
     public void setSb(StringBuilder sb)
     {
         this.sb = sb;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPostAmount() {
         return postAmount;
     }
 
+    /**
+     *
+     * @param postAmount
+     */
     public void setPostAmount(int postAmount) {
         this.postAmount = postAmount;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRafterAmount() {
         return rafterAmount;
     }
 
+    /**
+     *
+     * @param rafterAmount
+     */
     public void setRafterAmount(int rafterAmount) {
         this.rafterAmount = rafterAmount;
     }

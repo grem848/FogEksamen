@@ -9,11 +9,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class OrderMapper {
 
+    /**
+     * Takes an Order object and retrieves the attributes, for a SQL preparedstatement that inserts the Order into to the DB
+     * @param order
+     * @return
+     * @throws OrderBuilderException
+     * @throws SQLException
+     */
     public static boolean OrderToDB(Order order) throws OrderBuilderException, SQLException
     {
         try
@@ -70,6 +76,12 @@ public class OrderMapper {
 //            throw new OrderBuilderException(ex.getMessage());
 //        }
 //    }
+
+    /**
+     * 
+     * @return
+     * @throws OrderBuilderException
+     */
     public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException {
         List<Order> orderList;
         try
@@ -103,6 +115,11 @@ public class OrderMapper {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @throws OrderBuilderException
+     */
     public static void setStatusOrder(int id) throws OrderBuilderException
     {
         try
@@ -119,6 +136,11 @@ public class OrderMapper {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @throws OrderBuilderException
+     */
     public static void setStatusDone(int id) throws OrderBuilderException
     {
         try
@@ -135,6 +157,11 @@ public class OrderMapper {
         }
     }
 
+    /**
+     *
+     * @return
+     * @throws OrderBuilderException
+     */
     public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException {
         List<Order> statusOrderList;
         try
@@ -169,6 +196,12 @@ public class OrderMapper {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws OrderBuilderException
+     */
     public static Order getOrder(int id) throws OrderBuilderException
     {
         try
@@ -204,6 +237,20 @@ public class OrderMapper {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @param tlf
+     * @param email
+     * @param height
+     * @param length
+     * @param width
+     * @param shedLength
+     * @param shedWidth
+     * @param slopedRoof
+     * @param price
+     * @throws OrderBuilderException
+     */
     public static void editOrder(int id, int tlf, String email, int height, int length, int width, int shedLength, int shedWidth, int slopedRoof, int price) throws OrderBuilderException
     {
         try
@@ -230,6 +277,11 @@ public class OrderMapper {
 
     }
 
+    /**
+     *
+     * @return
+     * @throws OrderBuilderException
+     */
     public static List<Product> getAllBracketsScrews() throws OrderBuilderException {
         List<Product> productList;
         try
@@ -258,6 +310,11 @@ public class OrderMapper {
         }
     }
 
+    /**
+     *
+     * @return
+     * @throws OrderBuilderException
+     */
     public static List<Product> getAllWoodEaves() throws OrderBuilderException {
         List<Product> productList;
         try {

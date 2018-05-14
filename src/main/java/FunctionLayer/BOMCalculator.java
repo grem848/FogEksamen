@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package FunctionLayer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author mohammahomarhariri
- */
+
 public class BOMCalculator {
 
     private double length;
@@ -28,6 +21,13 @@ public class BOMCalculator {
 
     private double area;
 
+    /**
+     *
+     * @param length
+     * @param width
+     * @param height
+     * @throws OrderBuilderException
+     */
     public BOMCalculator(double length, double width, double height) throws OrderBuilderException {
 
         this.length = length;
@@ -164,34 +164,66 @@ public class BOMCalculator {
         return price;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Product> getProducts() {
         return products;
     }
 
+    /**
+     *
+     * @param products
+     */
     public void setProducts(List<Product> products) {
         this.products = products;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Product> getResDemo() {
         return resDemo;
     }
 
+    /**
+     *
+     * @param resDemo
+     */
     public void setResDemo(List<Product> resDemo) {
         this.resDemo = resDemo;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Product> getProducts2() {
         return products2;
     }
 
+    /**
+     *
+     * @param products2
+     */
     public void setProducts2(List<Product> products2) {
         this.products2 = products2;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Product> getResDemo2() {
         return resDemo2;
     }
 
+    /**
+     *
+     * @param resDemo2
+     */
     public void setResDemo2(List<Product> resDemo2) {
         this.resDemo2 = resDemo2;
     }
