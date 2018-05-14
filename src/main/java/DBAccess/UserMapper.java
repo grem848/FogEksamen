@@ -1,18 +1,22 @@
 package DBAccess;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 
 public class UserMapper
 {
 
-    public static void createUser(User user) throws LoginSampleException
+    /**
+     *
+     * @param user
+     * @throws FogException
+     */
+    public static void createUser(User user) throws FogException
     {
         try
         {
@@ -25,11 +29,18 @@ public class UserMapper
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex)
         {
-            throw new LoginSampleException(ex.getMessage());
+            throw new FogException(ex.getMessage());
         }
     }
 
-    public static User login(String email, String password) throws LoginSampleException
+    /**
+     *
+     * @param email
+     * @param password
+     * @return
+     * @throws FogException
+     */
+    public static User login(String email, String password) throws FogException
     {
         try
         {
@@ -49,18 +60,12 @@ public class UserMapper
                 return user;
             } else
             {
-                throw new LoginSampleException("Could not validate user");
+                throw new FogException("Could not validate user");
             }
         } catch (ClassNotFoundException | SQLException ex)
         {
-            throw new LoginSampleException(ex.getMessage());
+            throw new FogException(ex.getMessage());
         }
     }
-    
-            //PreparedStatement
-//            String sql = "select * from user where username = ? and password = ?";
-//            PreparedStatement preparedStatement = dbc.preparedStatement(sql);
-//            preparedStatement.setString(1, username);
-//            preparedStatement.setString(2, password);
-//            ResultSet resultSet = preparedStatement.executeQuery();
+
 }

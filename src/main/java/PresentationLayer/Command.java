@@ -1,6 +1,6 @@
 package PresentationLayer;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +17,6 @@ abstract class Command
         commands.put("login", new Login());
         commands.put("register", new Register());
         commands.put("help", new Help());
-        commands.put("products", new Products());
-        commands.put("bom", new BOM());
-        commands.put("orderlist", new Orderlist());
         commands.put("employeeorderlist", new EmployeeOrderList());
         commands.put("ordersent", new OrderSent());
         commands.put("employee", new Forwarder());
@@ -31,8 +28,12 @@ abstract class Command
         commands.put("orderremovedpage", new OrderRemoved());
         commands.put("employeeeditpage", new EmployeeEditOrder());
         commands.put("editorderpage", new EditOrder());
+        commands.put("employeelogin", new EmployeeLogin());
+        commands.put("update", new UpdateIndex());
+        commands.put("sendrequestpage", new Visualization());
         
-
+        commands.put("sendorderpage", new OrderSend()); // bruges til at kunde kan se sin BOM og skitse???
+        
     }
 
     static Command from(HttpServletRequest request)
@@ -46,7 +47,7 @@ abstract class Command
     }
 
     abstract String execute(HttpServletRequest request, HttpServletResponse response)
-            throws LoginSampleException, OrderBuilderException;
+            throws FogException, OrderBuilderException;
 
     }
 

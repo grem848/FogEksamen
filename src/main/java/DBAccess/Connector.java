@@ -4,11 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * The purpose of Connector is to...
- *
- * @author kasper
- */
+
 public class Connector
 {
 
@@ -20,11 +16,21 @@ public class Connector
 
     private static Connection singleton;
 
+    /**
+     * 
+     * @param con
+     */
     public static void setConnection(Connection con)
     {
         singleton = con;
     }
 
+    /**
+     * 
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public static Connection connection() throws ClassNotFoundException, SQLException
     {
         if (singleton == null)

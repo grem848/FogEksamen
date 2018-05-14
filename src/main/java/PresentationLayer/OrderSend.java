@@ -1,22 +1,23 @@
+
 package PresentationLayer;
 
 import FunctionLayer.BOMCalculator;
-import FunctionLayer.LogicFacade;
 import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class EmployeeEditOrder extends Command
+
+public class OrderSend extends Command
 {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
     {
-
-        int carportHeight = Integer.parseInt(request.getParameter("height"));
-        int carportWidth = Integer.parseInt(request.getParameter("width"));
-        int carportLength = Integer.parseInt(request.getParameter("length"));
+        
+        int carportHeight = Integer.parseInt(request.getParameter("carportHeight"));
+        int carportWidth = Integer.parseInt(request.getParameter("carportWidth"));
+        int carportLength = Integer.parseInt(request.getParameter("carportLength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
         int shedLength = Integer.parseInt(request.getParameter("shedLength"));
 
@@ -27,12 +28,8 @@ public class EmployeeEditOrder extends Command
 
         request.setAttribute("res", b.getResDemo());
         request.setAttribute("res2", b.getResDemo2());
-        
-        int id = Integer.parseInt(request.getParameter("id"));
 
-        request.setAttribute("order", LogicFacade.getOneOrder(id));
-
-        return "employeeeditpage";
+        return "sendorderpage";
     }
 
 }

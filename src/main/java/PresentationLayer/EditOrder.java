@@ -2,7 +2,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class EditOrder extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderBuilderException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException {
 
         int id = Integer.parseInt(request.getParameter("id"));
         int tlf = Integer.parseInt(request.getParameter("tlf"));
@@ -22,9 +22,10 @@ public class EditOrder extends Command {
         int shedLength = Integer.parseInt(request.getParameter("shedLength"));
         int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
         int slopedRoof = Integer.parseInt(request.getParameter("slope"));
+        int price = Integer.parseInt(request.getParameter("price"));
         
 
-        LogicFacade.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof);
+        LogicFacade.editOrder(id, tlf, email, height, length, width, shedLength, shedWidth, slopedRoof, price);
         
         return "ordereditedpage";
     }

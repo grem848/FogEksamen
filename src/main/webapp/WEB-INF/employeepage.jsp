@@ -13,7 +13,7 @@
         <h1>Hello <%=user.getEmail()%> </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
 
-        <form action="FrontController" action="FrontController" method="POST">
+        <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="createorderpage">
             <input type="submit" value="Go to Create Order Page">
         </form>
@@ -25,9 +25,27 @@
             <input type="hidden" name="command" value="employeerequestpage" />
             <input type="submit" value="Customer request List" />
         </form>
-        <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="logout" />
-            <input type="submit" value="Logout" />
+        <br>
+    <td>Register a new Admin</td>
+    <td>
+        <form name="register" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="register">
+            Email:<br>
+            <input type="text" name="email" placeholder="Type an email">
+            <br>
+            Password:<br>
+            <input type="password" name="password1" placeholder="Type password">
+            <br>
+            Retype Password:<br>
+            <input type="password" name="password2" placeholder="Retype password">
+            <br>
+            <input type="submit" value="Submit">
         </form>
-    </body>
+    </td>
+    <br>
+    <form name="Building" action="FrontController" method="POST">
+        <input type="hidden" name="command" value="logout" />
+        <input type="submit" value="Logout" />
+    </form>
+</body>
 </html>
