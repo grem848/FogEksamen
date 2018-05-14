@@ -24,13 +24,13 @@ public class Result extends Command
         
         int carportWidth = Integer.parseInt(request.getParameter("carportWidth"));
         int carportLength = Integer.parseInt(request.getParameter("carportLength"));
+        int carportHeight = Integer.parseInt(request.getParameter("carportHeight"));
         int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
         int shedLength = Integer.parseInt(request.getParameter("shedLength"));
         
-        //skal ændres 
-        int height = 280;
+//        int height = 280;
 
-        BOMCalculator b = new BOMCalculator(carportLength / 100, carportWidth / 100, height / 100);
+        BOMCalculator b = new BOMCalculator(carportLength / 100, carportWidth / 100, carportHeight / 100, shedLength / 100, shedWidth / 100);
 
         request.setAttribute("res", b.getResDemo());
         request.setAttribute("res2", b.getResDemo2());

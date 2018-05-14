@@ -36,6 +36,14 @@ public class Product {
         this.name = productname;
         this.price = priceforeach;
     }
+
+    Product(String shedWalls, int calculateShedWalls, double d) {
+        
+        this.name = shedWalls;
+        this.price = (int) calculateShedWalls;
+        this.amount = (int) d;
+        
+    }
     
     public String getName() {
         return name;

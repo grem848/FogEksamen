@@ -17,11 +17,14 @@ public class Visualization extends Command
 
         double carportWidth = Double.parseDouble(request.getParameter("carportWidth"));
         double carportLength = Double.parseDouble(request.getParameter("carportLength"));
+        double carportHeight = Double.parseDouble(request.getParameter("carportHeight"));
         double shedWidth = Double.parseDouble(request.getParameter("shedWidth"));
         double shedLength = Double.parseDouble(request.getParameter("shedLength"));
         
         String s = vc.sketch(carportWidth, carportLength, shedWidth, shedLength);
 
+        request.setAttribute("carportHeight", carportHeight);
+        
         request.setAttribute("virtual", s);
 
         return "visualization";

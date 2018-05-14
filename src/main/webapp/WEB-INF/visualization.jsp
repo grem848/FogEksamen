@@ -18,6 +18,7 @@
             <input type="hidden" name="command" value="result"/>
             <input type="hidden" name="carportWidth" value="<%=request.getParameter("carportWidth")%>">
             <input type="hidden" name="carportLength" value="<%=request.getParameter("carportLength")%>">
+            <input type="hidden" name="carportHeight" value="<%=request.getParameter("carportHeight")%>">
             <input type="hidden" name="shedWidth" value="<%=request.getParameter("shedWidth")%>">
             <input type="hidden" name="shedLength" value="<%=request.getParameter("shedLength")%>">
             <input type="submit" value="Result"/>

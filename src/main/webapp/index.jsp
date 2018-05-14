@@ -313,6 +313,7 @@
             <input type="hidden" name="command" value="visualization">
             <input type="hidden" name="carportWidth" value="<%=width%>">
             <input type="hidden" name="carportLength" value="<%=outputLength%>">
+            <input type="hidden" name="carportHeight" value="<%=inputHeight%>">
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
             <input type="submit" value="Send Request">

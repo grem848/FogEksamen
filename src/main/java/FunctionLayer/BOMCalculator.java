@@ -28,7 +28,7 @@ public class BOMCalculator {
 
     private double area;
 
-    public BOMCalculator(double length, double width, double height) throws OrderBuilderException {
+    public BOMCalculator(double length, double width, double height , double shedLength, double shedWidth) throws OrderBuilderException {
 
         this.length = length;
         this.width = width;
@@ -44,11 +44,13 @@ public class BOMCalculator {
 
         calculation1(area);
 
-        resDemo.add(new Product("Total Price", calculateTotalPrice(), 0));
+//        resDemo.add(new Product("Total Price", calculateTotalPrice(), 0));
 
-        vc.sketch(width, length, 0, 0);
+        vc.sketch(width, length, shedWidth, shedLength);
         
         calculation2();
+        
+        resDemo2.add(new Product("shedWalls", calculateShedWalls(shedLength, shedWidth ) / 100 , ((shedLength * shedWidth / 10) * 2)));
 
     }
 
@@ -115,6 +117,26 @@ public class BOMCalculator {
         
         return price;
 
+    }
+    
+    private int calculateShedWalls(double shedLength , double shedWidth){
+        
+        int shedArea = (int) (shedLength * shedWidth * 2);
+        int price = 0;
+                
+                for (int i = 0; i < products2.size() ; i++) {
+            
+                    if(products2.get(i).getName().equals("100x100mm wood for walls")){
+                        
+                        price = products2.get(i).getPrice();
+                        
+                    }
+                    
+        }
+                
+                return (price * (shedArea));
+        
+        
     }
 
     private double calculateRoff(double length, double width) {
