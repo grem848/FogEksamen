@@ -17,9 +17,6 @@ abstract class Command
         commands.put("login", new Login());
         commands.put("register", new Register());
         commands.put("help", new Help());
-        commands.put("products", new Products());
-        commands.put("bom", new BOM());
-        commands.put("orderlist", new Orderlist());
         commands.put("employeeorderlist", new EmployeeOrderList());
         commands.put("ordersent", new OrderSent());
         commands.put("employee", new Forwarder());
@@ -33,11 +30,9 @@ abstract class Command
         commands.put("editorderpage", new EditOrder());
         commands.put("employeelogin", new EmployeeLogin());
         commands.put("update", new UpdateIndex());
-        commands.put("visualization", new Visualization());
-        commands.put("result", new Result());
+        commands.put("sendrequestpage", new Visualization());
         
-        commands.put("requestsenttodb", new RequestSentToDb());
-        
+        commands.put("sendorderpage", new OrderSend()); // bruges til at kunde kan se sin BOM og skitse???
         
     }
 

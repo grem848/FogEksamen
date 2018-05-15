@@ -299,38 +299,23 @@
             <input type="submit" value="Update Carport & Visualization" />
         </form>
 
-        <%--
-        use selected and update when drawing is updated
-        if values are null dont show button, show button after update drawing is clicked
-        --%>
-
-        <%--
-            if ()
-        --%>
         <br>
-        <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="visualization">
-            <input type="hidden" name="carportWidth" value="<%=width%>">
-            <input type="hidden" name="carportLength" value="<%=outputLength%>">
-            <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
-            <input type="hidden" name="shedLength" value="<%=shedLength%>">
-            <input type="submit" value="Watch Visulaization">
-        </form>
             
         <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="requestsenttodb">
+            <input type="hidden" name="command" value="sendrequestpage">
             <input type="hidden" name="carportWidth" value="<%=width%>">
-            <input type="hidden" name="carportheight" value="<%=inputHeight%>">
+            <input type="hidden" name="carportHeight" value="<%=inputHeight%>">
             <input type="hidden" name="carportLength" value="<%=outputLength%>">
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
+            Do this last!
             <p>Tlf</p>
-            <input type="text"name="tlf" placeholder="12345678" value="1">
+            <input type="text"name="tlf" placeholder="12345678" required>
             <p>Email:</p>
-            <input type="text" name="email" placeholder="email@email.dk" value="email@email.dk">
+            <input type="text" name="email" placeholder="email@email.dk" required>
             <p>slopedRoof</p>
-            <input type="text" name="slopedRoof" placeholder="84" value="85">
-            <input type="submit" value="Send request to db">
+            <input type="text" name="slopedRoof" placeholder="84" required>
+            <input type="submit" value="Send Request">
         </form>
             
             

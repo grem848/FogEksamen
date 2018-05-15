@@ -1,12 +1,14 @@
 
 
+<%@page import="FunctionLayer.Product"%>
+<%@page import="java.util.List"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>edit page</title>
+        <title>Edit Order page</title>
 
 
     </head>
@@ -19,9 +21,9 @@
         }
 
         td, th {
-            border: 1px solid #dddddd;
+            border: 1px solid #333333;
             text-align: left;
-            padding: 8px;
+            padding: 2px;
         }
 
         tr:nth-child(even) {
@@ -30,7 +32,7 @@
 
     </style>
     <body>
-        <h1>Edit Order!</h1>
+        <h1>Edit Order</h1>
 
 
 
@@ -47,6 +49,7 @@
                 <th>Width</th>
                 <th>Shed Length</th>
                 <th>Shed Width</th>  
+                <th>Price</th>  
                 <th>Sloped Roof</th>
             </tr>
 
@@ -59,6 +62,7 @@
                 <td><%= order.getWidth()%></td>
                 <td><%= order.getShedLength()%></td>
                 <td><%= order.getShedWidth()%></td>
+                <td><%= order.getPrice()%></td>
                 <td><%= order.getSlopedRoof()%></td>
 
             </tr>
@@ -66,53 +70,125 @@
             <tr>
                 <td>
                     <form action="FrontController">
-                    <input type="submit" value="Update Order">
-                </td>
-                <td>
-                        <input type="number" name="tlf" placeholder="12345678" value="<%= order.getTlf()%>" required>
-                        <input type="hidden" name="command" value="editorderpage">
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
-                </td>
-                <td>
-                        <input type="text" name="email" placeholder="something@something.dk" value="<%= order.getEmail()%>" required>
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
+                        <input type="submit" value="Update Order">
+                        </td>
+                        <td>
+                            <input type="number" name="tlf" placeholder="12345678" value="<%= order.getTlf()%>" required>
+                            <input type="hidden" name="command" value="editorderpage">
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
+                        </td>
+                        <td>
+                            <input type="text" name="email" placeholder="something@something.dk" value="<%= order.getEmail()%>" required>
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
 
-                </td>
-                <td>
-                        <input type="number" name="length" placeholder="30" value="<%= order.getLength()%>" required>
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
-                </td>
-                <td>
-                    <input type="number" name="height" placeholder="10" value="<%= order.getHeight()%>" required>
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
-                </td>                
-                <td>
-                        <input type="number" name="width" placeholder="20" value="<%= order.getWidth()%>" required>
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
-                </td>
-                <td>
-                        <input type="number" name="shedLength" placeholder="5" value="<%= order.getShedLength()%>" required>
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
-                </td>
-                <td>
-                        <input type="number" name="shedWidth" placeholder="10" value="<%= order.getShedWidth()%>" required>
-                        <input type="hidden" name="id" value="<%= order.getId()%>"> 
-                </td>
-                <td>
-                    <input type="number" name="slope" placeholder="10" value="<%= order.getSlopedRoof()%>" required>
-                        <input type="hidden" name="id" value="<%= order.getId()%>">
-                </td>
+                        </td>
+                        <td>
+                            <input type="number" name="length" placeholder="30" value="<%= order.getLength()%>" required>
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
+                        </td>
+                        <td>
+                            <input type="number" name="height" placeholder="10" value="<%= order.getHeight()%>" required>
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
+                        </td>                
+                        <td>
+                            <input type="number" name="width" placeholder="20" value="<%= order.getWidth()%>" required>
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
+                        </td>
+                        <td>
+                            <input type="number" name="shedLength" placeholder="5" value="<%= order.getShedLength()%>" required>
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
+                        </td>
+                        <td>
+                            <input type="number" name="shedWidth" placeholder="10" value="<%= order.getShedWidth()%>" required>
+                            <input type="hidden" name="id" value="<%= order.getId()%>"> 
+                        </td>
+                        <td>
+                            <input type="number" name="price" placeholder="10,000" value="<%= order.getPrice()%>" required>
+                            <input type="hidden" name="id" value="<%= order.getPrice()%>">
+                        </td>
+                        <td>
+                            <input type="number" name="slope" placeholder="10" value="<%= order.getSlopedRoof()%>" required>
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
+                        </td>
                     </form>    
 
             </tr>
+        </table>
+        <br>
 
-            <br>
+        <h3>Bill of Materials</h3>
+        <table>
+            <tr>
+                <th>Brackets and Screws</
+            </tr>
+            <tr>
+                <th>Product</th>
+                <th>Amount</th> 
+                <th>Price</th>
+                <th></th>
+            </tr>
 
-            <form name="Building" action="FrontController" method="POST">
-                <input type="hidden" name="command" value="employeeorderlist" />
-                <input type="submit" value="Go back to Order List" />
-            </form>
+            <%
+                request.getParameter("shedLength");
+                if (request.getAttribute("res") != null)
+                {
 
-            <br>
-            </body>
-            </html>
+                    List<Product> res = (List<Product>) request.getAttribute("res");
+
+                    for (Product product : res)
+                    {
+            %>
+            <tr>
+                <td><%= product.getName()%></td>
+                <td><%= product.getAmount()%></td>
+                <td><%= product.getPrice()%> DKK</td>
+                <td>
+
+                </td>
+            </tr>
+            <% }
+                }%>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <th>Wood & Eaves</
+            </tr>
+            <tr>
+                <th>Product</th>
+                <th>Amount</th> 
+                <th>Price</th>
+                <th></th>
+            </tr>
+
+            <%
+                request.getParameter("shedLength");
+                if (request.getAttribute("res2") != null)
+                {
+
+                    List<Product> res2 = (List<Product>) request.getAttribute("res2");
+
+                    for (Product product : res2)
+                    {
+            %>
+            <tr>
+                <td><%= product.getName()%></td>
+                <td><%= product.getAmount()%></td>
+                <td><%= product.getPrice()%> DKK</td>
+                <td>
+
+                </td>
+            </tr>
+            <% }
+                }%>
+        </table>
+        <br>
+
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="employeeorderlist" />
+            <input type="submit" value="Go back to Order List" />
+        </form>
+
+        <br>
+    </body>
+</html>
