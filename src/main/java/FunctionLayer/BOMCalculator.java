@@ -50,7 +50,7 @@ public class BOMCalculator {
         
         calculation2();
         
-        resDemo2.add(new Product("shedWalls", calculateShedWalls(shedLength, shedWidth ) / 100 , ((shedLength * shedWidth / 10) * 2)));
+        resDemo2.add(new Product("shedWalls", calculateShedWalls(shedLength, shedWidth, height ), ((shedLength * height) + (shedWidth * height))));
 
     }
 
@@ -113,15 +113,15 @@ public class BOMCalculator {
     // calculates all the sides of the carport, except the front and roof.
     private double calculateWoodUsage(double length, double width, double height) {
 
-        double price = (((length * height) * 2) + (width * height));
+        double amount = (((length * height) * 2) + (width * height));
         
-        return price;
+        return amount;
 
     }
     
-    private int calculateShedWalls(double shedLength , double shedWidth){
+    private int calculateShedWalls(double shedLength , double shedWidth, double height){
         
-        int shedArea = (int) (shedLength * shedWidth * 2);
+        double shedArea = calculateShedWood( shedLength , shedWidth , height);
         int price = 0;
                 
                 for (int i = 0; i < products2.size() ; i++) {
@@ -133,10 +133,16 @@ public class BOMCalculator {
                     }
                     
         }
-                
-                return (price * (shedArea));
+                return (int)(price * (Math.ceil(shedArea)));
         
+    }
+    
+       private double calculateShedWood(double shedLength, double shedWidth, double height) {
+
+        double amount = ((shedLength * height) + (shedWidth * height)) / 100;;
         
+        return amount;
+
     }
 
     private double calculateRoff(double length, double width) {

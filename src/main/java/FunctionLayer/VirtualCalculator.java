@@ -76,11 +76,11 @@ public class VirtualCalculator
 
         for (int i = 0; i < n; i++)
         {
-
-            sb.append("<line x1=" + postDistance + "  y1=0  x2=" + postDistance + " y2=" + width + " style='stroke:#006600;' fill='black' />\n");
-
-            postDistance += 55;
             rafterAmount++;
+            sb.append("<line x1=" + postDistance + "  y1=0  x2=" + postDistance + " y2=" + width + " style='stroke:#006600;' fill='black' />\n");
+            
+            postDistance += 55;
+            
         }
 
         return sb.toString();
@@ -168,6 +168,7 @@ public class VirtualCalculator
             sb.append("<line x1 = 0  y1 = " + y + " x2 = " + length + " y2 = " + y + " style='stroke:#006600;' />\n");
 
             y = (int) width - 35;
+            rafterAmount++;
         }
 
         return sb.toString();
@@ -239,6 +240,7 @@ public class VirtualCalculator
                     + " style = stroke:#000000; />\n");
 
             y += (shedLength / 2) - 5;
+            postAmount++;
         }
 
         x = width - 10;
@@ -250,6 +252,7 @@ public class VirtualCalculator
             sb.append("<rect  x = " + x + " y = " + y + " height = " + 10 + " width = " + 10
                     + " style = stroke:#000000; />\n");
             y += (shedLength / 2) - 5;
+            postAmount++;
         }
 
         return sb.toString();
