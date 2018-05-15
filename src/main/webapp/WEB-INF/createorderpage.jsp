@@ -22,27 +22,27 @@
             <br>
             <p>Length:</p>
             <br>
-            <input type="text" name="length" placeholder="0" value="1">
+            <input type="text" name="length" placeholder="0" required>
             <br>
             <p>Width:</p>
             <br>
-            <input type="text" name="width" placeholder="0" value="1">
+            <input type="text" name="width" placeholder="0" required>
             <br>
             <p>height:</p>
             <br>
-            <input type="text" name="height" placeholder="0" value="1">
+            <input type="text" name="height" placeholder="0" required>
             <br>
             <p>shedLength (Optional): </p>
             <br>
-            <input type="text" name="shedLength" placeholder="0" value="1">
+            <input type="text" name="shedLength" placeholder="0" required>
             <br>
             <p>shedWidth (Optional): </p>
             <br>
-            <input type="text" name="shedWidth" placeholder="0" value="1">
+            <input type="text" name="shedWidth" placeholder="0" required>
             <br>
             <p>Slope</p>
             <br>
-            <input type="text" name="slopedRoof" placeholder="0" value="1">
+            <input type="text" name="slopedRoof" placeholder="0" required>
 
             <input type="submit" name="Submit">
 
