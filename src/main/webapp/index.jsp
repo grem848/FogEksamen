@@ -304,17 +304,18 @@
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="sendrequestpage">
             <input type="hidden" name="carportWidth" value="<%=width%>">
-            <input type="hidden" name="carportHeight" value="<%=inputHeight%>">
+            <input type="hidden" name="carportHeight" value="<%=actualHeight%>">
             <input type="hidden" name="carportLength" value="<%=outputLength%>">
+            <input type="hidden" name="carportHeight" value="<%=inputHeight%>">
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
             Do this last!
             <p>Tlf</p>
-            <input type="text"name="tlf" placeholder="12345678" required>
+            <input type="number"name="tlf" placeholder="12345678" required>
             <p>Email:</p>
             <input type="text" name="email" placeholder="email@email.dk" required>
             <p>slopedRoof</p>
-            <input type="text" name="slopedRoof" placeholder="84" required>
+            <input type="number" name="slopedRoof" placeholder="84" required>
             <input type="submit" value="Send Request">
         </form>
             
