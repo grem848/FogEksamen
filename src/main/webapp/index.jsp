@@ -306,6 +306,7 @@
             <input type="hidden" name="carportWidth" value="<%=width%>">
             <input type="hidden" name="carportHeight" value="<%=actualHeight%>">
             <input type="hidden" name="carportLength" value="<%=outputLength%>">
+            <input type="hidden" name="carportHeight" value="<%=inputHeight%>">
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
             Do this last!

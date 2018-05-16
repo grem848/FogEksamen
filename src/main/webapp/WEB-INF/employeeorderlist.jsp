@@ -71,11 +71,18 @@
                             <input type="hidden" name="id" value="<%= order.getId()%>">
                             <input type="submit" name="order" value="Delete Order" onclick="return confirm('Are you sure you want to delete this order, this action cant be reversed')" >
                         </form>
+                        <%
+                            if (order.getPrice() != 0)
+                            {
+                        %>
                         <form name="orderdetails" action="FrontController" method="Post">
                             <input type="hidden" name="command" value="orderfinishedpage">
                             <input type="hidden" name="id" value="<%= order.getId()%>">
                             <input type="submit" name="order" value="Finish Order" onclick="return confirm('Are you sure you want to finish this order, this action cant be reversed')">
                         </form>
+                        <%
+                            }
+                        %>
                         <form action="FrontController" method="Post">
                             <input type="hidden" name="command" value="employeeeditpage">
                             <input type="hidden" name="id" value="<%= order.getId()%>">
