@@ -9,15 +9,13 @@
     </head>
     <body>
         <h1>Order is Finished and shipped!</h1>
+        <h2>BOM here</h2>
+        <h2>Sketch here</h2>
         <br>
-        <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="employee" />
-            <input type="submit" value="Back to Employee Page" />
-        </form>
 
         <form action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeeorderlist">
-            <input type="submit" value="Back to OrderLists">            
+            <input type="submit" value="Back to OrderList">            
         </form>
        
     </body>

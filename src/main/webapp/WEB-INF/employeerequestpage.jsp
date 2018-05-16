@@ -16,7 +16,7 @@
         }
 
         td, th {
-            border: 1px solid #dddddd;
+            border: 1px solid #333333;
             text-align: left;
             padding: 8px;
         }
@@ -41,6 +41,7 @@
                 <th>Shed Length</th>
                 <th>Shed Width</th>  
                 <th>Sloped Roof</th>
+                <th>Price</th>
                 <th>Status</th>
                 <th>Options</th>
             </tr>
@@ -60,6 +61,7 @@
                 <td><%= order.getShedLength()%></td>
                 <td><%= order.getShedWidth()%></td>
                 <td><%= order.getSlopedRoof()%></td>
+                <td><%= order.getPrice()%></td>
                 <td><%= order.getStatus()%></td>
                 <td>
                     <form name="orderdetails" action="FrontController" method="Post">

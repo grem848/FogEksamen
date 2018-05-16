@@ -30,13 +30,9 @@ public class FrontController extends HttpServlet {
             Command action = Command.from( request );
             String view = action.execute( request, response );
             request.getRequestDispatcher( "/WEB-INF/" + view + ".jsp" ).forward( request, response );
-        } catch ( FogException ex ) {
+        } catch ( FogException | OrderBuilderException ex ) {
             request.setAttribute( "error", ex.getMessage() );
-            request.getRequestDispatcher( "index.jsp" ).forward( request, response );
-        } catch (OrderBuilderException ex)
-        {
-            request.setAttribute( "error", ex.getMessage() );
-            request.getRequestDispatcher( "../products.jsp" ).forward( request, response );
+            request.getRequestDispatcher( "/WEB-INF/employeelogin.jsp" ).forward( request, response );
         }
     }
 
