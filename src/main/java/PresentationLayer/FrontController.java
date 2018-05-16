@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package PresentationLayer;
 
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -14,10 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
 
- @author kasper
- */
+
 @WebServlet( name = "FrontController", urlPatterns = { "/FrontController" } )
 public class FrontController extends HttpServlet {
 
@@ -36,13 +30,9 @@ public class FrontController extends HttpServlet {
             Command action = Command.from( request );
             String view = action.execute( request, response );
             request.getRequestDispatcher( "/WEB-INF/" + view + ".jsp" ).forward( request, response );
-        } catch ( LoginSampleException ex ) {
+        } catch ( FogException | OrderBuilderException ex ) {
             request.setAttribute( "error", ex.getMessage() );
-            request.getRequestDispatcher( "index.jsp" ).forward( request, response );
-        } catch (OrderBuilderException ex)
-        {
-            request.setAttribute( "error", ex.getMessage() );
-            request.getRequestDispatcher( "../products.jsp" ).forward( request, response );
+            request.getRequestDispatcher( "/WEB-INF/employeelogin.jsp" ).forward( request, response );
         }
     }
 

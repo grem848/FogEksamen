@@ -16,7 +16,7 @@
         }
 
         td, th {
-            border: 1px solid #dddddd;
+            border: 1px solid #333333;
             text-align: left;
             padding: 8px;
         }
@@ -41,13 +41,15 @@
                 <th>Shed Length</th>
                 <th>Shed Width</th>  
                 <th>Sloped Roof</th>
+                <th>Price</th>
                 <th>Status</th>
                 <th>Options</th>
             </tr>
             <%
 
                 List<Order> userOrders = (List<Order>) request.getAttribute("allOrders");
-                for (Order order : userOrders) {
+                for (Order order : userOrders)
+                {
             %>
             <tr>
                 <td><%= order.getId()%></td>
@@ -59,8 +61,14 @@
                 <td><%= order.getShedLength()%></td>
                 <td><%= order.getShedWidth()%></td>
                 <td><%= order.getSlopedRoof()%></td>
+                <td><%= order.getPrice()%></td>
                 <td><%= order.getStatus()%></td>
                 <td>
+                    <form name="orderdetails" action="FrontController" method="Post">
+                        <input type="hidden" name="command" value="orderremovedpage">
+                        <input type="hidden" name="id" value="<%= order.getId()%>">
+                        <input class="btn btn-primary" type="submit" name="order" value="Delete Request" onclick="return confirm('Are you sure you want to delete this order, this action cant be reversed')" >
+                    </form>
                     <div class="form-group">
                         <form name="orderdetails" action="FrontController" method="Post">
                             <input type="hidden" name="command" value="ordersent">

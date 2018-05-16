@@ -1,8 +1,9 @@
 package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
+import FunctionLayer.FogException;
 import FunctionLayer.OrderBuilderException;
+import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,7 +11,7 @@ public class OrderConfirmed extends Command
 {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderBuilderException
+    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
     {
         int height = Integer.parseInt(request.getParameter("height"));
         int width = Integer.parseInt(request.getParameter("width"));
@@ -21,7 +22,13 @@ public class OrderConfirmed extends Command
         String email = request.getParameter("email");
         int slopedRoof = Integer.parseInt(request.getParameter("slopedRoof"));
 
-        LogicFacade.createOrder(tlf, email, length, width, height, shedLength, shedWidth, slopedRoof);
+        try
+        {
+            LogicFacade.createOrder(tlf, email, length, width, height, shedLength, shedWidth, slopedRoof);
+        } catch (SQLException ex)
+        {
+            throw new FogException(ex.getMessage());
+        }
 
         return "orderconfirmed";
     }

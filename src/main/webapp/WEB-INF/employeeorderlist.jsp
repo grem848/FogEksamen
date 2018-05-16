@@ -16,7 +16,7 @@
         }
 
         td, th {
-            border: 1px solid #dddddd;
+            border: 1px solid #333333;
             text-align: left;
             padding: 8px;
         }
@@ -31,7 +31,7 @@
 
         <table class="table table-striped">
             <tr> 
-                           
+
                 <th>OrderID</th>
                 <th>Tel.</th>
                 <th>Email</th> 
@@ -41,14 +41,16 @@
                 <th>Shed Length</th>
                 <th>Shed Width</th>  
                 <th>Sloped Roof</th>
+                <th>Price</th>
                 <th>Status</th>
                 <th>Options</th>
             </tr>
             <%
- 
-    List<Order> userOrders = (List<Order>) request.getAttribute("allStatusOrders");
-    for (Order order : userOrders) {
-%>
+
+                List<Order> userOrders = (List<Order>) request.getAttribute("allStatusOrders");
+                for (Order order : userOrders)
+                {
+            %>
             <tr>
                 <td><%= order.getId()%></td>
                 <td><%= order.getTlf()%></td>
@@ -59,19 +61,46 @@
                 <td><%= order.getShedLength()%></td>
                 <td><%= order.getShedWidth()%></td>
                 <td><%= order.getSlopedRoof()%></td>
+                <td><%= order.getPrice()%></td>
                 <td><%= order.getStatus()%></td>
-                
+
                 <td>
                     <div class="form-group">
                         <form name="orderdetails" action="FrontController" method="Post">
+                            <input type="hidden" name="command" value="orderremovedpage">
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
+                            <input type="submit" name="order" value="Delete Order" onclick="return confirm('Are you sure you want to delete this order, this action cant be reversed')" >
+                        </form>
+                        <%
+                            if (order.getPrice() != 0)
+                            {
+                        %>
+                        <form name="orderdetails" action="FrontController" method="Post">
                             <input type="hidden" name="command" value="orderfinishedpage">
                             <input type="hidden" name="id" value="<%= order.getId()%>">
-                            <input class="btn btn-primary" type="submit" name="order" value="Finish Order">
+                            <input type="submit" name="order" value="Finish Order" onclick="return confirm('Are you sure you want to finish this order, this action cant be reversed')">
                         </form>
+                        <%
+                            }
+                        %>
+                        <form action="FrontController" method="Post">
+                            <input type="hidden" name="command" value="employeeeditpage">
+                            <input type="hidden" name="id" value="<%= order.getId()%>">
+                            <input type="hidden" name="tlf" value="<%= order.getTlf()%>">
+                            <input type="hidden" name="email" value="<%= order.getEmail()%>">
+                            <input type="hidden" name="length" value="<%= order.getLength()%>">
+                            <input type="hidden" name="width" value="<%= order.getWidth()%>">
+                            <input type="hidden" name="height" value="<%= order.getHeight()%>">
+                            <input type="hidden" name="shedLength" value="<%= order.getShedLength()%>">
+                            <input type="hidden" name="shedWidth" value="<%= order.getShedWidth()%>">
+                            <input type="hidden" name="slope" value="<%= order.getSlopedRoof()%>">
+                            <input type="hidden" name="price" value="<%= order.getPrice()%>">
+                            <input type="submit" value="Edit Order">
+                        </form>    
                     </div>
                 </td>
             </tr>
-            <% 
+            <%
                 }%>
         </table>
     </body>
