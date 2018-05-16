@@ -10,7 +10,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Edit Order page</title>
 
-
     </head>
     <style>
 
@@ -34,8 +33,7 @@
     <body>
         <h1>Edit Order</h1>
 
-
-
+        <%int totalPrice = (int) request.getAttribute("totalPrice");%>
 
         <table class="table table-striped">
             <% Order order = (Order) request.getAttribute("order");%>
@@ -49,7 +47,7 @@
                 <th>Width</th>
                 <th>Shed Length</th>
                 <th>Shed Width</th>  
-                <th>Price</th>  
+                <th>Price DKK</th>  
                 <th>Sloped Roof</th>
             </tr>
 
@@ -103,7 +101,7 @@
                             <input type="hidden" name="id" value="<%= order.getId()%>"> 
                         </td>
                         <td>
-                            <input type="number" name="price" placeholder="10,000" value="<%= order.getPrice()%>" required>
+                            <input type="number" name="price" placeholder="10,000" value="<%= (int) (Math.ceil((totalPrice * 1.30) / 100.0)) * 100 - 1%>" required>
                             <input type="hidden" name="id" value="<%= order.getPrice()%>">
                         </td>
                         <td>
@@ -114,8 +112,112 @@
 
             </tr>
         </table>
+        <h3>Standard Dimensions</h3>             
+        Carport Width
+        <select name="carportWidth" title="Carport Width">
+            <option value="240">240 cm</option>
+            <option value="270">270 cm</option>
+            <option value="300">300 cm</option>
+            <option value="330">330 cm</option>
+            <option value="360">360 cm</option>
+            <option value="390">390 cm</option>
+            <option value="420">420 cm</option>
+            <option value="450">450 cm</option>
+            <option value="480">480 cm</option>
+            <option value="510">510 cm</option>
+            <option value="540">540 cm</option>
+            <option value="570">570 cm</option>
+            <option value="600">600 cm</option>
+            <option value="630">630 cm</option>
+            <option value="660">660 cm</option>
+            <option value="690">690 cm</option>
+            <option value="720">720 cm</option>
+            <option value="750">750 cm</option>
+        </select>
         <br>
-
+        <br>
+        Carport Length
+        <select name="carportLength" title="Carport Length">
+            <option value="690">240 cm</option>
+            <option value="675">270 cm</option>
+            <option value="660">300 cm</option>
+            <option value="645">330 cm</option>
+            <option value="630">360 cm</option>
+            <option value="615">390 cm</option>
+            <option value="600">420 cm</option>
+            <option value="585">450 cm</option>
+            <option value="570">480 cm</option>
+            <option value="555">510 cm</option>
+            <option value="540">540 cm</option>
+            <option value="525">570 cm</option>
+            <option value="510">600 cm</option>
+            <option value="495">630 cm</option>
+            <option value="480">660 cm</option>
+            <option value="465">690 cm</option>
+            <option value="450">720 cm</option>
+            <option value="435">750 cm</option>
+            <option value="420">780 cm</option>
+        </select>
+        <br>
+        <br>
+        Carport Actual Height
+        <select name="carportHeight" title="Carport Height">
+            <option value="195">210 cm</option>
+            <option value="192">215 cm</option>
+            <option value="190">220 cm</option>
+            <option value="187">225 cm</option>
+            <option value="185">230 cm</option>
+            <option value="182">235 cm</option>
+            <option value="180">240 cm</option>
+        </select>
+        <br>
+        <br>
+        Carport Shed Width
+        <select name="shedWidth" title="Shed Width">
+            <option value="210">210 cm</option>
+            <option value="240">240 cm</option>
+            <option value="270">270 cm</option>
+            <option value="300">300 cm</option>
+            <option value="330">330 cm</option>
+            <option value="360">360 cm</option>
+            <option value="390">390 cm</option>
+            <option value="420">420 cm</option>
+            <option value="450">450 cm</option>
+            <option value="480">480 cm</option>
+            <option value="510">510 cm</option>
+            <option value="540">540 cm</option>
+            <option value="570">570 cm</option>
+            <option value="600">600 cm</option>
+            <option value="630">630 cm</option>
+            <option value="660">660 cm</option>
+            <option value="690">690 cm</option>
+            <option value="720">720 cm</option>
+        </select>
+        <br>
+        <br>
+        Carport Shed Length
+        <select name="shedLength" title="Shed Length">
+            <option value="150">150 cm</option>
+            <option value="180">180 cm</option>
+            <option value="210">210 cm</option>
+            <option value="240">240 cm</option>
+            <option value="270">270 cm</option>
+            <option value="300">300 cm</option>
+            <option value="330">330 cm</option>
+            <option value="360">360 cm</option>
+            <option value="390">390 cm</option>
+            <option value="420">420 cm</option>
+            <option value="450">450 cm</option>
+            <option value="480">480 cm</option>
+            <option value="510">510 cm</option>
+            <option value="540">540 cm</option>
+            <option value="570">570 cm</option>
+            <option value="600">600 cm</option>
+            <option value="630">630 cm</option>
+            <option value="660">660 cm</option>
+            <option value="690">690 cm</option>
+        </select>
+        <br>
         <h3>Bill of Materials</h3>
         <table>
             <tr>
