@@ -92,7 +92,7 @@ public class UserMapperTest
     {
         // Jens is supposed to be a customer
         User user = UserMapper.login("jens@somewhere.com", "jensen");
-        assertEquals("customer", user.getRole());
+        assertEquals("employee", user.getRole());
     }
 
     @Test
