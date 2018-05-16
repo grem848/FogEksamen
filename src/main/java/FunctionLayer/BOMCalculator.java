@@ -21,15 +21,7 @@ public class BOMCalculator
 
     private double area;
 
-    /**
-     *
-     * @param length
-     * @param width
-     * @param height
-     * @throws OrderBuilderException
-     */
-    public BOMCalculator(double length, double width, double height) throws OrderBuilderException
-    {
+    public BOMCalculator(double length, double width, double height , double shedLength, double shedWidth) throws OrderBuilderException {
 
         this.length = length;
         this.width = width;
@@ -46,11 +38,15 @@ public class BOMCalculator
         calculation1(area);
 
 //        resDemo.add(new Product("Total Price", calculateTotalPrice(), 0));
+
+        vc.sketch(width, length, shedWidth, shedLength);
 //        calculateTotalPrice();
         
         vc.sketch(width, length, 0, 0);
 
         calculation2();
+        
+        resDemo2.add(new Product("100x100mm wood for shed", calculateShedWalls(shedLength, shedWidth, height ), ((shedLength * height) + (shedWidth * height))));
 
     }
 
@@ -114,9 +110,35 @@ public class BOMCalculator
     private double calculateWoodUsage(double length, double width, double height)
     {
 
-        double price = (((length * height) * 2) + (width * height));
+        double amount = (((length * height) * 2) + (width * height));
+        
+        return amount;
 
-        return price;
+    }
+    
+    private int calculateShedWalls(double shedLength , double shedWidth, double height){
+        
+        double shedArea = calculateShedWood( shedLength , shedWidth , height);
+        int price = 0;
+                
+                for (int i = 0; i < products2.size() ; i++) {
+            
+                    if(products2.get(i).getName().equals("100x100mm wood for walls")){
+                        
+                        price = products2.get(i).getPrice();
+                        
+                    }
+                    
+        }
+                return (int)(price * (Math.ceil(shedArea)));
+        
+    }
+    
+       private double calculateShedWood(double shedLength, double shedWidth, double height) {
+
+        double amount = ((shedLength * height) + (shedWidth * height)) / 100;;
+        
+        return amount;
 
     }
 
