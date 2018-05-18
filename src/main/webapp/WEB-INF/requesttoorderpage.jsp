@@ -17,11 +17,11 @@
 
         <form action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeeorderlist">
-            <input type="submit" value="Back to OrderLists">            
+            <input type="submit" value="Back to Order List">            
         </form>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeerequestpage" />
-            <input type="submit" value="Customer request List" />
+            <input type="submit" value="Back to Request List" />
         </form>
     </body>
 </html>
