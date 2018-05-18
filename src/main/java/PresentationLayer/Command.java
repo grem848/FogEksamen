@@ -18,13 +18,12 @@ abstract class Command
         commands.put("register", new Register());
         commands.put("help", new Help());
         commands.put("employeeorderlist", new EmployeeOrderList());
-        commands.put("ordersent", new OrderSent());
+        commands.put("requesttoorderpage", new RequestToOrder());
         commands.put("employee", new Forwarder());
         commands.put("logout", new Logout());
         commands.put("orderconfirmed", new OrderConfirmed());
         commands.put("createorderpage", new CreateOrder());
         commands.put("employeerequestpage", new RequestList());
-        commands.put("orderfinishedpage", new OrderFinished());
         commands.put("orderremovedpage", new OrderRemoved());
         commands.put("employeeeditpage", new EmployeeEditOrder());
         commands.put("editorderpage", new EditOrder());
@@ -33,7 +32,7 @@ abstract class Command
         commands.put("sendrequestpage", new Visualization());
         commands.put("updateemployeecreateorder", new UpdateeEmployeCreateOrder());
         
-        commands.put("sendorderpage", new OrderSend()); // bruges til at kunde kan se sin BOM og skitse???
+        commands.put("sendorderpage", new OrderSend());
         
     }
 
