@@ -17,7 +17,7 @@ public class Connector
     private static Connection singleton;
 
     /**
-     * 
+     * Sets connection
      * @param con
      */
     public static void setConnection(Connection con)
@@ -26,7 +26,7 @@ public class Connector
     }
 
     /**
-     * 
+     * Gets connection from URL, USERNAME and PASSWORD variables
      * @return
      * @throws ClassNotFoundException
      * @throws SQLException
