@@ -3,6 +3,7 @@ package FunctionLayer;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BOMCalculator
 {
 
@@ -21,6 +22,15 @@ public class BOMCalculator
 
     private double area;
 
+    /**
+     *
+     * @param length
+     * @param width
+     * @param height
+     * @param shedLength
+     * @param shedWidth
+     * @throws OrderBuilderException
+     */
     public BOMCalculator(double length, double width, double height , double shedLength, double shedWidth) throws OrderBuilderException {
 
         this.length = length;
@@ -170,6 +180,10 @@ public class BOMCalculator
         return res;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTotalPrice()
     {
         if (totalPrice == 0)
@@ -179,6 +193,10 @@ public class BOMCalculator
         return totalPrice;
     }
 
+    /**
+     *
+     * @param totalPrice
+     */
     public void setTotalPrice(int totalPrice)
     {
         this.totalPrice = totalPrice;
