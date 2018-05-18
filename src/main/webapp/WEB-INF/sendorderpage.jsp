@@ -47,7 +47,6 @@
             <tr>
                 <th>Product</th>
                 <th>Amount</th> 
-                <th>Price</th>
                 <th></th>
             </tr>
 
@@ -62,7 +61,6 @@
             <tr>
                 <td><%= product.getName()%></td>
                 <td><%= product.getAmount()%></td>
-                <td><%= product.getPrice()%> DKK</td>
                 <td>
 
                 </td>
@@ -78,7 +76,6 @@
             <tr>
                 <th>Product</th>
                 <th>Amount</th> 
-                <th>Price</th>
                 <th></th>
             </tr>
 
@@ -93,7 +90,6 @@
             <tr>
                 <td><%= product.getName()%></td>
                 <td><%= product.getAmount()%></td>
-                <td><%= product.getPrice()%> DKK</td>
                 <td>
 
                 </td>
