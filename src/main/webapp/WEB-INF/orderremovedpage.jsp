@@ -13,9 +13,9 @@
         <p>Order have been removed succesfully!</p>
         <br>
         
-        <form action="FrontController" method="Post">
-            <input type="hidden" name="command" value="employeeorderlist">
-            <input type="submit" value="back to OrderList">
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="employeerequestpage" />
+            <input type="submit" value="Customer request List" />
         </form>
     </body>
 </html>

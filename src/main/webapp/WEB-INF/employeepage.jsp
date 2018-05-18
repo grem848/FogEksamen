@@ -15,7 +15,7 @@
 
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="createorderpage">
-            <input type="submit" value="Go to Create Order Page">
+            <input type="submit" value="Create Request Page">
         </form>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeeorderlist" />

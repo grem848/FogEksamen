@@ -76,8 +76,17 @@
                             {
                         %>
                         <form name="orderdetails" action="FrontController" method="Post">
-                            <input type="hidden" name="command" value="orderfinishedpage">
+                            <input type="hidden" name="command" value="sendorderpage">
                             <input type="hidden" name="id" value="<%= order.getId()%>">
+                            <input type="hidden" name="tlf" value="<%= order.getTlf()%>">
+                            <input type="hidden" name="email" value="<%= order.getEmail()%>">
+                            <input type="hidden" name="length" value="<%= order.getLength()%>">
+                            <input type="hidden" name="width" value="<%= order.getWidth()%>">
+                            <input type="hidden" name="height" value="<%= order.getHeight()%>">
+                            <input type="hidden" name="shedLength" value="<%= order.getShedLength()%>">
+                            <input type="hidden" name="shedWidth" value="<%= order.getShedWidth()%>">
+                            <input type="hidden" name="slope" value="<%= order.getSlopedRoof()%>">
+                            <input type="hidden" name="price" value="<%= order.getPrice()%>">
                             <input type="submit" name="order" value="Finish Order" onclick="return confirm('Are you sure you want to finish this order, this action cant be reversed')">
                         </form>
                         <%

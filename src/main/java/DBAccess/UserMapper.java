@@ -12,7 +12,9 @@ public class UserMapper
 {
 
     /**
-     *
+     * Takes an User object and retrieves the attributes for a SQL preparedstatement that inserts the User attributes into to the order DB.
+     * <p>
+     * Used to create Admin users, can also be used for customers, but SQL defaults role to employee.
      * @param user
      * @throws FogException
      */
@@ -34,7 +36,11 @@ public class UserMapper
     }
 
     /**
-     *
+     * Takes the parameters and validates them by checking if they exist in the User DB.
+     * <p>
+     * Used to validate User login, if it succeeds it returns the user, to be used to add user to the session, and gets his role allowing multiple roles.
+     * <p>
+     * Used to validate User login, if it fails an exception is thrown to show that login failed.
      * @param email
      * @param password
      * @return
