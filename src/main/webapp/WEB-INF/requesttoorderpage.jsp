@@ -8,7 +8,7 @@
         <title>Order Sent Page</title>
     </head>
     <body>
-        <h1>Order has been marked as sent!</h1>
+        <h1>Request has been made an Order!</h1>
         <br>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employee" />
@@ -17,11 +17,11 @@
 
         <form action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeeorderlist">
-            <input type="submit" value="Back to OrderLists">            
+            <input type="submit" value="Back to Order List">            
         </form>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeerequestpage" />
-            <input type="submit" value="Customer request List" />
+            <input type="submit" value="Back to Request List" />
         </form>
     </body>
 </html>
