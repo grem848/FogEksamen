@@ -33,9 +33,11 @@
     </head>
     <body>
         <h1>Order is Finished and shipped!</h1>
-        <h3>this list is sent to <%=request.getAttribute("email")%></h3>
+        <h3>These informations are sent to email: <%=request.getAttribute("email")%></h3>
         <br>
-
+        
+        <%int totalPrice = (int) request.getAttribute("totalPrice");%>
+        <h3>Price for your carport: <%= (int) (Math.ceil((totalPrice * 1.30) / 100.0)) * 100 - 1%> DKK </h3>
         <br>
         <h3>Bill of Materials</h3>
         <table>

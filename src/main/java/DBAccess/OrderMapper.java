@@ -14,7 +14,9 @@ import java.util.List;
 public class OrderMapper {
 
     /**
-     * Takes an Order object and retrieves the attributes, for a SQL preparedstatement that inserts the Order into to the DB
+     * Takes an Order object and retrieves the attributes for a SQL preparedstatement that inserts the Order attributes into to the order DB.
+     * <p>
+     * Used to create orders
      * @param order
      * @return
      * @throws OrderBuilderException
@@ -44,41 +46,10 @@ public class OrderMapper {
         return false;
     }
 
-//    public static List<OrderBOM> getAllUserOrders(User user) throws OrderBuilderException
-//    {
-//        List<OrderBOM> orderList;
-//        try
-//        {
-//            Connection connection = Connector.connection();
-//            String SQL = "SELECT * FROM useradmin.orders WHERE id = ?";
-//            PreparedStatement statement = connection.prepareStatement(SQL);
-//
-//            statement.setInt(1, user.getId());
-//            ResultSet rs = statement.executeQuery();
-//
-//            orderList = new ArrayList<>();
-//
-//            while (rs.next())
-//            {
-//                int orderid = rs.getInt("orderid");
-//                int id = rs.getInt("id");
-//                int length = rs.getInt("length");
-//                int width = rs.getInt("width");
-//                int height = rs.getInt("height");
-//                boolean sent = rs.getBoolean("sent");
-//
-//                orderList.add(new OrderBOM(orderid, id, length, width, height, sent));
-//            }
-//
-//            return orderList;
-//        } catch (ClassNotFoundException | SQLException ex)
-//        {
-//            throw new OrderBuilderException(ex.getMessage());
-//        }
-//    }
-
     /**
-     * 
+     * Uses a SQL preparedstatement to get all Orders from the DB with status as 'request', and adds them to a List of Orders.
+     * <p>
+     * Used to get a list of requests from customers.
      * @return
      * @throws OrderBuilderException
      */
@@ -116,7 +87,9 @@ public class OrderMapper {
     }
 
     /**
-     *
+     * Uses a SQL preparedstatement to set the status of an Order with the id from the parameter, to 'order'.
+     * <p>
+     * Used to set the status of an Order to 'order'.
      * @param id
      * @throws OrderBuilderException
      */
@@ -137,7 +110,9 @@ public class OrderMapper {
     }
 
     /**
-     *
+     * Uses a SQL preparedstatement to set the status of an Order with the id from the parameter, to 'finished'.
+     * <p>
+     * Used to set the status of an Order to 'finished'.
      * @param id
      * @throws OrderBuilderException
      */
@@ -158,7 +133,9 @@ public class OrderMapper {
     }
 
     /**
-     *
+     * Uses a SQL preparedstatement to get all Orders from the DB with status as 'order', and adds them to a List.
+     * <p>
+     * Used to get a list of Orders from customers.
      * @return
      * @throws OrderBuilderException
      */
@@ -197,7 +174,9 @@ public class OrderMapper {
     }
 
     /**
-     *
+     * Uses a SQL preparedstatement to get an Order from the DB with the id from the parameter.
+     * <p>
+     * Used to get one Order for the edit page.
      * @param id
      * @return
      * @throws OrderBuilderException
@@ -238,7 +217,9 @@ public class OrderMapper {
     }
 
     /**
-     *
+     * Uses a SQL preparedstatement to update the attributes of an order in the DB, with new values from the parameters.
+     * <p>
+     * Used to edit an Order and ready it for the customer.
      * @param id
      * @param tlf
      * @param email
@@ -278,7 +259,9 @@ public class OrderMapper {
     }
 
     /**
-     *
+     * Uses a SQL preparedstatement to get all Products from the bracketsScrews DB, and adds them to a List of Products.
+     * <p>
+     * Used to make the Bill of Materials, to get the brackets and screws and other small materials.
      * @return
      * @throws OrderBuilderException
      */
@@ -311,7 +294,9 @@ public class OrderMapper {
     }
 
     /**
-     *
+     * Uses a SQL preparedstatement to get all Products from the woodEaves DB, and adds them to a List of Products.
+     * <p>
+     * Used to make the Bill of Materials, to get the larger materials like wood for walls and roof materials.
      * @return
      * @throws OrderBuilderException
      */

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class OrderSent extends Command
+public class RequestToOrder extends Command
 {
 
    @Override
@@ -18,7 +18,7 @@ public class OrderSent extends Command
         
         LogicFacade.deliverOrder(id);
         
-        return "ordersentpage";
+        return "requesttoorderpage";
     }
     
 }

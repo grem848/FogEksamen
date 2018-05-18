@@ -136,7 +136,7 @@ public class BOMCalculator
     
        private double calculateShedWood(double shedLength, double shedWidth, double height) {
 
-        double amount = ((shedLength * height) + (shedWidth * height)) / 100;;
+        double amount = ((shedLength * height) + (shedWidth * height)) / 100;
         
         return amount;
 
