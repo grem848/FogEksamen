@@ -8,7 +8,7 @@
         <title>Order Sent Page</title>
     </head>
     <body>
-        <h1>Order has been marked as sent!</h1>
+        <h1>Request has been made an Order!</h1>
         <br>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employee" />
