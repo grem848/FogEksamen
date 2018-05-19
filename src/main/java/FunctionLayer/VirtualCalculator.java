@@ -3,26 +3,25 @@ package FunctionLayer;
 public class VirtualCalculator
 {
 
-//    private double length;
-//    private double width;
     private StringBuilder sb = new StringBuilder();
 
-//    public VirtualCalculator(double length, double width) {
-//        this.length = length;
-//        this.width = width;
-//    }
     private boolean isShed;
     
     private int postAmount = 0;
     private int rafterAmount = 2;
     
     /**
-     *
+     * Uses width,length,shedWidth,shedLength to calculate the whole sketch of the product.
+     * <p>
+     * the calculation have been created by the original sketch. we took the ratio of everything, so we can make it.
+     * <p>
+     * smaller and bigger depends on the input that we get. 
+     * 
      * @param width
      * @param length
      * @param shedWidth
      * @param shedLength
-     * @return
+     * @return the whole String of the SVG script. 
      */
     public String sketch(double width, double length, double shedWidth, double shedLength)
     {
@@ -60,7 +59,14 @@ public class VirtualCalculator
         return sb.toString();
     }
 
-    //arealet
+    /**
+     * Uses length and width, to calculate the area of which the SVG are going to be in.
+     * <p>
+     * Used in method Sketch().
+     * @param length
+     * @param width
+     * @return the String which gets appended in another String.
+     */
     private String area(double length, double width)
     {
 
@@ -71,7 +77,16 @@ public class VirtualCalculator
         return res;
     }
 
-    //spær
+    /**
+     * Uses length, width to calculate the how many rafter(spær) are going to be created.
+     * <p>
+     * and how far away they are going to be from each other.
+     * <p>
+     * Used in method sketch().
+     * @param length
+     * @param width
+     * @return the String which gets appended in another String.
+     */
     private String rafter(double length, double width)
     {
 
@@ -93,7 +108,15 @@ public class VirtualCalculator
         return sb.toString();
     }
 
-    //stolper
+    /**
+     * Uses length, width, shedLength to calculate where and how many posts(stolper) that are going to be in the sketch.
+     * <p>
+     * Used in the method sketch().
+     * @param length
+     * @param width
+     * @param shedLength
+     * @return the String which gets appended in another String.
+     */
     private String post(double length, double width, double shedLength)
     {
 
@@ -161,7 +184,14 @@ public class VirtualCalculator
 
     }
 
-    //rem
+    /**
+     * Uses width, length to calculate where and how long straps(rem) are going to be and located. 
+     * <p>
+     * Used in method sketch().
+     * @param width
+     * @param length
+     * @return the String which gets appended in another String.
+     */
     private String strap(double width, double length)
     {
 
@@ -182,7 +212,18 @@ public class VirtualCalculator
 
     }
 
-    //skur
+    /**
+     * Uses length, width, shedLength, shedWidth to calculate where the shed is going to be.
+     * <p>
+     * this method is the backbone for the shed, this is like sketch() is the backbone for the whole sketch.
+     * <p>
+     * this method is also called from sketch().
+     * @param length
+     * @param width
+     * @param shedLength
+     * @param shedWidth
+     * @return the String which gets appended in another String.
+     */
     private String shed(double length, double width, double shedLength, double shedWidth)
     {
 
@@ -206,7 +247,17 @@ public class VirtualCalculator
 
     }
 
-    //hulbånd
+    /**
+     * Uses width, length ,shedWidth to calculate where the bands(huldbånd) are going to be. 
+     * <p>
+     * and where the bands(huldbånds) end, depends on the width of the shed.
+     * <p>
+     * This method is called from sketch().
+     * @param width
+     * @param length
+     * @param shedWidth
+     * @return the String which gets appended in another String.
+     */
     private String band(double width, double length, double shedWidth)
     {
 
@@ -231,6 +282,17 @@ public class VirtualCalculator
         return sb.toString();
     }
 
+    /**
+     * Uses width, shedLength, shedWidth, to calculate where the shedPosts are going to be. 
+     * <p>
+     * the width and length of the post is final and defined, and cannot be changed. 
+     * <p>
+     * called from method shed() which is the backbone of the shed sketch.
+     * @param width
+     * @param shedLength
+     * @param shedWidth
+     * @return the String which gets appended in another String.
+     */
     private String shedPost(double width, double shedLength, double shedWidth)
     {
 
@@ -265,6 +327,17 @@ public class VirtualCalculator
         return sb.toString();
     }
 
+    /**
+     * Uses length to display how long(length) the carport is.
+     * <p>
+     * Uses width to know where the location of the arrow are going to be. 
+     * <p>
+     * Called from method sketch().
+     * <p>
+     * this method is called from sketch, and does not return any String, it appends(add) the string directly from this method.     * @param length
+     * @param width 
+     * @param length
+     */
     private void verticalArrow(double length, double width)
     {
 
@@ -287,6 +360,15 @@ public class VirtualCalculator
 
     }
 
+    /**
+     * Uses width to display how wide(width) the carport is.
+     * <p>
+     * Uses length to calculate where the arrow are going to be located. 
+     * <p>
+     * this method is called from sketch, and does not return any String, it appends(add) the string directly from this method.
+     * @param length
+     * @param width 
+     */
     private void horizontalArrow(double length, double width)
     {
 
