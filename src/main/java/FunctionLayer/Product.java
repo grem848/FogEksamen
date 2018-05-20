@@ -10,7 +10,9 @@ public class Product {
     private int amount;
     
     /**
-     *
+     * Contructor used for getting Data from Database. 
+     * <p>
+     * Called from DBAccess.OrderMapper and BOMCalculator
      * @param name
      * @param ratio
      * @param price
@@ -22,7 +24,9 @@ public class Product {
     }
 
     /**
-     *
+     * Contructor used to display products in editorderpage 
+     * <p>
+     * Used in PresentationLayer.EditOrder.java and editorderpage
      * @param name
      * @param price
      * @param amount
@@ -34,7 +38,10 @@ public class Product {
     }
 
     /**
-     *
+     * Contructer Used in Database to get Data
+     * <p>
+     * called in OrderMapper
+     * 
      * @param productname
      * @param priceforeach
      */
@@ -44,6 +51,14 @@ public class Product {
         this.price = priceforeach;
     }
 
+    /**
+     * Constructor used to display the shed in editorderpage
+     * <p>
+     * method called from BomCalculator
+     * @param shedWalls
+     * @param calculateShedWalls
+     * @param d 
+     */
     Product(String shedWalls, int calculateShedWalls, double d) {
         
         this.name = shedWalls;
