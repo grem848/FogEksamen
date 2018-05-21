@@ -348,22 +348,10 @@ public class Order
         this.slopedRoof = slopedRoof;
     }
 
-    
-    
     @Override
     public String toString()
     {
-        String status;
-        status = "Pending"; // DELETE THIS PLS
-//        if(sent == true)
-//        {
-//            Status = "Sent";
-//        }
-//        else
-//        {
-//            Status = "Pending";
-//        }
-        return "[ Order ID: " + id + " | Bill of Materials: Length:" + length + ", Width: " + width + ", Height: " + height + " | Status: " + status + " ]";
+        return "Order{" + "id=" + id + ", tlf=" + tlf + ", email=" + email + ", length=" + length + ", height=" + height + ", width=" + width + ", shedLength=" + shedLength + ", shedWidth=" + shedWidth + ", slopedRoof=" + slopedRoof + ", price=" + price + ", Status=" + Status + '}';
     }
 
     

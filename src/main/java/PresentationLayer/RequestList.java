@@ -16,7 +16,7 @@ public class RequestList extends Command
     String execute(HttpServletRequest request, HttpServletResponse response) throws OrderBuilderException
     {
 
-        List<Order> orders = LogicFacade.getOrderList();
+        List<Order> orders = LogicFacade.getRequestList();
 
         request.setAttribute("allOrders", orders);
 
