@@ -8,6 +8,7 @@
         <title>orderRemoved.jsp</title>
     </head>
     <body>
+         <%@include file="../includes/menu.jsp" %>
         <h1>Order removed!</h1>
 
         <p>Order have been removed succesfully!</p>
@@ -17,5 +18,6 @@
             <input type="hidden" name="command" value="employeerequestpage" />
             <input type="submit" value="Customer request List" />
         </form>
+        <%@include file="../includes/footer.jsp" %>
     </body>
 </html>

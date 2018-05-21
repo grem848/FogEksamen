@@ -27,6 +27,7 @@
 
     </style>
     <body>
+        <%@include file="../includes/menu.jsp" %>
         <h1>Customer Orders</h1>
 
         <table class="table table-striped">
@@ -112,11 +113,12 @@
             <%
                 }%>
         </table>
-    </body>
     <br>
     <form>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employee" />
             <input type="submit" value="Back to Employee Page" />
         </form>
+    </body>
+    <%@include file="../includes/footer.jsp" %>
 </html>

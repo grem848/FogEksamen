@@ -118,7 +118,9 @@
             break;
     }
 %>
+
 <html>
+
     <head>
         <style>
             table, th, td {
@@ -129,9 +131,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer home page</title>
     </head>
-    <body>
-        <h1>Johannes Fog A/S</h1>
-        <br>
+
+    <body style="background-color: whitesmoke;">
+
+    <center>
+
+        <%@include file="../includes/menu.jsp" %>
         <br>
         <form name="Request" action="FrontController" method="POST">
             Carport Width
@@ -300,7 +305,7 @@
         </form>
 
         <br>
-            
+
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="sendrequestpage">
             <input type="hidden" name="carportWidth" value="<%=width%>">
@@ -318,11 +323,11 @@
             <input type="number" name="slopedRoof" placeholder="84" required>
             <input type="submit" value="Send Request">
         </form>
-            
-            
-            
-            
-            
+
+
+
+
+
         <br>
         <br>
 
@@ -447,5 +452,9 @@
     <br>
     <p>Johannes Fog A/S</p>
 
+
+
+</center>
+<%@include file="../includes/footer.jsp" %>
 </body>
 </html>

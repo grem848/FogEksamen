@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Order Creation have been Confirmed!</h1>
-    </body>
+     <%@include file="../includes/menu.jsp" %>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employee" />
             <input type="submit" value="Back to Employee Page" />
@@ -18,4 +18,6 @@
             <input type="hidden" name="command" value="createorderpage">
             <input type="submit" value="Back To Create Order Page">
         </form>
+        <%@include file="../includes/footer.jsp" %>
+    </body> 
 </html>

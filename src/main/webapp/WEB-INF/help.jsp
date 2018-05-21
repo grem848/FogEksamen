@@ -7,7 +7,9 @@
         <title>Help Page</title>
     </head>
     <body>
+         <%@include file="../includes/menu.jsp" %>
         <h1>Help is on the way!</h1>
+        <%@include file="../includes/footer.jsp" %>
     </body>
     <form>
         <input type="button" value="Go back!" onclick="history.back()">

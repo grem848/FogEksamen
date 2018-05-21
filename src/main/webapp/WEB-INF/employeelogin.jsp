@@ -7,8 +7,8 @@
         <title>Employee Login page</title>
     </head>
     <body>
-        <h1>Johannes Fog A/S</h1>
-
+    <center>
+       <%@include file="../includes/menu.jsp" %>
         <h3>Employee Login</h3>
         <table>
                 <td>
@@ -38,6 +38,9 @@
         <H2>Error!!</h2>
         <p><%= error%>
             <% }
-            %>
+       
+%>
+</center>
 </body>
+           <%@include file="../includes/footer.jsp" %>
 </html>

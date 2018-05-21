@@ -8,7 +8,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    
     <body>
+        <%@include file="../includes/menu.jsp" %>
         <h1>Request Sent</h1>
         A FOG employee will contact you soon.
         <br>
@@ -20,5 +22,8 @@
         <form>
             <input type="button" value="Back to Customer Page" onclick="history.back()">
         </form>
+        <%@include file="../includes/footer.jsp" %>
+        
     </body>
+    
 </html>

@@ -32,6 +32,7 @@
 
     </head>
     <body>
+        <%@include file="../includes/menu.jsp" %>
         <h1>Order is Finished and shipped!</h1>
         <h3>These informations are sent to email: <%=request.getAttribute("email")%></h3>
         <br>
@@ -110,5 +111,6 @@
             <input type="hidden" name="command" value="employeeorderlist">
             <input type="submit" value="Back to OrderList">            
         </form>
+        <%@include file="../includes/footer.jsp" %>
     </body>
 </html
