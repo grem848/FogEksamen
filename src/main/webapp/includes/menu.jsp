@@ -77,17 +77,9 @@
             .dropdown:hover .dropbtn {
                 background-color: #3e8e41;
             }
-
-
-            .vertical-line{
-                width:101px; /* Line width */
-                background-color: black; /* Line color */
-                height: 100%; /* Override in-line if you want specific height. */
-                float: left; /* Causes the line to float to left of content. 
-                  You can instead use position:absolute or display:inline-block
-                  if this fits better with your design */
-            } 
-
+            .img {
+              float: left;
+            }
         </style>
     </head>
     <body>
@@ -95,8 +87,9 @@
         <div class="jumbotron">
             <div class="container text-center">
                 <font color="white" size="7"
-                      <p>johannes Fog</p>
-                <p>best homemade carport for you!</p>
+                    <p>johannes Fog</p>
+                    <p><img src="https://prisbyg.libpx.com/eu-west-1/images/merchant/johannesfog.jpg"  alt="Logo" width="300" height="100"/></p>
+                    <p>best homemade carport for you!</p>
                 </font>
             </div>
         </div>
@@ -106,8 +99,6 @@
                 <div class="navbar-header">
 
 
-                    <div class="site-logo">
-                    </div>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">

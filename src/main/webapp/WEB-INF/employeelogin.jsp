@@ -2,6 +2,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    
+<style>
+ div.login 
+ {
+  text-align: center;
+}
+    
+        
+</style>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Employee Login page</title>
@@ -10,9 +19,10 @@
     <center>
        <%@include file="../includes/menu.jsp" %>
         <h3>Employee Login</h3>
+        <div class="login"
         <table>
                 <td>
-                    <form name="login" action="FrontController" method="POST">
+                    <form name="login" action="FrontController" method="POST" >
                         <input type="hidden" name="command" value="login">
                         Email:<br>
                         <input type="text" name="email" placeholder="Type an email" value="admin">
@@ -24,6 +34,7 @@
                     </form>
                 </td>
         </table>
+        </div>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="logout" />
             <input type="submit" value="Back to Customer Page" />
