@@ -24,7 +24,7 @@ public class OrderConfirmed extends Command
 
         try
         {
-            LogicFacade.createOrder(tlf, email, length, width, height, shedLength, shedWidth, slopedRoof);
+            LogicFacade.createRequest(tlf, email, length, width, height, shedLength, shedWidth, slopedRoof);
         } catch (SQLException ex)
         {
             throw new FogException(ex.getMessage());
