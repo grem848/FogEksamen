@@ -9,6 +9,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+         <%@include file="../includes/menu.jsp" %>
+
         <h1>Request Sent</h1>
         A FOG employee will contact you soon.
         <br>
@@ -21,4 +23,6 @@
             <input type="button" value="Back to Customer Page" onclick="history.back()">
         </form>
     </body>
+     <%@include file="../includes/footer.jsp" %>
+
 </html>

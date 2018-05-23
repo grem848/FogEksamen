@@ -8,6 +8,8 @@
         <title>Order Edited Page</title>
     </head>
     <body>
+         <%@include file="../includes/menu.jsp" %>
+
         <h1>Order has been edited</h1>
         <br>
         <form name="Building" action="FrontController" method="POST">
@@ -16,4 +18,6 @@
         </form>
 
     </body>
+     <%@include file="../includes/footer.jsp" %>
+
 </html>

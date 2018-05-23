@@ -132,7 +132,9 @@
         <title>Customer home page</title>
     </head>
     <body>
-        <h1>Johannes Fog A/S</h1>
+         <%@include file="includes/menu.jsp" %>
+         
+    <center>
         <br>
         <br>
         <form name="Request" action="FrontController" method="POST">
@@ -453,7 +455,9 @@
         <input type="submit" value="Employee Login" />
     </form>
     <br>
-    <p>Johannes Fog A/S</p>
+    
 
+    </center>
+     <%@include file="includes/footer.jsp" %>
 </body>
 </html>

@@ -8,7 +8,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Employee home page</title>
     </head>
+    
+    
+    
+    <style>
+    input[type=submit] {
+    float: center;
+    margin-center 10px;
+    margin-top: 10px;
+    width: 150px;
+    height: 30px;
+}
+
+    </style>
     <body>
+         <%@include file="../includes/menu.jsp" %>
+ 
+    <center>
         <% User user = (User) session.getAttribute("user");%>
         <h1>Hello <%=user.getEmail()%> </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
@@ -47,5 +63,7 @@
         <input type="hidden" name="command" value="logout" />
         <input type="submit" value="Logout" />
     </form>
+    </center>
+     <%@include file="../includes/footer.jsp" %>
 </body>
 </html>

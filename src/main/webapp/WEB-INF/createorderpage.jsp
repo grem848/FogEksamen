@@ -133,7 +133,8 @@
         <title>Employee Create page</title>
     </head>
     <body>
-        <h1>Johannes Fog A/S</h1>
+         <%@include file="../includes/menu.jsp" %>
+    <center>        
         <br>
         <br>
         <form name="Request" action="FrontController" method="POST">
@@ -331,6 +332,8 @@
         <input type="hidden" name="command" value="employee" />
         <input type="submit" value="Back to Employee Page" />
     </form>
+</center>
+ <%@include file="../includes/footer.jsp" %>
 
 <body/>
 </html>

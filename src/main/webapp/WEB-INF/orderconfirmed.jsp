@@ -8,6 +8,8 @@
         <title>Confirmed</title>
     </head>
     <body>
+         <%@include file="../includes/menu.jsp" %>
+
         <h1>Order Creation have been Confirmed!</h1>
     </body>
         <form name="Building" action="FrontController" method="POST">
@@ -18,4 +20,7 @@
             <input type="hidden" name="command" value="createorderpage">
             <input type="submit" value="Back To Create Order Page">
         </form>
+    
+     <%@include file="../includes/footer.jsp" %>
+
 </html>
