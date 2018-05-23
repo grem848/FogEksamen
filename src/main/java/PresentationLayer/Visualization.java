@@ -12,7 +12,7 @@ public class Visualization extends Command
 {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
+    String execute(HttpServletRequest request, HttpServletResponse response) throws OrderBuilderException
     {
 
         VirtualCalculator vc = new VirtualCalculator();
@@ -36,10 +36,10 @@ public class Visualization extends Command
 
         try
         {
-            LogicFacade.createOrder(tlf, email, lengthDB, widthDB, heightDB, shedLengthDB, shedWidthDB, slopedRoof);
+            LogicFacade.createRequest(tlf, email, lengthDB, widthDB, heightDB, shedLengthDB, shedWidthDB, slopedRoof);
         } catch (SQLException ex)
         {
-            throw new FogException(ex.getMessage());
+            throw new OrderBuilderException(ex.getMessage());
         }
 
         request.setAttribute("carportHeight", carportHeight);

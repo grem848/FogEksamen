@@ -127,6 +127,8 @@
 
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
+        <link rel="stylesheet" type="text/css" href=""https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Customer home page</title>
     </head>
     <body>
@@ -310,12 +312,18 @@
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
             Do this last!
-            <p>Tlf</p>
+            <p>Phone Number:</p>
             <input type="number"name="tlf" placeholder="12345678" required>
             <p>Email:</p>
             <input type="text" name="email" placeholder="email@email.dk" required>
-            <p>slopedRoof</p>
+            <%-- 
+            !NOT IMPLEMENTED YET!
+            <p>Roof Slope</p>
             <input type="number" name="slopedRoof" placeholder="84" required>
+            --%>
+            <input type="hidden" name="slopedRoof" value="0">
+            <br>
+            <br>
             <input type="submit" value="Send Request">
         </form>
             
