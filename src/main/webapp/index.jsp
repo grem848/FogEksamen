@@ -128,7 +128,7 @@
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width = device-width, initial-scale = 1">
-        <link rel="stylesheet" type="text/css" href=""https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Customer home page</title>
     </head>
     <body>
@@ -313,7 +313,7 @@
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
             Do this last!
             <p>Phone Number:</p>
-            <input type="number"name="tlf" placeholder="12345678" required>
+            <input type="number" name="tlf" placeholder="12345678" required>
             <p>Email:</p>
             <input type="text" name="email" placeholder="email@email.dk" required>
             <%-- 
@@ -437,7 +437,7 @@
 
 
     <!-- Stickman height -->
-    <path fill="white" stroke="white"stroke-width="2" d="M97,300 L97,200 " id="svg_11"
+    <path fill="white" stroke="white" stroke-width="2" d="M97,300 L97,200 " id="svg_11"
           class=""/>
     <!-- Stickman -->
     <path fill="black" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-dashoffset="" fill-rule="nonzero"
