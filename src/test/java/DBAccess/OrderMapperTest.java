@@ -255,6 +255,14 @@ public class OrderMapperTest
     @Test
     public void testGetAllBracketsScrews() throws OrderBuilderException
     {
+        List<Product> i = OrderMapper.getAllBracketsScrews();
+        int k = i.size();
+        assertEquals(13,k);
+        
+        String productname = "Universal 190 mm Right";
+        String ratio = "0.320513";
+        int price = 20;
+        assertEquals(new Product(productname,ratio,price).toString(),i.get(i.size()-1).toString());
         
     }
 
