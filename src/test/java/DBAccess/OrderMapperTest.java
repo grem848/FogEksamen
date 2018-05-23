@@ -3,6 +3,7 @@ package DBAccess;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
+import FunctionLayer.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -254,8 +255,15 @@ public class OrderMapperTest
     @Test
     public void testGetAllBracketsScrews() throws OrderBuilderException
     {
-        
-        
+        List<Product> i = OrderMapper.getAllBracketsScrews();
+        int k = i.size();
+        assertEquals(13, k);
+
+        String productname = "Universal 190 mm Right";
+        String ratio = "0.320513";
+        int price = 20;
+        assertEquals(new Product(productname, ratio, price).toString(), i.get(i.size() - 1).toString());
+
     }
 
     /**
@@ -266,7 +274,11 @@ public class OrderMapperTest
     @Test
     public void testGetAllWoodEaves() throws OrderBuilderException
     {
-        
+        List< Product> l = OrderMapper.getAllWoodEaves();
+        assertEquals("100x100mm wood for walls", l.get(0).getName());
+        assertEquals(100, l.get(0).getPrice());
+        assertNotEquals("45x195 mm. spærtræ ubh.", l.get(0).getName());
+        assertEquals(100, l.get(3).getPrice());
     }
 
     /**
@@ -277,6 +289,21 @@ public class OrderMapperTest
     @Test
     public void testGetAllOrdersWhereStatusIsFinished() throws Exception
     {
+        List<Order> finishedOrders = LogicFacade.getStatusFinishedList();
+        if (!finishedOrders.isEmpty())
+        {
+            finishedOrders.get(0).getStatus();
+            finishedOrders.get((finishedOrders.size() - 1)).getStatus();
+        } else
+        {
+            System.out.println("\n"
+                    + "Finished list is empty!\n"
+                    + "Finished list is empty!\n"
+                    + "Finished list is empty!\n"
+                    + "Finished list is empty!\n");
+        }
+        assertEquals("finished", finishedOrders.get(0).getStatus());
+        assertEquals("finished", finishedOrders.get((finishedOrders.size() - 1)).getStatus());
 
     }
 
