@@ -254,8 +254,7 @@ public class OrderMapperTest
     @Test
     public void testGetAllBracketsScrews() throws OrderBuilderException
     {
-        
-        
+
     }
 
     /**
@@ -266,7 +265,7 @@ public class OrderMapperTest
     @Test
     public void testGetAllWoodEaves() throws OrderBuilderException
     {
-        
+
     }
 
     /**
@@ -277,6 +276,21 @@ public class OrderMapperTest
     @Test
     public void testGetAllOrdersWhereStatusIsFinished() throws Exception
     {
+        List<Order> finishedOrders = LogicFacade.getStatusFinishedList();
+        if (!finishedOrders.isEmpty())
+        {
+            finishedOrders.get(0).getStatus();
+            finishedOrders.get((finishedOrders.size() - 1)).getStatus();
+        } else
+        {
+            System.out.println("\n"
+                    + "Finished list is empty!\n"
+                    + "Finished list is empty!\n"
+                    + "Finished list is empty!\n"
+                    + "Finished list is empty!\n");
+        }
+        assertEquals("finished", finishedOrders.get(0).getStatus());
+        assertEquals("finished", finishedOrders.get((finishedOrders.size() - 1)).getStatus());
 
     }
 
