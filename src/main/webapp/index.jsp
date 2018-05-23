@@ -118,7 +118,9 @@
             break;
     }
 %>
+
 <html>
+
     <head>
         <style>
             table, th, td {
@@ -128,12 +130,16 @@
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width = device-width, initial-scale = 1">
+
         <link rel="stylesheet" type="text/css" href=""https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Customer home page</title>
     </head>
-    <body>
-        <h1>Johannes Fog A/S</h1>
-        <br>
+
+    <body style="background-color: whitesmoke;">
+
+    <center>
+
+        <%@include file="../includes/menu.jsp" %>
         <br>
         <form name="Request" action="FrontController" method="POST">
             Carport Width
@@ -210,6 +216,9 @@
                    />
             I don't want a shed, uncheck to see shed options again
             <% if (noShed == false) {%>
+            <br>
+            <input type="checkbox">
+            Make carport one big shed
             <br>
             <br>
             Carport Shed Width
@@ -302,7 +311,7 @@
         </form>
 
         <br>
-            
+
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="sendrequestpage">
             <input type="hidden" name="carportWidth" value="<%=width%>">
@@ -312,25 +321,26 @@
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
             Do this last!
-            <p>Phone Number:</p>
+            <p>Phone Number</p>
             <input type="number"name="tlf" placeholder="12345678" required>
-            <p>Email:</p>
+            <br>
+            <br>
+            <p>Email</p>
             <input type="text" name="email" placeholder="email@email.dk" required>
-            <%-- 
-            !NOT IMPLEMENTED YET!
+            <br>
+            <br>
+            <!-- !NOT IMPLEMENTED YET! -->
             <p>Roof Slope</p>
             <input type="number" name="slopedRoof" placeholder="84" required>
-            --%>
-            <input type="hidden" name="slopedRoof" value="0">
             <br>
             <br>
             <input type="submit" value="Send Request">
         </form>
-            
-            
-            
-            
-            
+
+
+
+
+
         <br>
         <br>
 
@@ -455,5 +465,9 @@
     <br>
     <p>Johannes Fog A/S</p>
 
+
+
+</center>
+<%@include file="../includes/footer.jsp" %>
 </body>
 </html>

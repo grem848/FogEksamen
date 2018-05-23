@@ -9,21 +9,34 @@
         <title>Employee home page</title>
     </head>
     <body>
+    <center>
+        <%@include file="../includes/menu.jsp" %>
         <% User user = (User) session.getAttribute("user");%>
         <h1>Hello <%=user.getEmail()%> </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
-
+        <br>
+        <br>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="createorderpage">
             <input type="submit" value="Create Request Page">
         </form>
+        <br>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeeorderlist" />
             <input type="submit" value="Customer Order List" />
         </form>
+        <br>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeerequestpage" />
             <input type="submit" value="Customer request List" />
+        </form>
+        <br>
+        <form>
+            <input type="submit" value="Edit Product List" />
+        </form>
+        <br>
+        <form>
+            <input type="submit" value="Edit Price List" />
         </form>
         <br>
     <td>Register a new Admin</td>
@@ -47,5 +60,7 @@
         <input type="hidden" name="command" value="logout" />
         <input type="submit" value="Logout" />
     </form>
+    <%@include file="../includes/footer.jsp" %>
+    </center>
 </body>
 </html>

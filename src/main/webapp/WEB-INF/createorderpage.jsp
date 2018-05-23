@@ -133,8 +133,7 @@
         <title>Employee Create page</title>
     </head>
     <body>
-        <h1>Johannes Fog A/S</h1>
-        <br>
+         <%@include file="../includes/menu.jsp" %>
         <br>
         <form name="Request" action="FrontController" method="POST">
             Carport Width
@@ -331,7 +330,7 @@
         <input type="hidden" name="command" value="employee" />
         <input type="submit" value="Back to Employee Page" />
     </form>
-
+<%@include file="../includes/footer.jsp" %>
 <body/>
 </html>
 

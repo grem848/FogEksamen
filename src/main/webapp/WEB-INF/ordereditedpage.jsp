@@ -8,12 +8,13 @@
         <title>Order Edited Page</title>
     </head>
     <body>
+        <%@include file="../includes/menu.jsp" %>
         <h1>Order has been edited</h1>
         <br>
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="employeeorderlist" />
             <input type="submit" value="Go back to Order List" />
         </form>
-
+<%@include file="../includes/footer.jsp" %>
     </body>
 </html>

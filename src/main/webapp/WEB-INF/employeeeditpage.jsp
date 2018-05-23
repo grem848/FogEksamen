@@ -31,6 +31,7 @@
 
     </style>
     <body>
+        <%@include file="../includes/menu.jsp" %>
         <h1>Edit Order</h1>
 
         <%int totalPrice = (int) request.getAttribute("totalPrice");%>
@@ -292,5 +293,6 @@
         </form>
 
         <br>
+        <%@include file="../includes/footer.jsp" %>
     </body>
 </html>
