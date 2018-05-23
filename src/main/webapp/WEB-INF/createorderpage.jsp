@@ -315,7 +315,7 @@
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
             Do this last!
             <p>Tlf</p>
-            <input type="number"name="tlf" placeholder="12345678" required>
+            <input type="number" name="tlf" placeholder="12345678" required>
             <p>Email:</p>
             <input type="text" name="email" placeholder="email@email.dk" required>
             <p>slopedRoof</p>
