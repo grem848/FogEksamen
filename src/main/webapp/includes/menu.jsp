@@ -87,9 +87,9 @@
         <div class="jumbotron">
             <div class="container text-center">
                 <font color="white" size="7"
-                    <p>johannes Fog</p>
+                    <p>Johannes Fog A/S</p>
                     <p><img src="https://prisbyg.libpx.com/eu-west-1/images/merchant/johannesfog.jpg"  alt="Logo" width="300" height="100"/></p>
-                    <p>best homemade carport for you!</p>
+                    <p>Best homemade carports for you!</p>
                 </font>
             </div>
         </div>

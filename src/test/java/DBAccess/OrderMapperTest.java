@@ -3,6 +3,7 @@ package DBAccess;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.Order;
 import FunctionLayer.OrderBuilderException;
+import FunctionLayer.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -254,7 +255,7 @@ public class OrderMapperTest
     @Test
     public void testGetAllBracketsScrews() throws OrderBuilderException
     {
-
+        
     }
 
     /**
@@ -265,7 +266,12 @@ public class OrderMapperTest
     @Test
     public void testGetAllWoodEaves() throws OrderBuilderException
     {
-
+        List<Product> l = OrderMapper.getAllWoodEaves();
+        
+        assertEquals("100x100mm wood for walls", l.get(0).getName());
+        assertEquals(100, l.get(0).getPrice());
+        assertNotEquals("45x195 mm. spærtræ ubh.", l.get(0).getName());
+        assertEquals(100, l.get(3).getPrice());
     }
 
     /**
