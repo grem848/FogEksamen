@@ -118,7 +118,9 @@
             break;
     }
 %>
+
 <html>
+
     <head>
         <style>
             table, th, td {
@@ -131,9 +133,12 @@
         <link rel="stylesheet" type="text/css" href=""https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         <title>Customer home page</title>
     </head>
-    <body>
-        <h1>Johannes Fog A/S</h1>
-        <br>
+
+    <body style="background-color: whitesmoke;">
+
+    <center>
+
+        <%@include file="../includes/menu.jsp" %>
         <br>
         <form name="Request" action="FrontController" method="POST">
             Carport Width
@@ -302,7 +307,7 @@
         </form>
 
         <br>
-            
+
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="sendrequestpage">
             <input type="hidden" name="carportWidth" value="<%=width%>">
@@ -326,11 +331,11 @@
             <br>
             <input type="submit" value="Send Request">
         </form>
-            
-            
-            
-            
-            
+
+
+
+
+
         <br>
         <br>
 
@@ -455,5 +460,9 @@
     <br>
     <p>Johannes Fog A/S</p>
 
+
+
+</center>
+<%@include file="../includes/footer.jsp" %>
 </body>
 </html>

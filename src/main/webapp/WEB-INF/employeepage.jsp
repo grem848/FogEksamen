@@ -9,6 +9,8 @@
         <title>Employee home page</title>
     </head>
     <body>
+    <center>
+        <%@include file="../includes/menu.jsp" %>
         <% User user = (User) session.getAttribute("user");%>
         <h1>Hello <%=user.getEmail()%> </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
@@ -47,5 +49,7 @@
         <input type="hidden" name="command" value="logout" />
         <input type="submit" value="Logout" />
     </form>
+    <%@include file="../includes/footer.jsp" %>
+    </center>
 </body>
 </html>
