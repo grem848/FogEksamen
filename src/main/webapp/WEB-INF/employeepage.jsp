@@ -34,12 +34,12 @@
             <input type="submit" value="Create Request Page">
         </form>
         <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="employeeorderlist" />
-            <input type="submit" value="Customer Order List" />
+            <input type="hidden" name="command" value="employeeorderlist">
+            <input type="submit" value="Customer Order List">
         </form>
         <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="employeerequestpage" />
-            <input type="submit" value="Customer request List" />
+            <input type="hidden" name="command" value="employeerequestpage">
+            <input type="submit" value="Customer request List">
         </form>
         <br>
     <td>Register a new Admin</td>
@@ -60,8 +60,8 @@
     </td>
     <br>
     <form name="Building" action="FrontController" method="POST">
-        <input type="hidden" name="command" value="logout" />
-        <input type="submit" value="Logout" />
+        <input type="hidden" name="command" value="logout">
+        <input type="submit" value="Logout">
     </form>
     </center>
      <%@include file="../includes/footer.jsp" %>

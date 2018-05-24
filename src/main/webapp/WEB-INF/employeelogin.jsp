@@ -38,8 +38,8 @@
             </td>
         </table>
         <form name="Building" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="logout" />
-            <input type="submit" value="Back to Customer Page" />
+            <input type="hidden" name="command" value="logout">
+            <input type="submit" value="Back to Customer Page">
         </form>
         <br>
         <br>

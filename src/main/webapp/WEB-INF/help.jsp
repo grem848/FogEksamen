@@ -8,8 +8,9 @@
     </head>
     <body>
         <h1>Help is on the way!</h1>
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="logout">
+            <input type="submit" value="Back to Customer Page">
+        </form>
     </body>
-    <form>
-        <input type="button" value="Go back!" onclick="history.back()">
-    </form>
 </html>

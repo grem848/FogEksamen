@@ -1,8 +1,4 @@
-<%-- 
-    Document   : menu
-    Created on : 23-05-2018, 22:27:16
-    Author     : rasmu
---%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

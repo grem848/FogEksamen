@@ -19,8 +19,9 @@
 
         </SVG>
         
-        <form>
-            <input type="button" value="Back to Customer Page" onclick="history.back()">
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="logout">
+            <input type="submit" value="Back to Customer Page">
         </form>
     </body>
      <%@include file="../includes/footer.jsp" %>

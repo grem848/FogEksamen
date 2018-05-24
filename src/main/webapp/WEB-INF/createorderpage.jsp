@@ -300,10 +300,10 @@
                 </tr>
             </table>
             <br>
-            <input type="hidden" name="command" value="updateemployeecreateorder" />
-            <input type="hidden" name="shedWidth" value="<%=shedWidth%>" />
-            <input type="hidden" name="shedLength" value="<%=shedLength%>" />
-            <input type="submit" value="Update Carport & Visualization" />
+            <input type="hidden" name="command" value="updateemployeecreateorder" >
+            <input type="hidden" name="shedWidth" value="<%=shedWidth%>" >
+            <input type="hidden" name="shedLength" value="<%=shedLength%>" >
+            <input type="submit" value="Update Carport & Visualization" >
         </form>
 
         <br>

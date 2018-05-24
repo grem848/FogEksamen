@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author RasmusFriis
  */
-public class UpdateeEmployeCreateOrder extends Command {
+public class UpdateEmployeeCreateOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException 
