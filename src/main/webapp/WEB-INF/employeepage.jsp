@@ -14,7 +14,7 @@
     <style>
     input[type=submit] {
     float: center;
-    margin-center 10px;
+    margin-center: 10px;
     margin-top: 10px;
     width: 150px;
     height: 30px;
