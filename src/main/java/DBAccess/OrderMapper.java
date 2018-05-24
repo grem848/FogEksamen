@@ -10,19 +10,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class OrderMapper {
+public class OrderMapper
+{
 
     /**
-     * Takes an Order object and retrieves the attributes for a SQL preparedstatement that inserts the Order attributes into to the order DB.
+     * Takes an Order object and retrieves the attributes for a SQL
+     * preparedstatement that inserts the Order attributes into to the order DB.
      * <p>
      * Used to create orders
+     *
      * @param order
      * @return
      * @throws OrderBuilderException
      * @throws SQLException
      */
-    public static boolean OrderToDB(Order order) throws OrderBuilderException, SQLException
+    public static boolean RequestToDB(Order order) throws OrderBuilderException, SQLException
     {
         try
         {
@@ -47,14 +49,17 @@ public class OrderMapper {
     }
 
     /**
-     * Uses a SQL preparedstatement to get all Orders from the DB with status as 'request', and adds them to a List of Orders.
+     * Uses a SQL preparedstatement to get all Orders from the DB with status as
+     * 'request', and adds them to a List of Orders.
      * <p>
      * Used to get a list of requests from customers.
+     *
      * @return
      * @throws OrderBuilderException
      */
-    public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException {
-        List<Order> orderList;
+    public static List<Order> getAllOrdersWhereStatusIsRequest() throws OrderBuilderException
+    {
+        List<Order> requestList;
         try
         {
             Connection connection = Connector.connection();
@@ -63,9 +68,10 @@ public class OrderMapper {
 
             ResultSet rs = statement.executeQuery();
 
-            orderList = new ArrayList<>();
+            requestList = new ArrayList<>();
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int id = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -77,9 +83,9 @@ public class OrderMapper {
                 int slopedRoof = rs.getInt("slopedRoof");
                 int price = rs.getInt("price");
                 String status = rs.getString("status");
-                orderList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, price, status));
+                requestList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, price, status));
             }
-            return orderList;
+            return requestList;
         } catch (SQLException | ClassNotFoundException ex)
         {
             throw new OrderBuilderException(ex.getMessage());
@@ -87,9 +93,11 @@ public class OrderMapper {
     }
 
     /**
-     * Uses a SQL preparedstatement to set the status of an Order with the id from the parameter, to 'order'.
+     * Uses a SQL preparedstatement to set the status of an Order with the id
+     * from the parameter, to 'order'.
      * <p>
      * Used to set the status of an Order to 'order'.
+     *
      * @param id
      * @throws OrderBuilderException
      */
@@ -110,13 +118,15 @@ public class OrderMapper {
     }
 
     /**
-     * Uses a SQL preparedstatement to set the status of an Order with the id from the parameter, to 'finished'.
+     * Uses a SQL preparedstatement to set the status of an Order with the id
+     * from the parameter, to 'finished'.
      * <p>
      * Used to set the status of an Order to 'finished'.
+     *
      * @param id
      * @throws OrderBuilderException
      */
-    public static void setStatusDone(int id) throws OrderBuilderException
+    public static void setStatusFinished(int id) throws OrderBuilderException
     {
         try
         {
@@ -133,13 +143,16 @@ public class OrderMapper {
     }
 
     /**
-     * Uses a SQL preparedstatement to get all Orders from the DB with status as 'order', and adds them to a List.
+     * Uses a SQL preparedstatement to get all Orders from the DB with status as
+     * 'order', and adds them to a List.
      * <p>
      * Used to get a list of Orders from customers.
+     *
      * @return
      * @throws OrderBuilderException
      */
-    public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException {
+    public static List<Order> getAllOrdersWhereStatusIsOrder() throws OrderBuilderException
+    {
         List<Order> statusOrderList;
         try
         {
@@ -151,7 +164,8 @@ public class OrderMapper {
 
             statusOrderList = new ArrayList<>();
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int id = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -174,9 +188,11 @@ public class OrderMapper {
     }
 
     /**
-     * Uses a SQL preparedstatement to get an Order from the DB with the id from the parameter.
+     * Uses a SQL preparedstatement to get an Order from the DB with the id from
+     * the parameter.
      * <p>
      * Used to get one Order for the edit page.
+     *
      * @param id
      * @return
      * @throws OrderBuilderException
@@ -194,7 +210,8 @@ public class OrderMapper {
 
             Order o = null;
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int id2 = rs.getInt("id");
                 int tlf = rs.getInt("tlf");
                 String email = rs.getString("email");
@@ -217,9 +234,11 @@ public class OrderMapper {
     }
 
     /**
-     * Uses a SQL preparedstatement to update the attributes of an order in the DB, with new values from the parameters.
+     * Uses a SQL preparedstatement to update the attributes of an order in the
+     * DB, with new values from the parameters.
      * <p>
      * Used to edit an Order and ready it for the customer.
+     *
      * @param id
      * @param tlf
      * @param email
@@ -259,13 +278,17 @@ public class OrderMapper {
     }
 
     /**
-     * Uses a SQL preparedstatement to get all Products from the bracketsScrews DB, and adds them to a List of Products.
+     * Uses a SQL preparedstatement to get all Products from the bracketsScrews
+     * DB, and adds them to a List of Products.
      * <p>
-     * Used to make the Bill of Materials, to get the brackets and screws and other small materials.
+     * Used to make the Bill of Materials, to get the brackets and screws and
+     * other small materials.
+     *
      * @return
      * @throws OrderBuilderException
      */
-    public static List<Product> getAllBracketsScrews() throws OrderBuilderException {
+    public static List<Product> getAllBracketsScrews() throws OrderBuilderException
+    {
         List<Product> productList;
         try
         {
@@ -277,7 +300,8 @@ public class OrderMapper {
 
             productList = new ArrayList<>();
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 String ratio = rs.getString("ratio");
                 int priceforeach = rs.getInt("priceforeach");
                 String productname = rs.getString("productname");
@@ -294,16 +318,21 @@ public class OrderMapper {
     }
 
     /**
-     * Uses a SQL preparedstatement to get all Products from the woodEaves DB, and adds them to a List of Products.
+     * Uses a SQL preparedstatement to get all Products from the woodEaves DB,
+     * and adds them to a List of Products.
      * <p>
-     * Used to make the Bill of Materials, to get the larger materials like wood for walls and roof materials.
+     * Used to make the Bill of Materials, to get the larger materials like wood
+     * for walls and roof materials.
+     *
      * @return
      * @throws OrderBuilderException
      */
-    public static List<Product> getAllWoodEaves() throws OrderBuilderException {
+    public static List<Product> getAllWoodEaves() throws OrderBuilderException
+    {
         List<Product> productList;
-        try {
-            
+        try
+        {
+
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM woodEaves";
             PreparedStatement statement = con.prepareStatement(SQL);
@@ -312,7 +341,8 @@ public class OrderMapper {
 
             productList = new ArrayList<>();
 
-            while (rs.next()) {
+            while (rs.next())
+            {
                 int priceforeach = rs.getInt("priceforeach");
                 String productname = rs.getString("product");
 
@@ -320,9 +350,55 @@ public class OrderMapper {
 
             }
 
-
             return productList;
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex)
+        {
+            throw new OrderBuilderException(ex.getMessage());
+        }
+    }
+
+    /**
+     * Uses a SQL preparedstatement to get all Orders from the DB with status as
+     * 'finished', and adds them to a List.
+     * <p>
+     * Used to get a list of Finished orders from customers.
+     * Currently not used.
+     *
+     * @return
+     * @throws OrderBuilderException
+     */
+    public static List<Order> getAllOrdersWhereStatusIsFinished() throws OrderBuilderException
+    {
+        List<Order> statusFinishedList;
+        try
+        {
+            Connection connection = Connector.connection();
+            String SQL = "SELECT * FROM orders WHERE status='finished';";
+            PreparedStatement statement = connection.prepareStatement(SQL);
+
+            ResultSet rs = statement.executeQuery();
+
+            statusFinishedList = new ArrayList<>();
+
+            while (rs.next())
+            {
+                int id = rs.getInt("id");
+                int tlf = rs.getInt("tlf");
+                String email = rs.getString("email");
+                int height = rs.getInt("height");
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                int shedLength = rs.getInt("shedLength");
+                int shedWidth = rs.getInt("shedWidth");
+                int slopedRoof = rs.getInt("slopedRoof");
+                int price = rs.getInt("price");
+                String status = rs.getString("status");
+                statusFinishedList.add(new Order(id, tlf, email, length, height, width, shedLength, shedWidth, slopedRoof, price, status));
+            }
+
+            return statusFinishedList;
+        } catch (ClassNotFoundException | SQLException ex)
+        {
             throw new OrderBuilderException(ex.getMessage());
         }
     }

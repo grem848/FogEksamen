@@ -15,39 +15,31 @@ public class UpdateIndex extends Command
     String execute(HttpServletRequest request, HttpServletResponse response) throws FogException, OrderBuilderException
     {
 
-        try
+        int inputHeight = Integer.parseInt(request.getParameter("carportHeight"));
+        int inputLength = Integer.parseInt(request.getParameter("carportLength"));
+        int width = Integer.parseInt(request.getParameter("carportWidth"));
+        int shedLength = Integer.parseInt(request.getParameter("shedLength"));
+        int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
+        boolean noShed = Boolean.parseBoolean(request.getParameter("noShed"));
+
+        request.setAttribute("carportLength", inputLength);
+        request.setAttribute("carportHeight", inputHeight);
+        request.setAttribute("carportWidth", width);
+
+        if (noShed == true)
         {
-            int inputHeight = Integer.parseInt(request.getParameter("carportHeight"));
-            int inputLength = Integer.parseInt(request.getParameter("carportLength"));
-            int width = Integer.parseInt(request.getParameter("carportWidth"));
-            int shedLength = Integer.parseInt(request.getParameter("shedLength"));
-            int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
-            boolean noShed = Boolean.parseBoolean(request.getParameter("noShed"));
+            request.setAttribute("shedLength", 0);
+            request.setAttribute("shedWidth", 0);
+            request.setAttribute("noShed", noShed);
 
-            request.setAttribute("carportLength", inputLength);
-            request.setAttribute("carportHeight", inputHeight);
-            request.setAttribute("carportWidth", width);
-            
-            if (noShed == true)
-            {
-                request.setAttribute("shedLength", 0);
-                request.setAttribute("shedWidth", 0);
-                request.setAttribute("noShed", noShed);
-
-            } else
-            {
-                request.setAttribute("noShed", noShed);
-                request.setAttribute("shedLength", shedLength);
-                request.setAttribute("shedWidth", shedWidth);
-            }
-
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-
-        } catch (ServletException | IOException ex)
+        } else
         {
-            System.out.println(ex);
+            request.setAttribute("noShed", noShed);
+            request.setAttribute("shedLength", shedLength);
+            request.setAttribute("shedWidth", shedWidth);
         }
-        return null;
+
+        return "index";
     }
 
 }

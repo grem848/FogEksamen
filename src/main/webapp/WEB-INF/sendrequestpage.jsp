@@ -9,6 +9,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+         <%@include file="../includes/menu.jsp" %>
+
         <h1>Request Sent</h1>
         A FOG employee will contact you soon.
         <br>
@@ -17,8 +19,11 @@
 
         </SVG>
         
-        <form>
-            <input type="button" value="Back to Customer Page" onclick="history.back()">
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="logout">
+            <input type="submit" value="Back to Customer Page">
         </form>
     </body>
+     <%@include file="../includes/footer.jsp" %>
+
 </html>

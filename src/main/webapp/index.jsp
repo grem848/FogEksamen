@@ -127,10 +127,13 @@
 
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
         <title>Customer home page</title>
     </head>
     <body>
-        <h1>Johannes Fog A/S</h1>
+        <%@include file="includes/menu.jsp" %>
+        
+    <center>
         <br>
         <br>
         <form name="Request" action="FrontController" method="POST">
@@ -293,10 +296,10 @@
                 </tr>
             </table>
             <br>
-            <input type="hidden" name="command" value="update" />
-            <input type="hidden" name="shedWidth" value="<%=shedWidth%>" />
-            <input type="hidden" name="shedLength" value="<%=shedLength%>" />
-            <input type="submit" value="Update Carport & Visualization" />
+            <input type="hidden" name="command" value="update">
+            <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
+            <input type="hidden" name="shedLength" value="<%=shedLength%>">
+            <input type="submit" value="Update Carport & Visualization">
         </form>
 
         <br>
@@ -310,12 +313,18 @@
             <input type="hidden" name="shedWidth" value="<%=shedWidth%>">
             <input type="hidden" name="shedLength" value="<%=shedLength%>">
             Do this last!
-            <p>Tlf</p>
-            <input type="number"name="tlf" placeholder="12345678" required>
+            <p>Phone Number:</p>
+            <input type="number" name="tlf" placeholder="12345678" required>
             <p>Email:</p>
             <input type="text" name="email" placeholder="email@email.dk" required>
-            <p>slopedRoof</p>
+            <%-- 
+            !NOT IMPLEMENTED YET!
+            <p>Roof Slope</p>
             <input type="number" name="slopedRoof" placeholder="84" required>
+            --%>
+            <input type="hidden" name="slopedRoof" value="0">
+            <br>
+            <br>
             <input type="submit" value="Send Request">
         </form>
             
@@ -330,44 +339,44 @@
 
         <!-- Created with Vector Paint - http://www.vectorpaint.yaks.com/ https://chrome.google.com/webstore/detail/hnbpdiengicdefcjecjbnjnoifekhgdo -->
 
-        <rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="#3887ff" stroke="#000000" style="" class="" fill-opacity="1" stroke-opacity="1"/>
+        <rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="#3887ff" stroke="#000000" fill-opacity="1" stroke-opacity="1"/>
         <g class="currentLayer" style="">
 
         <!-- Tree trunk -->
         <path fill="#9e6924" fill-opacity="1" stroke="#9e6924" stroke-opacity="1" stroke-width="10" stroke-dasharray="none"
               stroke-linejoin="round" stroke-linecap="butt"
               stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end="" 
-              d="M930,299 L930,200 " id="svg_2" class=""/>
+              d="M930,299 L930,200 " id="svg_2"/>
         <!-- Tree leaves -->
         <path fill="#04b804" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-dasharray="none"
               stroke-linejoin="round" stroke-linecap="butt"
               stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end=""
               d="M930,178 C930,166 940,155 952,155 C965,155 975,166 975,178 C975,190 975,200 952,200 C940,200 930,190
-              930,178 z" id="svg_36" class=""/>
+              930,178 z" id="svg_36"/>
 
         <path fill="#04b804" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-dasharray="none"
               stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1"
               marker-start="" marker-mid="" marker-end="" 
               d="M890,178 C890,166 900,155 912,155 C925,155 935,166 935,178 C935,190 925,200 912,200 C900,200 890,190
-              890,178 z" id="svg_40" class=""/>
+              890,178 z" id="svg_40" />
 
         <path fill="#04b804" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-dasharray="none"
               stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start=""
               marker-mid="" marker-end="" 
               d="M910,158 C910,146 920,135 932,135 C945,135 955,146 955,158 C955,170 945,180 932,180 C920,180 910,170
-              910,158 z" id="svg_39" class=""/>
+              910,158 z" id="svg_39" />
 
         <path fill="#04b804" fill-opacity="1" stroke="#000000" stroke-opacity="1"
               stroke-width="1" stroke-dasharray="none" stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" 
               fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end="" 
               d="M910,198 C910,186 920,175 932,175 C945,175 955,186 955,198 C955,210 945,220 932,220 C920,220 910,210
-              910,198 z" id="svg_38" class=""/>
+              910,198 z" id="svg_38" />
 
         <!-- Carport & Stickman & measurements -->
         <foreignObject fill="black" stroke="black"
                        stroke-linejoin="round" stroke-dashoffset="" fill-rule="nonzero" font-size="20" font-family="Georgia, serif" 
                        letter-spacing="0" word-spacing="0" marker-start="" marker-mid="" marker-end="" id="svg_4" x="103" 
-                       y="232" width="133" height="120" style="color: rgb(255, 255, 255);" class="">
+                       y="232" width="133" height="120" style="color: rgb(255, 255, 255)">
         <p style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;">
         <p style="border: none;outline: none;font-size: inherit;line-height: 1em;padding:0;margin:0;">
 
@@ -386,7 +395,6 @@
 
         </p>
 
-    </p>
     </foreignObject>
 
     <!-- Carport Poles -->
@@ -401,7 +409,7 @@
     <!-- Dont touch me I am the pole that doesnt move! -->
     <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
           marker-mid="" marker-end="" d="M800,<%=inputHeight%> L800,300 " 
-          id="svg_6" class=""/>
+          id="svg_6" />
 
     <!-- Carport Roof -->
     <%--
@@ -411,7 +419,7 @@
     --%>
     <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
           marker-mid="" marker-end="" d="M<%=inputLength%>,<%=inputHeight%> L810,<%=inputHeight%> "
-          id="svg_6" class=""/>
+          id="svg_6" />
 
 
 
@@ -419,7 +427,7 @@
     <path fill="white" fill-opacity="1" stroke="white" stroke-opacity="1" stroke-width="2" stroke-dasharray="none" 
           stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start=""
           marker-mid="" marker-end="" d="M839, 300 L839, <%=inputHeight%>"
-          id="svg_6" class=""/>
+          id="svg_6"/>
     <text x='845' y='200' fill='white'>Actual Height</text>
     <text x='845' y='220' fill='white'><%=actualHeight%> cm</text>
     <text x='845' y='260' fill='white'>Total Height</text>
@@ -429,13 +437,13 @@
 
 
     <!-- Stickman height -->
-    <path fill="white" stroke="white"stroke-width="2" d="M97,300 L97,200 " id="svg_11"
-          class=""/>
+    <path fill="white" stroke="white" stroke-width="2" d="M97,300 L97,200 " id="svg_11"
+          />
     <!-- Stickman -->
     <path fill="black" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-dashoffset="" fill-rule="nonzero"
           marker-start="" marker-mid="" marker-end="" id="svg_13" d="M5,235 L87,235 
           M46,260 L60,300 M46,260 L30,300 M46,220 L46,260 M59,210 C59,217 53,222 46,222 C39,222 33,217 33,210 C33,203 39,197 46,197
-          C53,197 59,203 59,210 z" style="color: rgb(0, 0, 0);" class=""/>
+          C53,197 59,203 59,210 z" style="color: rgb(0, 0, 0)" />
     </g>
     </svg>
     <br>
@@ -445,7 +453,9 @@
         <input type="submit" value="Employee Login" />
     </form>
     <br>
-    <p>Johannes Fog A/S</p>
+    
 
+    </center>
+     <%@include file="includes/footer.jsp" %>
 </body>
 </html>

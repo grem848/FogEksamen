@@ -3,6 +3,7 @@ package FunctionLayer;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BOMCalculator
 {
 
@@ -21,6 +22,18 @@ public class BOMCalculator
 
     private double area;
 
+    /**
+     * Everything is run in here, when ever the class get created, it runs through all the process and finds it.
+     * <p>
+     * Used when ever the class is instantiated.
+     *
+     * @param length
+     * @param width
+     * @param height
+     * @param shedLength
+     * @param shedWidth
+     * @throws OrderBuilderException
+     */
     public BOMCalculator(double length, double width, double height , double shedLength, double shedWidth) throws OrderBuilderException {
 
         this.length = length;
@@ -50,6 +63,14 @@ public class BOMCalculator
 
     }
 
+    /**
+     * Uses area (through the parameters) to calculate the amount and price for each of the products inside the array (in the class).
+     * <p>
+     * The calculation is the same for each of the products because of the ratio that is in the database.
+     * <p>
+     * Used to calculate the prices and amount to be displayed later in the editorderpage.
+     * @param area 
+     */
     private void calculation1(double area)
     {
 
@@ -62,6 +83,13 @@ public class BOMCalculator
         }
     }
 
+    /**
+     * Gets the List resDemo2 (from this class) and calculates everything based on the information of resDemo2.getName.
+     * <p>
+     * Used to calculate the amount and price of the List to be displayed later on in the editorderpage.
+     * <p>
+     * This version of the calculation, calculate rafter, post, roofPlastic, walls (Shed not incl.).
+     */
     private void calculation2()
     {
 
@@ -106,7 +134,18 @@ public class BOMCalculator
         calculateTotalPrice();
     }
 
-    // calculates all the sides of the carport, except the front and roof.
+    /**
+     * Uses length,width,height to Calculate the Wood usaged for the walls, except the front and roof
+     * <p>
+     * because the front should be open for the vehicle, and the roof is calculated somewhere else for the plastic.
+     * <p>
+     * Used in method called calculation2
+     * @param length
+     * @param width
+     * @param height
+     * @return 
+     * 
+     */
     private double calculateWoodUsage(double length, double width, double height)
     {
 
@@ -116,6 +155,15 @@ public class BOMCalculator
 
     }
     
+    /**
+     * Uses shedLength, shedWidth and height to the woodUsage for walls, in the shed. Uses method CalculateShedWood for the calculation.  
+     * <p>
+     * Used in calculation2 to calculate the usage of the shedwalls.
+     * @param shedLength
+     * @param shedWidth
+     * @param height
+     * @return 
+     */
     private int calculateShedWalls(double shedLength , double shedWidth, double height){
         
         double shedArea = calculateShedWood( shedLength , shedWidth , height);
@@ -134,7 +182,18 @@ public class BOMCalculator
         
     }
     
-       private double calculateShedWood(double shedLength, double shedWidth, double height) {
+    /**
+     * Uses shedLength, shedWidth, height to calculate how much the amount of the wood used for 2 sides of the shed
+     * <p>
+     * the sides that are calculated are always 2. 
+     * <p>
+     * Used in calculateShedWalls in this class.
+     * @param shedLength
+     * @param shedWidth
+     * @param height
+     * @return 
+     */
+    private double calculateShedWood(double shedLength, double shedWidth, double height) {
 
         double amount = ((shedLength * height) + (shedWidth * height)) / 100;
         
@@ -142,6 +201,14 @@ public class BOMCalculator
 
     }
 
+    /**
+     * Calculate the roof area by length, width to know the amount of the plastic that has to be used.
+     * <p>
+     * Used in calculation2 for the calculation of the roof.
+     * @param length
+     * @param width
+     * @return 
+     */
     private double calculateRoff(double length, double width)
     {
 
@@ -149,6 +216,12 @@ public class BOMCalculator
 
     }
 
+    /**
+     * Calculate the total price of all products.
+     * <p>
+     * Method Used in PresintationLayer EmployeeEditOrder to display the total price.
+     * @return 
+     */
     private int calculateTotalPrice()
     {
 
@@ -170,6 +243,10 @@ public class BOMCalculator
         return res;
     }
 
+    /**
+     * 
+     * @return totalprice
+     */
     public int getTotalPrice()
     {
         if (totalPrice == 0)
@@ -179,11 +256,23 @@ public class BOMCalculator
         return totalPrice;
     }
 
+    /**
+     *
+     * @param totalPrice
+     */
     public void setTotalPrice(int totalPrice)
     {
         this.totalPrice = totalPrice;
     }
 
+    /**
+     * Uses the input to parse it to dosuble, because in the DB we have ratio as text. 
+     * <p>
+     * Used in the calculation1, for the ratio. 
+     * 
+     * @param name
+     * @return 
+     */
     private double assignRatio(String name)
     {
 
@@ -202,6 +291,13 @@ public class BOMCalculator
         return ratio;
     }
 
+    /**
+     * Uses name to get the product price in the class
+     * <p>
+     * Used in calculation1 to get product price.
+     * @param name
+     * @return 
+     */
     private double assignPrice(String name)
     {
 

@@ -1,15 +1,16 @@
 package DBAccess;
 
 import FunctionLayer.FogException;
-import FunctionLayer.OrderBuilderException;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+
 
 public class UserMapperTest
 {
@@ -20,6 +21,9 @@ public class UserMapperTest
     private static String DBNAME = "fogdbtest";
     private static String HOST = "159.89.109.181";
 
+    /**
+     * Sets up connection to test db and copies the db to the test db.
+     */
     @Before
     public void setUp()
     {
@@ -39,22 +43,9 @@ public class UserMapperTest
             try (Statement stmt = testConnection.createStatement())
             {
                 stmt.execute("drop table if exists users");
-                stmt.execute("drop table if exists orders");
-                stmt.execute("drop table if exists products");
-                stmt.execute("drop table if exists bracketsScrews");
-                stmt.execute("drop table if exists woodEaves");
 
                 stmt.execute("create table users like fogdb.users");
                 stmt.execute("insert into users select * from fogdb.users");
-
-                stmt.execute("create table orders like fogdb.orders");
-                stmt.execute("insert into orders select * from fogdb.orders");
-
-                stmt.execute("create table bracketsScrews like fogdb.bracketsScrews");
-                stmt.execute("insert into bracketsScrews select * from fogdb.bracketsScrews");
-
-                stmt.execute("create table woodEaves like fogdb.woodEaves");
-                stmt.execute("insert into woodEaves select * from fogdb.woodEaves");
             }
 
         } catch (ClassNotFoundException | SQLException ex)
@@ -64,6 +55,9 @@ public class UserMapperTest
         }
     }
 
+    /**
+     * Check if connection is not null.
+     */
     @Test
     public void testSetUpOK()
     {
@@ -71,6 +65,10 @@ public class UserMapperTest
         assertNotNull(testConnection);
     }
 
+    /**
+     * Tests of login works.
+     * @throws FogException
+     */
     @Test
     public void testLogin01() throws FogException
     {
@@ -79,22 +77,40 @@ public class UserMapperTest
         assertTrue(user != null);
     }
 
+    /**
+     * Tests if wrong password throws the expected exception.
+     * @throws FogException
+     */
     @Test
     public void testLogin02() throws FogException
     {
         // We should get an exception if we use the wrong password
-//        User user = UserMapper.login("jens@somewhere.com", "larsen");
-//        assertEquals("customer", user.getRole());
+        try
+        {
+            User user = UserMapper.login("jens@somewhere.com", "larsen");
+            fail("Expected a FogException to be thrown");
+        } catch (FogException fogException)
+        {
+            assertThat(fogException.getMessage(), is("Could not validate user"));
+        }
     }
 
+    /**
+     * Tests if user role is correct for an employee.
+     * @throws FogException
+     */
     @Test
     public void testLogin03() throws FogException
     {
-        // Jens is supposed to be a customer
+        // Jens is supposed to be an employee
         User user = UserMapper.login("jens@somewhere.com", "jensen");
         assertEquals("employee", user.getRole());
     }
 
+    /**
+     * Tests if a new user can be created, and if the user can login.
+     * @throws FogException
+     */
     @Test
     public void testCreateUser01() throws FogException
     {
@@ -106,13 +122,4 @@ public class UserMapperTest
         assertEquals("konge", retrieved.getRole());
     }
 
-    @Test
-    public void testOrder() throws OrderBuilderException, SQLException
-    {
-
-//        Order original = new Order(1234, "hej@email", 1, 2, 3, 4, 5, 6);
-//        OrderMapper.OrderToDB(original);
-//        Order get = (Order) OrderMapper.getAllOrdersWhereStatusIsOrder();
-//        assertNotNull(get);
-    }
 }

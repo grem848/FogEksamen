@@ -8,6 +8,8 @@
         <title>Order Sent Page</title>
     </head>
     <body>
+         <%@include file="../includes/menu.jsp" %>
+
         <h1>Request has been made an Order!</h1>
         <br>
         <form name="Building" action="FrontController" method="POST">
@@ -24,4 +26,6 @@
             <input type="submit" value="Back to Request List" />
         </form>
     </body>
+     <%@include file="../includes/footer.jsp" %>
+
 </html>
