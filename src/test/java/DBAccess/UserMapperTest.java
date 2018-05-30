@@ -2,6 +2,7 @@ package DBAccess;
 
 import FunctionLayer.FogException;
 import FunctionLayer.User;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -70,7 +71,7 @@ public class UserMapperTest
      * @throws FogException
      */
     @Test
-    public void testLogin01() throws FogException
+    public void testLogin01() throws FogException, IOException
     {
         // Can we log in
         User user = UserMapper.login("jens@somewhere.com", "jensen");
@@ -80,9 +81,10 @@ public class UserMapperTest
     /**
      * Tests if wrong password throws the expected exception.
      * @throws FogException
+     * @throws java.io.IOException
      */
     @Test
-    public void testLogin02() throws FogException
+    public void testLogin02() throws FogException, IOException
     {
         // We should get an exception if we use the wrong password
         try
@@ -100,7 +102,7 @@ public class UserMapperTest
      * @throws FogException
      */
     @Test
-    public void testLogin03() throws FogException
+    public void testLogin03() throws FogException, IOException
     {
         // Jens is supposed to be an employee
         User user = UserMapper.login("jens@somewhere.com", "jensen");
@@ -112,7 +114,7 @@ public class UserMapperTest
      * @throws FogException
      */
     @Test
-    public void testCreateUser01() throws FogException
+    public void testCreateUser01() throws FogException, IOException
     {
         // Can we create a new user - Notice, if login fails, this will fail
         // but so would login01, so this is OK
