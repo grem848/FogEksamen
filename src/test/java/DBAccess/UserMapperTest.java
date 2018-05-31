@@ -69,6 +69,7 @@ public class UserMapperTest
     /**
      * Tests of login works.
      * @throws FogException
+     * @throws java.io.IOException
      */
     @Test
     public void testLogin01() throws FogException, IOException
@@ -79,7 +80,7 @@ public class UserMapperTest
     }
 
     /**
-     * Tests if wrong password throws the expected exception.
+     * Tests if wrong password throws the expected exceptions.
      * @throws FogException
      * @throws java.io.IOException
      */
@@ -87,19 +88,26 @@ public class UserMapperTest
     public void testLogin02() throws FogException, IOException
     {
         // We should get an exception if we use the wrong password
+        // and an exception that shows that this is logged
         try
         {
             User user = UserMapper.login("jens@somewhere.com", "larsen");
             fail("Expected a FogException to be thrown");
-        } catch (FogException fogException)
+        } catch (FogException exception1)
         {
-            assertThat(fogException.getMessage(), is("Could not validate user"));
+            System.out.println(exception1.getMessage());
+            assertThat(exception1.getMessage(), is("Could not validate user"));
+        }
+        catch (IOException exception2)
+        {
+            assertThat(exception2.getMessage(), is("\\var\\log\\tomcat8\\demoApp.log.lck"));
         }
     }
 
     /**
      * Tests if user role is correct for an employee.
      * @throws FogException
+     * @throws java.io.IOException
      */
     @Test
     public void testLogin03() throws FogException, IOException
@@ -112,6 +120,7 @@ public class UserMapperTest
     /**
      * Tests if a new user can be created, and if the user can login.
      * @throws FogException
+     * @throws java.io.IOException
      */
     @Test
     public void testCreateUser01() throws FogException, IOException

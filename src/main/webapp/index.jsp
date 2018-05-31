@@ -209,9 +209,9 @@
                        }
                    %>
                    />
-            I don't want a shed, uncheck to see shed options again
-            <% if (noShed == false) {%>
+            I don't want a shed, uncheck & update to see shed options again
             <br>
+            <% if (noShed == false) {%>
             <br>
             Carport Shed Width
             <select name="shedWidth" title="Shed Width">
@@ -263,6 +263,7 @@
             <br>
             <br>
             <% }%>
+            <br>
             Your Current Carport!
             <br>
             <table>
