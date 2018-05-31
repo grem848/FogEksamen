@@ -13,7 +13,8 @@
     int shedLength = (request.getAttribute("shedLength") == null ? 0 : (int) request.getAttribute("shedLength"));
     boolean noShed = (request.getAttribute("noShed") == null ? false : (boolean) request.getAttribute("noShed"));
 
-    switch (inputHeight) {
+    switch (inputHeight)
+    {
         /*
         200 height of SVG path = 200cm
         195 height of SVG path = 210cm
@@ -57,7 +58,8 @@
             totalHeight = actualHeight + 15;
             break;
     }
-    switch (inputLength) {
+    switch (inputLength)
+    {
 
         case 690:
             outputLength = 240;
@@ -132,7 +134,7 @@
     </head>
     <body>
         <%@include file="includes/menu.jsp" %>
-        
+
     <center>
         <br>
         <br>
@@ -201,16 +203,23 @@
             <br>
             <input type="checkbox" name="noShed" value="true"
                    <%
-                       if (noShed == true) {
+                       if (noShed == true)
+                       {
                            out.println("checked");
-                       } else {
+                       } else
+                       {
 
                            out.println("<input type='hidden' name='noShed' value='false'");
                        }
                    %>
                    />
-            I don't want a shed, uncheck to see shed options again
-            <% if (noShed == false) {%>
+            I don't want a shed, uncheck & update to see shed options again
+            <br>
+            <% if (noShed == false)
+                {%>
+            <br>
+            <p>Make whole carport one big shed (walls on all sides and a door)</p>
+            <input type="button" onclick="alert('Not implemented yet!')" value="Make whole carport a shed" />
             <br>
             <br>
             Carport Shed Width
@@ -263,6 +272,7 @@
             <br>
             <br>
             <% }%>
+            <br>
             Your Current Carport!
             <br>
             <table>
@@ -303,7 +313,7 @@
         </form>
 
         <br>
-            
+
         <form name="Building" action="FrontController" method="POST">
             <input type="hidden" name="command" value="sendrequestpage">
             <input type="hidden" name="carportWidth" value="<%=width%>">
@@ -317,21 +327,20 @@
             <input type="number" name="tlf" placeholder="12345678" required>
             <p>Email:</p>
             <input type="text" name="email" placeholder="email@email.dk" required>
-            <%-- 
-            !NOT IMPLEMENTED YET!
-            <p>Roof Slope</p>
-            <input type="number" name="slopedRoof" placeholder="84" required>
-            --%>
-            <input type="hidden" name="slopedRoof" value="0">
             <br>
+            <br>
+            <form name="Building" onsubmit="return false">
+                <input type="submit" onclick="alert('Not implemented yet!')" value="Carport Roof Editor" />
+            </form>
+            <input type="hidden" name="slopedRoof" value="0">
             <br>
             <input type="submit" value="Send Request">
         </form>
-            
-            
-            
-            
-            
+
+
+
+
+
         <br>
         <br>
 
@@ -395,67 +404,67 @@
 
         </p>
 
-    </foreignObject>
+        </foreignObject>
 
-    <!-- Carport Poles -->
-    <!-- MOVE MEEE -->
-    <%--
-    M650 (Pole location must be same as below) (Length of roof plus 30 (30cm)), 200 is height of roof (DO TOUCH)
-    L650 (Pole location must be same as above) (Length of roof plus 30 (30cm)), 200 is height of roof (DO TOUCH)
-    --%>
-    <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
-          marker-mid="" marker-end="" d="M<%=inputLength + 30%>,<%=inputHeight%> L<%=inputLength + 30%>,300 " 
-          id="svg_6" class=""/>
-    <!-- Dont touch me I am the pole that doesnt move! -->
-    <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
-          marker-mid="" marker-end="" d="M800,<%=inputHeight%> L800,300 " 
-          id="svg_6" />
+        <!-- Carport Poles -->
+        <!-- MOVE MEEE -->
+        <%--
+        M650 (Pole location must be same as below) (Length of roof plus 30 (30cm)), 200 is height of roof (DO TOUCH)
+        L650 (Pole location must be same as above) (Length of roof plus 30 (30cm)), 200 is height of roof (DO TOUCH)
+        --%>
+        <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
+              marker-mid="" marker-end="" d="M<%=inputLength + 30%>,<%=inputHeight%> L<%=inputLength + 30%>,300 " 
+              id="svg_6" class=""/>
+        <!-- Dont touch me I am the pole that doesnt move! -->
+        <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
+              marker-mid="" marker-end="" d="M800,<%=inputHeight%> L800,300 " 
+              id="svg_6" />
 
-    <!-- Carport Roof -->
-    <%--
-    800 is roof start, roof length = (800 - 620) * 2 = 360 = 3.6m
-    M620 (Roof length), 200 is height of roof (DO TOUCH)!
-    L810 (DONT TOUCH), 200 is height of roof (DO TOUCH)!
-    --%>
-    <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
-          marker-mid="" marker-end="" d="M<%=inputLength%>,<%=inputHeight%> L810,<%=inputHeight%> "
-          id="svg_6" />
-
-
-
-    <!-- Carport height -->
-    <path fill="white" fill-opacity="1" stroke="white" stroke-opacity="1" stroke-width="2" stroke-dasharray="none" 
-          stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start=""
-          marker-mid="" marker-end="" d="M839, 300 L839, <%=inputHeight%>"
-          id="svg_6"/>
-    <text x='845' y='200' fill='white'>Actual Height</text>
-    <text x='845' y='220' fill='white'><%=actualHeight%> cm</text>
-    <text x='845' y='260' fill='white'>Total Height</text>
-    <text x='845' y='280' fill='white'><%=totalHeight%> cm</text>
-
-    <text x='<%=inputLength%>' y='160' fill='white'>Total Length: <%=outputLength%> cm</text>
+        <!-- Carport Roof -->
+        <%--
+        800 is roof start, roof length = (800 - 620) * 2 = 360 = 3.6m
+        M620 (Roof length), 200 is height of roof (DO TOUCH)!
+        L810 (DONT TOUCH), 200 is height of roof (DO TOUCH)!
+        --%>
+        <path fill="black" stroke="black" stroke-width="8" fill-rule="nonzero" opacity="1" marker-start=""
+              marker-mid="" marker-end="" d="M<%=inputLength%>,<%=inputHeight%> L810,<%=inputHeight%> "
+              id="svg_6" />
 
 
-    <!-- Stickman height -->
-    <path fill="white" stroke="white" stroke-width="2" d="M97,300 L97,200 " id="svg_11"
-          />
-    <!-- Stickman -->
-    <path fill="black" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-dashoffset="" fill-rule="nonzero"
-          marker-start="" marker-mid="" marker-end="" id="svg_13" d="M5,235 L87,235 
-          M46,260 L60,300 M46,260 L30,300 M46,220 L46,260 M59,210 C59,217 53,222 46,222 C39,222 33,217 33,210 C33,203 39,197 46,197
-          C53,197 59,203 59,210 z" style="color: rgb(0, 0, 0)" />
-    </g>
-    </svg>
-    <br>
-    <br>
-    <form name="Building" action="FrontController" method="POST">
-        <input type="hidden" name="command" value="employeelogin" />
-        <input type="submit" value="Employee Login" />
-    </form>
-    <br>
-    
+
+        <!-- Carport height -->
+        <path fill="white" fill-opacity="1" stroke="white" stroke-opacity="1" stroke-width="2" stroke-dasharray="none" 
+              stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start=""
+              marker-mid="" marker-end="" d="M839, 300 L839, <%=inputHeight%>"
+              id="svg_6"/>
+        <text x='845' y='200' fill='white'>Actual Height</text>
+        <text x='845' y='220' fill='white'><%=actualHeight%> cm</text>
+        <text x='845' y='260' fill='white'>Total Height</text>
+        <text x='845' y='280' fill='white'><%=totalHeight%> cm</text>
+
+        <text x='<%=inputLength%>' y='160' fill='white'>Total Length: <%=outputLength%> cm</text>
+
+
+        <!-- Stickman height -->
+        <path fill="white" stroke="white" stroke-width="2" d="M97,300 L97,200 " id="svg_11"
+              />
+        <!-- Stickman -->
+        <path fill="black" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-dashoffset="" fill-rule="nonzero"
+              marker-start="" marker-mid="" marker-end="" id="svg_13" d="M5,235 L87,235 
+              M46,260 L60,300 M46,260 L30,300 M46,220 L46,260 M59,210 C59,217 53,222 46,222 C39,222 33,217 33,210 C33,203 39,197 46,197
+              C53,197 59,203 59,210 z" style="color: rgb(0, 0, 0)" />
+        </g>
+        </svg>
+        <br>
+        <br>
+        <form name="Building" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="employeelogin" />
+            <input type="submit" value="Employee Login" />
+        </form>
+        <br>
+
 
     </center>
-     <%@include file="includes/footer.jsp" %>
+    <%@include file="includes/footer.jsp" %>
 </body>
 </html>

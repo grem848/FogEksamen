@@ -2,6 +2,7 @@ package FunctionLayer;
 
 import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class LogicFacade
      * @return
      * @throws FogException
      */
-    public static User login(String email, String password) throws FogException
+    public static User login(String email, String password) throws FogException, IOException
     {
         return UserMapper.login(email, password);
     }
