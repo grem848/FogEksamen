@@ -41,6 +41,12 @@
             <input type="hidden" name="command" value="employeerequestpage">
             <input type="submit" value="Customer request List">
         </form>
+        <form name="Building" onsubmit="return false">
+        <input type="submit" onclick="alert('Not implemented yet!')" value="Product Price Editor" />
+        </form>
+        <form name="Building" onsubmit="return false">
+        <input type="submit" onclick="alert('Not implemented yet!')" value="Product Editor" />
+        </form>
         <br>
     <td>Register a new Admin</td>
     <td>

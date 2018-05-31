@@ -27,11 +27,11 @@
                 <form name="login" action="FrontController" method="POST">
                     <input  type="hidden" name="command" value="login">
                     Email:<br> 
-                    <input type="text" name="email" placeholder="Type an email" value="admin">
+                    <input type="text" name="email" placeholder="Type an email" value="admin" required>
                     <br>
                     <br>
                     Password:<br>
-                    <input type="password" name="password" placeholder="Type password" value="admin">
+                    <input type="password" name="password" placeholder="Type password" value="admin" required>
                     <br>
                     <input type="submit" value="Submit">
                 </form>

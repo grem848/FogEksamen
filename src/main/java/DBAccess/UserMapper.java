@@ -1,16 +1,21 @@
 package DBAccess;
 
 import FunctionLayer.FogException;
+import FunctionLayer.LoggingEngine;
 import FunctionLayer.User;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class UserMapper
 {
-
+LoggingEngine le = new LoggingEngine();
+ static final Logger LOGGER = Logger.getLogger(FunctionLayer.LoggingEngine.class.getName());
     /**
      * Takes an User object and retrieves the attributes for a SQL preparedstatement that inserts the User attributes into to the order DB.
      * <p>
@@ -46,7 +51,7 @@ public class UserMapper
      * @return
      * @throws FogException
      */
-    public static User login(String email, String password) throws FogException
+    public static User login(String email, String password) throws FogException, IOException
     {
         try
         {
@@ -66,6 +71,8 @@ public class UserMapper
                 return user;
             } else
             {
+                LoggingEngine.addHandlers();
+                LOGGER.log(Level.SEVERE, "Employee login try");
                 throw new FogException("Could not validate user");
             }
         } catch (ClassNotFoundException | SQLException ex)
