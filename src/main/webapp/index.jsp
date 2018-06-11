@@ -329,15 +329,12 @@
             <input type="text" name="email" placeholder="email@email.dk" required>
             <br>
             <br>
-            <form name="Building" onsubmit="return false">
-                <input type="submit" onclick="alert('Not implemented yet!')" value="Carport Roof Editor" />
-            </form>
+            <input type="button" onclick="alert('Not implemented yet!')" value="Carport Roof Editor" />
+            <br>
             <input type="hidden" name="slopedRoof" value="0">
             <br>
             <input type="submit" value="Send Request">
         </form>
-
-
 
 
 
