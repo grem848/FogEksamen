@@ -53,13 +53,13 @@
         <form name="register" action="FrontController" method="POST">
             <input type="hidden" name="command" value="register">
             Email:<br>
-            <input type="text" name="email" placeholder="Type an email">
+            <input type="text" name="email" placeholder="Type an email" required>
             <br>
             Password:<br>
-            <input type="password" name="password1" placeholder="Type password">
+            <input type="password" name="password1" placeholder="Type password" required>
             <br>
             Retype Password:<br>
-            <input type="password" name="password2" placeholder="Retype password">
+            <input type="password" name="password2" placeholder="Retype password" required>
             <br>
             <input type="submit" value="Submit">
         </form>
